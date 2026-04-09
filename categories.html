@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512' fill='%23f59e0b'><path d='M448 160c0-17.7-14.3-32-32-32h-32v-16c0-44.2-35.8-80-80-80H144c-44.2 0-80 35.8-80 80v16H32c-17.7 0-32 14.3-32 32v64c0 17.7 14.3 32 32 32h384c17.7 0 32-14.3 32-32v-64zM160 416c0-17.7 14.3-32 32-32h64c17.7 0 32 14.3 32 32s-14.3 32-32 32h-64c-17.7 0-32-14.3-32-32zm256-128H32c-17.7 0-32 14.3-32 32v96c0 88.4 71.6 160 160 160h128c88.4 0 160-71.6 160-160v-96c0-17.7-14.3-32-32-32z'/></svg>">
+    <title>Golden Hive | Beekeeping & Honey</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#F59E0B', // Honey Amber
+                        secondary: '#451A03', // Deep Propolis
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hero-bg {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('https://images.unsplash.com/photo-1587334274328-64186a80aeee?auto=format&fit=crop&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body class="bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 transition-colors duration-300">
+
+<nav class="fixed w-full z-50 bg-white/90 dark:bg-zinc-900/90 backdrop-blur-md shadow-sm border-b dark:border-zinc-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            
+            <a href="index.html" class="flex items-center gap-2">
+                <span class="text-3xl text-amber-500 drop-shadow-[0_0_10px_rgba(245,158,11,0.4)]">
+                    <i class="fa-solid fa-jar"></i>
+                </span>
+                <span class="font-bold text-2xl tracking-tight uppercase dark:text-white">
+                    Golden<span class="text-primary">Hive</span>
+                </span>
+            </a>
+
+            <div class="hidden lg:flex items-center space-x-6">
+                <a href="index.html" class="nav-link hover:text-primary font-medium transition-colors">Home</a>
+                <a href="home2.html" class="nav-link hover:text-primary font-medium transition-colors">Home2</a>
+                <a href="about.html" class="nav-link hover:text-primary font-medium transition-colors">About</a>
+                <a href="shopnow.html" class="nav-link hover:text-primary font-medium transition-colors">Shop</a>
+                <a href="contact.html" class="nav-link hover:text-primary font-medium transition-colors">Contact</a>
+                
+               <div class="relative group">
+    <button id="dashboard-btn" class="flex items-center gap-1 hover:text-primary font-bold uppercase tracking-widest text-xs transition-colors py-2">
+        Dashboard <i class="fas fa-chevron-down text-[10px] ml-1 group-hover:rotate-180 transition-transform"></i>
+    </button>
+
+    <div class="absolute left-0 hidden group-hover:block w-48 pt-2 z-50">
+        <div class="bg-white dark:bg-zinc-900 shadow-2xl border border-zinc-100 dark:border-zinc-800 rounded-2xl overflow-hidden">
+            
+            <a href="user.html" class="nav-link flex items-center gap-3 px-5 py-4 text-zinc-600 dark:text-zinc-400 hover:bg-primary hover:text-zinc-900 font-bold transition-all uppercase tracking-tighter text-sm">
+                <i class="fa-solid fa-user-circle text-lg"></i>
+                User Profile
+            </a>
+
+          
+            
+        </div>
+    </div>
+</div>
+            </div>
+
+            <div class="hidden lg:flex items-center gap-4">
+                <button onclick="toggleDirection()" class="p-2 border rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-800 dark:text-white" title="Toggle LTR/RTL">
+                    <i class="fas fa-exchange-alt"></i>
+                </button>
+                <button onclick="toggleTheme()" class="p-2 border rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-800 dark:text-white" title="Toggle Dark/Light">
+                    <i id="theme-icon" class="fas fa-moon"></i>
+                </button>
+                <a href="login.html">
+                    <button class="px-4 py-2 text-primary border border-primary rounded-lg font-semibold hover:bg-primary hover:text-white transition">Login</button>
+                </a>
+                <a href="shopnow.html">
+                    <button class="px-5 py-2 bg-primary text-white rounded-lg font-semibold hover:bg-yellow-600 shadow-md">Shop Now</button>
+                </a>
+            </div>
+
+            <div class="lg:hidden flex items-center gap-3">
+                <button onclick="toggleTheme()" class="p-2 dark:text-white"><i class="fas fa-moon"></i></button>
+                <button onclick="toggleMobileMenu()" class="text-2xl p-2 dark:text-white"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div id="mobile-menu" class="fixed inset-0 z-[100] p-6 flex flex-col space-y-4 overflow-y-auto lg:hidden 
+    bg-zinc-50/98 dark:bg-zinc-950/98 backdrop-blur-2xl transition-all duration-500">
+    
+    <div class="flex justify-between items-center mb-8 border-b border-zinc-200 dark:border-zinc-800 pb-4">
+        <div class="flex items-center gap-2">
+            <span class="text-2xl text-primary"><i class="fa-solid fa-jar"></i></span>
+            <span class="font-black text-xl uppercase dark:text-white tracking-tighter">Menu</span>
+        </div>
+        <button onclick="toggleMobileMenu()" class="text-2xl p-2 hover:bg-zinc-200/50 dark:hover:bg-zinc-800/50 rounded-full transition-colors dark:text-white">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
+    <nav id="mobile-nav-list" class="flex flex-col space-y-2">
+        
+        <a href="index.html" class="nav-item group flex justify-between items-center px-6 py-5 rounded-3xl text-xl font-bold uppercase tracking-tight transition-all duration-300">
+            <span>Home</span>
+            <i class="fa-solid fa-chevron-right text-xs opacity-0 group-[.active]:opacity-100"></i>
+        </a>
+
+        <a href="home2.html" class="nav-item group flex justify-between items-center px-6 py-5 rounded-3xl text-xl font-bold uppercase tracking-tight transition-all duration-300">
+            <span>Home2</span>
+            <i class="fa-solid fa-chevron-right text-xs opacity-0 group-[.active]:opacity-100"></i>
+        </a>
+        
+        <a href="about.html" class="nav-item group flex justify-between items-center px-6 py-5 rounded-3xl text-xl font-bold uppercase tracking-tight transition-all duration-300">
+            <span>About</span>
+            <i class="fa-solid fa-chevron-right text-xs opacity-0 group-[.active]:opacity-100"></i>
+        </a>
+        
+        <a href="shopnow.html" class="nav-item group flex justify-between items-center px-6 py-5 rounded-3xl text-xl font-bold uppercase tracking-tight transition-all duration-300">
+            <span>Shop</span>
+            <i class="fa-solid fa-chevron-right text-xs opacity-0 group-[.active]:opacity-100"></i>
+        </a>
+        
+        <a href="contact.html" class="nav-item group flex justify-between items-center px-6 py-5 rounded-3xl text-xl font-bold uppercase tracking-tight transition-all duration-300">
+            <span>Contact</span>
+            <i class="fa-solid fa-chevron-right text-xs opacity-0 group-[.active]:opacity-100"></i>
+        </a>
+
+        <details class="group/details nav-item rounded-3xl transition-all duration-300">
+            <summary class="flex justify-between items-center px-6 py-5 list-none cursor-pointer text-xl font-bold uppercase tracking-tight group-[.active]/details:text-zinc-900">
+                <span>Dashboard</span>
+                <i class="fas fa-chevron-down text-xs transition-transform group-open:rotate-180"></i>
+            </summary>
+            <div class="px-6 pb-6 flex flex-col gap-4 border-l-2 border-primary/30 ml-8 mt-2">
+                <a href="user.html" class="nav-item text-lg font-bold opacity-70 hover:opacity-100 hover:text-primary transition-all">User Profile</a>
+            </div>
+        </details>
+    </nav>
+
+    <div class="pt-8 flex flex-col gap-4 mt-auto">
+        <button onclick="toggleDirection()" class="w-full py-4 border-2 border-zinc-200 dark:border-zinc-800 rounded-2xl font-black text-[10px] uppercase tracking-widest flex items-center justify-center gap-2 dark:text-white bg-white/50 dark:bg-zinc-800/30 shadow-sm active:scale-95 transition-all">
+            <i class="fas fa-language text-primary"></i> Toggle Layout
+        </button>
+        
+        <div class="grid grid-cols-2 gap-4">
+            <a href="login.html" class="w-full text-center py-4 border-2 border-primary text-primary font-black uppercase tracking-widest text-[10px] rounded-2xl active:scale-95 transition-all">Login</a>
+            <a href="shopnow.html" class="w-full text-center py-4 bg-primary text-zinc-900 font-black uppercase tracking-widest text-[10px] rounded-2xl shadow-lg shadow-primary/20 active:scale-95 transition-all">Shop Now</a>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* THE HOVER/ACTIVE ENGINE
+       Ensures text is ALWAYS visible by flipping contrast 
+    */
+    
+    /* Default: Dark text in light mode, Light text in dark mode */
+    .nav-item {
+        color: #27272a; /* zinc-800 */
+    }
+    .dark .nav-item {
+        color: #f4f4f5; /* zinc-100 */
+    }
+
+    /* Hover/Tap: Solid dark background + Amber text */
+    .nav-item:hover:not(.active) {
+        background-color: #18181b; /* zinc-900 */
+        color: #f59e0b; /* primary amber */
+    }
+    .dark .nav-item:hover:not(.active) {
+        background-color: #f4f4f5; /* zinc-100 */
+        color: #18181b; /* zinc-900 */
+    }
+
+    /* Active State: The Automatic Highlight */
+    .nav-item.active {
+        background-color: #f59e0b; /* primary amber */
+        color: #18181b !important; /* Force dark text on yellow */
+        font-weight: 900;
+        box-shadow: 0 20px 25px -5px rgba(245, 158, 11, 0.2);
+    }
+</style>
+
+<script>
+    function toggleMobileMenu() {
+        const menu = document.getElementById('mobile-menu');
+        menu.classList.toggle('hidden');
+        document.body.style.overflow = menu.classList.contains('hidden') ? 'auto' : 'hidden';
+    }
+
+    /* AUTOMATIC ACTIVE STATE ENGINE
+       Detects current page and injects classes 
+    */
+    document.addEventListener("DOMContentLoaded", function() {
+        const currentPath = window.location.pathname.split("/").pop() || "index.html";
+        const navItems = document.querySelectorAll(".nav-item");
+
+        navItems.forEach(item => {
+            const href = item.getAttribute("href");
+            
+            // Check if this item or its children are active
+            if (href === currentPath) {
+                item.classList.add("active");
+                
+                // If it's a child of the Dashboard, open the dropdown
+                const parentDetails = item.closest('details');
+                if (parentDetails) {
+                    parentDetails.classList.add("active");
+                    parentDetails.setAttribute('open', '');
+                }
+            }
+        });
+    });
+</script>
+<script>
+    // Toggle Mobile Menu Function
+    function toggleMobileMenu() {
+        const menu = document.getElementById('mobile-menu');
+        menu.classList.toggle('hidden');
+        // Prevent background scrolling when menu is open
+        document.body.style.overflow = menu.classList.contains('hidden') ? 'auto' : 'hidden';
+    }
+
+    // Handle Active Nav State
+    document.addEventListener("DOMContentLoaded", function() {
+        const currentPath = window.location.pathname.split("/").pop() || "index.html";
+        const navLinks = document.querySelectorAll(".nav-link");
+
+        navLinks.forEach(link => {
+            const linkPath = link.getAttribute("href");
+
+            if (linkPath === currentPath) {
+                // Apply Active Styles
+                link.classList.add("text-primary", "font-bold");
+                
+                // Mobile-specific indicator
+                if (window.innerWidth < 1024) {
+                    link.classList.add("pl-3", "border-l-4", "border-primary");
+                }
+
+                // Parent highlight for Dashboard
+                if (link.closest('.group') || link.closest('details')) {
+                    const dashBtn = document.getElementById('dashboard-btn');
+                    const mobileDashLabel = document.getElementById('mobile-dash-label');
+                    if (dashBtn) dashBtn.classList.add("text-primary", "font-bold");
+                    if (mobileDashLabel) mobileDashLabel.classList.add("text-primary", "font-bold");
+                    
+                    // Auto-open mobile details
+                    const parentDetails = link.closest('details');
+                    if (parentDetails) parentDetails.setAttribute('open', '');
+                }
+            }
+        });
+    });
+</script>
+
+<section class="relative min-h-[50vh] flex items-center pt-32 pb-20 md:pt-48 md:pb-32 bg-zinc-50 dark:bg-zinc-950 overflow-hidden transition-colors duration-300">
+    
+    <div class="absolute inset-0 z-0 opacity-10 dark:opacity-20 pointer-events-none">
+        <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+            <defs>
+                <pattern id="honeycomb" x="0" y="0" width="56" height="100" patternUnits="userSpaceOnUse" patternTransform="scale(1.5)">
+                    <path d="M28 66L0 50L0 16L28 0L56 16L56 50L28 66L28 100" fill="none" stroke="currentColor" stroke-width="1" class="text-primary"/>
+                </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#honeycomb)" />
+        </svg>
+    </div>
+
+    <div class="absolute top-1/4 right-10 md:right-20 text-6xl md:text-8xl text-primary/20 animate-float pointer-events-none">
+        <i class="fa-solid fa-bee"></i>
+    </div>
+    <div class="absolute bottom-1/4 left-10 md:left-20 text-4xl md:text-6xl text-primary/10 animate-float-delayed pointer-events-none">
+        <i class="fa-solid fa-bee"></i>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="max-w-3xl mx-auto text-center">
+            
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 rounded-full text-[10px] font-black uppercase tracking-widest mb-6 border border-amber-200 dark:border-amber-800">
+                <i class="fa-solid fa-layer-group"></i> Product Catalog
+            </div>
+
+            <h1 class="text-5xl md:text-8xl font-black text-zinc-900 dark:text-white mb-6 uppercase tracking-tighter leading-none">
+                Explore Our <br> <span class="text-primary">Products</span>
+            </h1>
+            
+            <p class="text-lg md:text-2xl text-zinc-500 dark:text-zinc-400 font-medium max-w-2xl mx-auto leading-relaxed">
+                From pure honey to professional beekeeping tools — <span class="text-zinc-900 dark:text-white">everything your hive needs.</span>
+            </p>
+
+            <div class="mt-10 flex flex-wrap justify-center gap-3">
+                <a href="#honey" class="px-6 py-3 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl text-xs font-bold hover:border-primary hover:text-primary transition-all shadow-sm">🍯 Honey</a>
+                <a href="#tools" class="px-6 py-3 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl text-xs font-bold hover:border-primary hover:text-primary transition-all shadow-sm">🛠 Tools</a>
+                <a href="#supplies" class="px-6 py-3 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl text-xs font-bold hover:border-primary hover:text-primary transition-all shadow-sm">📦 Supplies</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
+        <svg class="relative block w-full h-12 md:h-24 text-white dark:text-zinc-950" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C58.47,85.36,109,75.05,172,69.54,239.37,63.63,260.67,67.64,321.39,56.44Z" fill="currentColor"></path>
+        </svg>
+    </div>
+</section>
+
+<style>
+    @keyframes float {
+        0%, 100% { transform: translate(0, 0) rotate(0deg); }
+        50% { transform: translate(-20px, -30px) rotate(10deg); }
+    }
+    .animate-float {
+        animation: float 8s ease-in-out infinite;
+    }
+    .animate-float-delayed {
+        animation: float 10s ease-in-out infinite 2s;
+    }
+</style>
+<section class="py-24 bg-white dark:bg-zinc-950 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="mb-16 text-center lg:text-left flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+            <div class="max-w-2xl">
+                <h2 class="text-4xl md:text-6xl font-black text-zinc-900 dark:text-white uppercase tracking-tighter mb-4">
+                    Honey <span class="text-primary">Collection</span>
+                </h2>
+                <p class="text-zinc-500 dark:text-zinc-400 font-medium text-lg">
+                    Sourced from protected apiaries and wild forests. 100% pure, 100% gold.
+                </p>
+            </div>
+            <a href="#" class="inline-flex items-center gap-2 px-8 py-4 bg-zinc-100 dark:bg-zinc-900 text-zinc-900 dark:text-white font-black rounded-2xl hover:bg-primary transition-all uppercase text-xs tracking-widest">
+                Shop All Honey <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            
+            <div class="relative h-[450px] rounded-[3rem] overflow-hidden bg-zinc-100 shadow-xl">
+                <img src="assets/Raw Honey1" alt="Raw Honey" class="absolute inset-0 w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-zinc-900/90 via-zinc-900/40 to-transparent"></div>
+                
+                <div class="absolute top-0 left-0 w-full h-16 bg-primary/90 backdrop-blur-sm flex items-center justify-center">
+                    <span class="text-[10px] font-black uppercase text-zinc-900 tracking-widest">Unfiltered & Pure</span>
+                </div>
+
+                <div class="absolute bottom-8 left-8 right-8 text-white">
+                    <h3 class="text-3xl font-black uppercase tracking-tighter mb-2">Raw Honey</h3>
+                    <p class="text-zinc-300 text-sm mb-6">Preserving natural enzymes and local pollen.</p>
+                    <button class="w-full py-4 bg-primary text-zinc-900 font-black rounded-2xl uppercase text-[10px] tracking-widest">
+                        Explore Raw
+                    </button>
+                </div>
+            </div>
+
+            <div class="relative h-[450px] rounded-[3rem] overflow-hidden bg-zinc-100 shadow-xl">
+                <img src="assets/Raw & Organic Honey" alt="Organic Honey" class="absolute inset-0 w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-zinc-900/90 via-zinc-900/40 to-transparent"></div>
+                
+                <div class="absolute top-0 left-0 w-full h-16 bg-primary/90 backdrop-blur-sm flex items-center justify-center">
+                    <span class="text-[10px] font-black uppercase text-zinc-900 tracking-widest">Bio-Certified</span>
+                </div>
+
+                <div class="absolute bottom-8 left-8 right-8 text-white">
+                    <h3 class="text-3xl font-black uppercase tracking-tighter mb-2">Organic</h3>
+                    <p class="text-zinc-300 text-sm mb-6">Pesticide-free forage from organic farms.</p>
+                    <button class="w-full py-4 bg-primary text-zinc-900 font-black rounded-2xl uppercase text-[10px] tracking-widest">
+                        Shop Organic
+                    </button>
+                </div>
+            </div>
+
+            <div class="relative h-[450px] rounded-[3rem] overflow-hidden bg-zinc-100 shadow-xl">
+                <img src="assets/Wildflower Honey" alt="Wildflower Honey" class="absolute inset-0 w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-zinc-900/90 via-zinc-900/40 to-transparent"></div>
+                
+                <div class="absolute top-0 left-0 w-full h-16 bg-primary/90 backdrop-blur-sm flex items-center justify-center">
+                    <span class="text-[10px] font-black uppercase text-zinc-900 tracking-widest">Meadow Blend</span>
+                </div>
+
+                <div class="absolute bottom-8 left-8 right-8 text-white">
+                    <h3 class="text-3xl font-black uppercase tracking-tighter mb-2">Wildflower</h3>
+                    <p class="text-zinc-300 text-sm mb-6">A complex bouquet of field blossoms.</p>
+                    <button class="w-full py-4 bg-primary text-zinc-900 font-black rounded-2xl uppercase text-[10px] tracking-widest">
+                        Explore Fields
+                    </button>
+                </div>
+            </div>
+
+            <div class="relative h-[450px] rounded-[3rem] overflow-hidden bg-zinc-100 shadow-xl">
+                <img src="assets/Forest Honey" alt="Forest Honey" class="absolute inset-0 w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-zinc-900/90 via-zinc-900/40 to-transparent"></div>
+                
+                <div class="absolute top-0 left-0 w-full h-16 bg-primary/90 backdrop-blur-sm flex items-center justify-center">
+                    <span class="text-[10px] font-black uppercase text-zinc-900 tracking-widest">Dark & Rich</span>
+                </div>
+
+                <div class="absolute bottom-8 left-8 right-8 text-white">
+                    <h3 class="text-3xl font-black uppercase tracking-tighter mb-2">Forest</h3>
+                    <p class="text-zinc-300 text-sm mb-6">Strong flavors from deep oak forests.</p>
+                    <button class="w-full py-4 bg-primary text-zinc-900 font-black rounded-2xl uppercase text-[10px] tracking-widest">
+                        Discover Forest
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<section class="py-24 bg-zinc-50 dark:bg-zinc-950 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="mb-16 text-center lg:text-left flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+            <div class="max-w-2xl">
+                <h2 class="text-4xl md:text-6xl font-black text-zinc-900 dark:text-white uppercase tracking-tighter mb-4">
+                    Beekeeping <span class="text-primary">Equipment</span>
+                </h2>
+                <p class="text-zinc-500 dark:text-zinc-400 font-medium text-lg">
+                    Professional-grade housing and tools designed for hive health and efficiency.
+                </p>
+            </div>
+            <a href="#" class="inline-flex items-center gap-2 px-8 py-4 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white font-black rounded-2xl shadow-sm border border-zinc-200 dark:border-zinc-800 hover:bg-primary transition-all uppercase text-xs tracking-widest">
+                Explore Equipment <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            
+            <div class="relative h-[500px] rounded-[3rem] overflow-hidden shadow-xl bg-white dark:bg-zinc-900">
+                <img src="assets/hive box" alt="Hive Boxes" class="absolute inset-0 w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-transparent"></div>
+                
+                <div class="absolute top-6 left-6 px-4 py-2 bg-primary text-zinc-900 text-[10px] font-black uppercase tracking-widest rounded-full">
+                    Cedarwood Series
+                </div>
+
+                <div class="absolute bottom-8 left-8 right-8 text-white">
+                    <h3 class="text-3xl font-black uppercase tracking-tighter mb-2">Hive Boxes</h3>
+                    <p class="text-zinc-400 text-sm mb-6">Complete Langstroth setups and deep brood supers with wax coating.</p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="px-3 py-1 bg-white/10 backdrop-blur-md rounded-lg text-[9px] font-bold uppercase">10-Frame</span>
+                        <span class="px-3 py-1 bg-white/10 backdrop-blur-md rounded-lg text-[9px] font-bold uppercase">Wax-Coated</span>
+                    </div>
+                    <button class="w-full py-4 bg-primary text-zinc-900 font-black rounded-2xl uppercase text-[10px] tracking-widest">
+                        View Hives
+                    </button>
+                </div>
+            </div>
+
+            <div class="relative h-[500px] rounded-[3rem] overflow-hidden shadow-xl bg-white dark:bg-zinc-900">
+                <img src="assets/Frames & Foundations" alt="Frames & Foundations" class="absolute inset-0 w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-transparent"></div>
+                
+                <div class="absolute top-6 left-6 px-4 py-2 bg-primary text-zinc-900 text-[10px] font-black uppercase tracking-widest rounded-full">
+                    Precision Build
+                </div>
+
+                <div class="absolute bottom-8 left-8 right-8 text-white">
+                    <h3 class="text-3xl font-black uppercase tracking-tighter mb-2">Frames & Base</h3>
+                    <p class="text-zinc-400 text-sm mb-6">Durable pinewood frames paired with food-grade plastic foundations.</p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="px-3 py-1 bg-white/10 backdrop-blur-md rounded-lg text-[9px] font-bold uppercase">Self-Spacing</span>
+                        <span class="px-3 py-1 bg-white/10 backdrop-blur-md rounded-lg text-[9px] font-bold uppercase">Dovetail</span>
+                    </div>
+                    <button class="w-full py-4 bg-primary text-zinc-900 font-black rounded-2xl uppercase text-[10px] tracking-widest">
+                        View Components
+                    </button>
+                </div>
+            </div>
+            <div class="relative h-[500px] rounded-[3rem] overflow-hidden shadow-xl bg-white dark:bg-zinc-900">
+                <img src="assets/Bee-Friendly Garden" alt="Frames & Foundations" class="absolute inset-0 w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-transparent"></div>
+                
+                <div class="absolute top-6 left-6 px-4 py-2 bg-primary text-zinc-900 text-[10px] font-black uppercase tracking-widest rounded-full">
+                    Precision Build
+                </div>
+
+                <div class="absolute bottom-8 left-8 right-8 text-white">
+                    <h3 class="text-3xl font-black uppercase tracking-tighter mb-2">Frames & Base</h3>
+                    <p class="text-zinc-400 text-sm mb-6">Durable pinewood frames paired with food-grade plastic foundations.</p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="px-3 py-1 bg-white/10 backdrop-blur-md rounded-lg text-[9px] font-bold uppercase">Self-Spacing</span>
+                        <span class="px-3 py-1 bg-white/10 backdrop-blur-md rounded-lg text-[9px] font-bold uppercase">Dovetail</span>
+                    </div>
+                    <button class="w-full py-4 bg-primary text-zinc-900 font-black rounded-2xl uppercase text-[10px] tracking-widest">
+                        View Components
+                    </button>
+                </div>
+            </div>
+            <div class="relative h-[500px] rounded-[3rem] overflow-hidden shadow-xl bg-white dark:bg-zinc-900">
+                <img src="assets/Beekeeping Equipment" alt="Frames & Foundations" class="absolute inset-0 w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-transparent"></div>
+                
+                <div class="absolute top-6 left-6 px-4 py-2 bg-primary text-zinc-900 text-[10px] font-black uppercase tracking-widest rounded-full">
+                    Precision Build
+                </div>
+
+                <div class="absolute bottom-8 left-8 right-8 text-white">
+                    <h3 class="text-3xl font-black uppercase tracking-tighter mb-2">Frames & Base</h3>
+                    <p class="text-zinc-400 text-sm mb-6">Durable pinewood frames paired with food-grade plastic foundations.</p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="px-3 py-1 bg-white/10 backdrop-blur-md rounded-lg text-[9px] font-bold uppercase">Self-Spacing</span>
+                        <span class="px-3 py-1 bg-white/10 backdrop-blur-md rounded-lg text-[9px] font-bold uppercase">Dovetail</span>
+                    </div>
+                    <button class="w-full py-4 bg-primary text-zinc-900 font-black rounded-2xl uppercase text-[10px] tracking-widest">
+                        View Components
+                    </button>
+                </div>
+            </div>
+
+            
+
+        </div>
+    </div>
+</section>
+<section id="shop-grid" class="py-12 md:py-16 bg-white dark:bg-zinc-950 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="sticky top-20 z-40 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-md border-b border-zinc-100 dark:border-zinc-800 mb-10 pb-6 -mx-4 px-4 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
+            <div class="flex items-center justify-between gap-4 mb-4">
+                <h2 class="text-xs font-black uppercase tracking-[0.2em] text-zinc-400">Quick Filters</h2>
+                <span class="text-sm font-bold text-zinc-500 hidden sm:block">Showing <span class="text-zinc-900 dark:text-white font-black">12</span> Products</span>
+            </div>
+            
+            <div class="flex items-center gap-2 overflow-x-auto pb-2 -mb-2 custom-scrollbar">
+                <button class="flex-shrink-0 px-5 py-2.5 bg-zinc-100 dark:bg-zinc-800 rounded-xl text-xs font-bold hover:bg-primary hover:text-zinc-900 transition-colors whitespace-nowrap active:scale-95">
+                     All Products
+                </button>
+                <button class="flex-shrink-0 px-5 py-2.5 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl text-xs font-bold hover:border-primary hover:text-primary transition-colors whitespace-nowrap active:scale-95">
+                     Beginner Friendly
+                </button>
+                <button class="flex-shrink-0 px-5 py-2.5 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl text-xs font-bold hover:border-primary hover:text-primary transition-colors whitespace-nowrap active:scale-95">
+                     Organic
+                </button>
+                <button class="flex-shrink-0 px-5 py-2.5 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl text-xs font-bold hover:border-primary hover:text-primary transition-colors whitespace-nowrap active:scale-95">
+                     Best Sellers
+                </button>
+                <button class="flex-shrink-0 px-5 py-2.5 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl text-xs font-bold hover:border-primary hover:text-primary transition-colors whitespace-nowrap active:scale-95">
+                     Eco-Friendly
+                </button>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10">
+            
+            <div class="group relative bg-zinc-50 dark:bg-zinc-900/50 rounded-[2.5rem] p-4 border border-transparent hover:border-primary/20 hover:shadow-[0_20px_50px_rgba(245,158,11,0.15)] transition-all duration-500 overflow-hidden">
+                <span class="absolute top-6 left-6 z-10 px-3 py-1 bg-zinc-900 text-white dark:bg-primary dark:text-zinc-900 text-[10px] font-black uppercase rounded-full tracking-tighter shadow-lg">
+                    -20% Off
+                </span>
+               <div class="absolute top-6 right-6 z-10 flex flex-col gap-3">
+    <button class="w-10 h-10 bg-white/90 dark:bg-zinc-800/90 backdrop-blur-sm rounded-full shadow-md flex items-center justify-center text-zinc-400 hover:text-red-500 hover:shadow-lg transition-all duration-300">
+        <i class="fa-solid fa-heart"></i>
+    </button>
+    
+    <button onclick="toggleQuickView()" class="w-10 h-10 bg-white/90 dark:bg-zinc-800/90 backdrop-blur-sm rounded-full shadow-md flex items-center justify-center text-zinc-400 hover:text-primary hover:shadow-lg transition-all duration-300">
+        <i class="fa-solid fa-eye"></i>
+    </button>
+</div>
+                <div class="aspect-square rounded-[2rem] overflow-hidden mb-6 bg-white dark:bg-zinc-800">
+                    <img src="assets/Wildflower Honey" alt="Wildflower Honey" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                </div>
+                <div class="px-2 pb-2">
+                    <div class="flex items-center gap-1 text-amber-400 text-[10px] mb-2">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span class="text-zinc-400 ml-1 font-bold">(48)</span>
+                    </div>
+                    <h3 class="text-lg font-black dark:text-white mb-1 uppercase tracking-tighter">Raw Wildflower Honey</h3>
+                    <div class="flex items-center justify-between mt-4">
+                        <p class="text-xl font-black text-primary">$24.00 <span class="text-sm text-zinc-400 font-normal line-through ml-2">$32.00</span></p>
+                        <button class="w-12 h-12 bg-zinc-900 dark:bg-zinc-800 text-white rounded-2xl hover:bg-primary hover:text-zinc-900 transition-all flex items-center justify-center"><i class="fa-solid fa-cart-shopping"></i></button>
+                    </div>
+                </div>
+                <div class="absolute -bottom-2 left-1/2 -translate-x-1/2 w-2/3 h-1 bg-primary blur-md opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            </div>
+
+            <div class="group relative bg-zinc-50 dark:bg-zinc-900/50 rounded-[2.5rem] p-4 border border-transparent hover:border-primary/20 hover:shadow-[0_20px_50px_rgba(245,158,11,0.15)] transition-all duration-500 overflow-hidden">
+                <span class="absolute top-6 left-6 z-10 px-3 py-1 bg-amber-500 text-white text-[10px] font-black uppercase rounded-full shadow-lg">Beginner Friendly</span>
+                <div class="absolute top-6 right-6 z-10 flex flex-col gap-3">
+    <button class="w-10 h-10 bg-white/90 dark:bg-zinc-800/90 backdrop-blur-sm rounded-full shadow-md flex items-center justify-center text-zinc-400 hover:text-red-500 hover:shadow-lg transition-all duration-300">
+        <i class="fa-solid fa-heart"></i>
+    </button>
+    
+    <button onclick="toggleQuickView()" class="w-10 h-10 bg-white/90 dark:bg-zinc-800/90 backdrop-blur-sm rounded-full shadow-md flex items-center justify-center text-zinc-400 hover:text-primary hover:shadow-lg transition-all duration-300">
+        <i class="fa-solid fa-eye"></i>
+    </button>
+</div>
+                <div class="aspect-square rounded-[2rem] overflow-hidden mb-6 bg-white dark:bg-zinc-800">
+                    <img src="assets/Beekeeping Starter Kit" alt="Starter Kit" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                </div>
+                <div class="px-2 pb-2">
+                    <div class="flex items-center gap-1 text-amber-400 text-[10px] mb-2"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i><span class="text-zinc-400 ml-1 font-bold">(112)</span></div>
+                    <h3 class="text-lg font-black dark:text-white mb-1 uppercase tracking-tighter">Beekeeper Starter Kit</h3>
+                    <div class="flex items-center justify-between mt-4">
+                        <p class="text-xl font-black text-primary">$125.00</p>
+                        <button class="w-12 h-12 bg-zinc-900 dark:bg-zinc-800 text-white rounded-2xl hover:bg-primary hover:text-zinc-900 transition-all flex items-center justify-center"><i class="fa-solid fa-cart-shopping"></i></button>
+                    </div>
+                </div>
+                <div class="absolute -bottom-2 left-1/2 -translate-x-1/2 w-2/3 h-1 bg-primary blur-md opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            </div>
+
+            <div class="group relative bg-zinc-50 dark:bg-zinc-900/50 rounded-[2.5rem] p-4 border border-transparent hover:border-primary/20 hover:shadow-[0_20px_50px_rgba(245,158,11,0.15)] transition-all duration-500 overflow-hidden">
+                <span class="absolute top-6 left-6 z-10 px-3 py-1 bg-zinc-900 text-white Text-[10px] font-black uppercase rounded-full shadow-lg">Eco-Friendly</span>
+               <div class="absolute top-6 right-6 z-10 flex flex-col gap-3">
+    <button class="w-10 h-10 bg-white/90 dark:bg-zinc-800/90 backdrop-blur-sm rounded-full shadow-md flex items-center justify-center text-zinc-400 hover:text-red-500 hover:shadow-lg transition-all duration-300">
+        <i class="fa-solid fa-heart"></i>
+    </button>
+    
+    <button onclick="toggleQuickView()" class="w-10 h-10 bg-white/90 dark:bg-zinc-800/90 backdrop-blur-sm rounded-full shadow-md flex items-center justify-center text-zinc-400 hover:text-primary hover:shadow-lg transition-all duration-300">
+        <i class="fa-solid fa-eye"></i>
+    </button>
+</div>
+                <div class="aspect-square rounded-[2rem] overflow-hidden mb-6 bg-white dark:bg-zinc-800">
+                    <img src="assets/Beeswax Candles" alt="Beeswax Candle" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                </div>
+                <div class="px-2 pb-2">
+                    <div class="flex items-center gap-1 text-amber-400 text-[10px] mb-2"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><span class="text-zinc-400 ml-1 font-bold">(21)</span></div>
+                    <h3 class="text-lg font-black dark:text-white mb-1 uppercase tracking-tighter">Premium Beeswax Candle</h3>
+                    <div class="flex items-center justify-between mt-4">
+                        <p class="text-xl font-black text-primary">$18.50</p>
+                        <button class="w-12 h-12 bg-zinc-900 dark:bg-zinc-800 text-white rounded-2xl hover:bg-primary hover:text-zinc-900 transition-all flex items-center justify-center"><i class="fa-solid fa-cart-shopping"></i></button>
+                    </div>
+                </div>
+                <div class="absolute -bottom-2 left-1/2 -translate-x-1/2 w-2/3 h-1 bg-primary blur-md opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            </div>
+
+            <div class="group relative bg-zinc-50 dark:bg-zinc-900/50 rounded-[2.5rem] p-4 border border-transparent hover:border-primary/20 hover:shadow-[0_20px_50px_rgba(245,158,11,0.15)] transition-all duration-500 overflow-hidden">
+                <span class="absolute top-6 left-6 z-10 px-3 py-1 bg-green-500 text-white text-[10px] font-black uppercase rounded-full shadow-lg">Organic</span>
+                <div class="absolute top-6 right-6 z-10 flex flex-col gap-3">
+    <button class="w-10 h-10 bg-white/90 dark:bg-zinc-800/90 backdrop-blur-sm rounded-full shadow-md flex items-center justify-center text-zinc-400 hover:text-red-500 hover:shadow-lg transition-all duration-300">
+        <i class="fa-solid fa-heart"></i>
+    </button>
+    
+    <button onclick="toggleQuickView()" class="w-10 h-10 bg-white/90 dark:bg-zinc-800/90 backdrop-blur-sm rounded-full shadow-md flex items-center justify-center text-zinc-400 hover:text-primary hover:shadow-lg transition-all duration-300">
+        <i class="fa-solid fa-eye"></i>
+    </button>
+</div>
+                <div class="aspect-square rounded-[2rem] overflow-hidden mb-6 bg-white dark:bg-zinc-800">
+                    <img src="assets/Forest Honey" alt="Forest Honey" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                </div>
+                <div class="px-2 pb-2">
+                    <div class="flex items-center gap-1 text-amber-400 text-[10px] mb-2"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span class="text-zinc-400 ml-1 font-bold">(32)</span></div>
+                    <h3 class="text-lg font-black dark:text-white mb-1 uppercase tracking-tighter">Dark Forest Nectar</h3>
+                    <div class="flex items-center justify-between mt-4">
+                        <p class="text-xl font-black text-primary">$28.00</p>
+                        <button class="w-12 h-12 bg-zinc-900 dark:bg-zinc-800 text-white rounded-2xl hover:bg-primary hover:text-zinc-900 transition-all flex items-center justify-center"><i class="fa-solid fa-cart-shopping"></i></button>
+                    </div>
+                </div>
+                <div class="absolute -bottom-2 left-1/2 -translate-x-1/2 w-2/3 h-1 bg-primary blur-md opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            </div>
+
+            <div class="group relative bg-zinc-50 dark:bg-zinc-900/50 rounded-[2.5rem] p-4 border border-transparent hover:border-primary/20 hover:shadow-[0_20px_50px_rgba(245,158,11,0.15)] transition-all duration-500 overflow-hidden">
+                <span class="absolute top-6 left-6 z-10 px-3 py-1 bg-zinc-900 text-white Text-[10px] font-black uppercase rounded-full shadow-lg">Best Seller</span>
+               <div class="absolute top-6 right-6 z-10 flex flex-col gap-3">
+    <button class="w-10 h-10 bg-white/90 dark:bg-zinc-800/90 backdrop-blur-sm rounded-full shadow-md flex items-center justify-center text-zinc-400 hover:text-red-500 hover:shadow-lg transition-all duration-300">
+        <i class="fa-solid fa-heart"></i>
+    </button>
+    
+    <button onclick="toggleQuickView()" class="w-10 h-10 bg-white/90 dark:bg-zinc-800/90 backdrop-blur-sm rounded-full shadow-md flex items-center justify-center text-zinc-400 hover:text-primary hover:shadow-lg transition-all duration-300">
+        <i class="fa-solid fa-eye"></i>
+    </button>
+</div>
+                <div class="aspect-square rounded-[2rem] overflow-hidden mb-6 bg-white dark:bg-zinc-800">
+                    <img src="assets/dress" alt="Bee Suit" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                </div>
+                <div class="px-2 pb-2">
+                    <div class="flex items-center gap-1 text-amber-400 text-[10px] mb-2"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span class="text-zinc-400 ml-1 font-bold">(86)</span></div>
+                    <h3 class="text-lg font-black dark:text-white mb-1 uppercase tracking-tighter">Pro ventilated Bee Suit</h3>
+                    <div class="flex items-center justify-between mt-4">
+                        <p class="text-xl font-black text-primary">$89.00</p>
+                        <button class="w-12 h-12 bg-zinc-900 dark:bg-zinc-800 text-white rounded-2xl hover:bg-primary hover:text-zinc-900 transition-all flex items-center justify-center"><i class="fa-solid fa-cart-shopping"></i></button>
+                    </div>
+                </div>
+                <div class="absolute -bottom-2 left-1/2 -translate-x-1/2 w-2/3 h-1 bg-primary blur-md opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            </div>
+
+            <div class="group relative bg-zinc-50 dark:bg-zinc-900/50 rounded-[2.5rem] p-4 border border-transparent hover:border-primary/20 hover:shadow-[0_20px_50px_rgba(245,158,11,0.15)] transition-all duration-500 overflow-hidden">
+                <span class="absolute top-6 left-6 z-10 px-3 py-1 bg-zinc-900 text-white Text-[10px] font-black uppercase rounded-full shadow-lg">New Item</span>
+               <div class="absolute top-6 right-6 z-10 flex flex-col gap-3">
+    <button class="w-10 h-10 bg-white/90 dark:bg-zinc-800/90 backdrop-blur-sm rounded-full shadow-md flex items-center justify-center text-zinc-400 hover:text-red-500 hover:shadow-lg transition-all duration-300">
+        <i class="fa-solid fa-heart"></i>
+    </button>
+    
+    <button onclick="toggleQuickView()" class="w-10 h-10 bg-white/90 dark:bg-zinc-800/90 backdrop-blur-sm rounded-full shadow-md flex items-center justify-center text-zinc-400 hover:text-primary hover:shadow-lg transition-all duration-300">
+        <i class="fa-solid fa-eye"></i>
+    </button>
+</div>
+                <div class="aspect-square rounded-[2rem] overflow-hidden mb-6 bg-white dark:bg-zinc-800">
+                    <img src="assets/Beekeeping Equipment" alt="Honey Dipper" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                </div>
+                <div class="px-2 pb-2">
+                    <div class="flex items-center gap-1 text-amber-400 text-[10px] mb-2"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i><span class="text-zinc-400 ml-1 font-bold">(54)</span></div>
+                    <h3 class="text-lg font-black dark:text-white mb-1 uppercase tracking-tighter">Olive Wood Honey Dipper</h3>
+                    <div class="flex items-center justify-between mt-4">
+                        <p class="text-xl font-black text-primary">$9.50</p>
+                        <button class="w-12 h-12 bg-zinc-900 dark:bg-zinc-800 text-white rounded-2xl hover:bg-primary hover:text-zinc-900 transition-all flex items-center justify-center"><i class="fa-solid fa-cart-shopping"></i></button>
+                    </div>
+                </div>
+                <div class="absolute -bottom-2 left-1/2 -translate-x-1/2 w-2/3 h-1 bg-primary blur-md opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<style>
+    /* Prevent image blur during zoom */
+    img {
+        backface-visibility: hidden;
+        -webkit-font-smoothing: subpixel-antialiased;
+    }
+    /* Simple sticky adjustment for top filters */
+    .sticky { top: 72px; } /* Adjust based on navbar height */
+</style>
+
+<script>
+    function toggleQuickView() {
+        // Implementation for Quick View popup would go here
+        console.log("Quick View Triggered");
+    }
+</script>
+<section class="py-20 bg-white dark:bg-zinc-950 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="flex flex-col md:flex-row items-center justify-between mb-12 gap-6">
+            <div class="text-center md:text-left">
+                <div class="inline-flex items-center gap-2 px-3 py-1 bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 rounded-full text-[10px] font-black uppercase tracking-widest mb-4">
+                    <i class="fa-solid fa-snowflake animate-spin-slow"></i> Limited Time: Winter Edition
+                </div>
+                <h2 class="text-4xl md:text-6xl font-black text-zinc-900 dark:text-white uppercase tracking-tighter">
+                    Seasonal <span class="text-primary">Specials</span>
+                </h2>
+            </div>
+            <p class="text-zinc-500 dark:text-zinc-400 font-medium max-w-xs text-center md:text-right">
+                Hand-picked essentials curated specifically for the current hive season.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            
+            <div class="group relative h-[400px] md:h-[500px] rounded-[3.5rem] overflow-hidden bg-zinc-100 dark:bg-zinc-900 shadow-2xl">
+                <img src="assets/Seasonal CarePreparing Your Bees for Winter" alt="Winter Care" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000">
+                <div class="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/20 to-transparent"></div>
+                
+                <div class="absolute inset-0 p-8 md:p-12 flex flex-col justify-end">
+                    <h3 class="text-3xl md:text-4xl font-black text-white uppercase tracking-tighter mb-2">Winter Care <br> Kits</h3>
+                    <p class="text-zinc-300 mb-6 max-w-xs text-sm md:text-base">High-calorie fondant and insulated hive wraps to keep your bees warm through the frost.</p>
+                    <a href="#" class="w-fit px-8 py-4 bg-white text-zinc-900 font-black rounded-2xl hover:bg-primary transition-all uppercase text-[10px] tracking-widest shadow-xl">
+                        Shop Winter Protection
+                    </a>
+                </div>
+            </div>
+
+            <div class="group relative h-[400px] md:h-[500px] rounded-[3.5rem] overflow-hidden bg-zinc-100 dark:bg-zinc-900 shadow-2xl">
+                <img src="assets/summerhiney" alt="Summer Honey" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000">
+                <div class="absolute inset-0 bg-gradient-to-t from-amber-900/80 via-transparent to-transparent"></div>
+                
+                <div class="absolute inset-0 p-8 md:p-12 flex flex-col justify-start text-right items-end">
+                    <h3 class="text-3xl md:text-4xl font-black text-white uppercase tracking-tighter mb-2">Summer <br> Honey Specials</h3>
+                    <p class="text-amber-100 mb-6 max-w-xs text-sm md:text-base">Refreshing wildflower blends and iced honey tea kits for the perfect summer afternoon.</p>
+                    <a href="#" class="w-fit px-8 py-4 bg-primary text-zinc-900 font-black rounded-2xl hover:bg-white transition-all uppercase text-[10px] tracking-widest shadow-xl">
+                        Explore Summer Blends
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<style>
+    .animate-spin-slow {
+        animation: spin 8s linear infinite;
+    }
+</style>
+<section class="py-20 bg-white dark:bg-zinc-950 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+
+           <div class="relative overflow-hidden bg-primary rounded-[3rem] p-10 md:p-16 lg:p-20 flex flex-col items-center justify-center text-center">
+    
+    <div class="relative z-10 flex flex-col items-center">
+        <span class="px-4 py-1.5 bg-zinc-900 text-white text-[10px] font-black uppercase tracking-widest rounded-full mb-6 inline-block shadow-lg">
+            Limited Time Offer
+        </span>
+        <h2 class="text-3xl md:text-5xl lg:text-6xl font-black text-zinc-900 uppercase tracking-tighter mb-6">
+            Join the Hive <br> Save 15% Today
+        </h2>
+    </div>
+
+    <div class="relative z-10 flex flex-col items-center gap-4 w-full">
+        <a href="register.html" class="w-full sm:w-auto px-12 py-5 bg-zinc-900 text-white font-black rounded-2xl hover:scale-105 active:scale-95 transition-all text-center uppercase tracking-widest text-xs shadow-xl">
+            Create Account
+        </a>
+        <p class="text-zinc-800 text-xs font-bold max-w-[200px]">
+            Discount applied automatically at checkout.
+        </p>
+    </div>
+
+    <i class="fa-solid fa-honey-pot absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[20rem] md:text-[25rem] text-zinc-900/5 pointer-events-none"></i>
+</div>
+
+        </div>
+    </div>
+</section>
+<footer class="bg-zinc-900 text-zinc-300 pt-16 pb-8 border-t border-zinc-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+            
+            <div class="space-y-4">
+                <a href="index.html">
+                    <div class="flex items-center gap-2 text-white">
+                      <span class="text-3xl text-amber-500 drop-shadow-[0_0_10px_rgba(245,158,11,0.4)]">
+    <i class="fa-solid fa-jar"></i>
+</span>
+                    <span class="font-bold text-2xl tracking-tight uppercase">Golden<span class="text-primary">Hive</span></span>
+                </div>
+                </a>
+                
+                <p class="text-sm leading-relaxed text-zinc-400">
+                    Dedicated to preserving the bee population and providing the world with pure, organic honey and quality beekeeping equipment.
+                </p>
+                <div class="flex gap-4 text-xl">
+                    <a href="#" class="text-zinc-500 hover:text-primary transition-colors"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="text-zinc-500 hover:text-primary transition-colors"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-zinc-500 hover:text-primary transition-colors"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-zinc-500 hover:text-primary transition-colors"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="text-white font-bold mb-6">Quick Links</h4>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="index.html" class="hover:text-primary transition-colors">Home</a></li>
+                    <li><a href="home2.html" class="hover:text-primary transition-colors">Home 2</a></li>
+                    <li><a href="about.html" class="hover:text-primary transition-colors">About Us</a></li>
+                    <li><a href="shopnow.html" class="hover:text-primary transition-colors">Shop</a></li>
+                    <li><a href="contact.html" class="hover:text-primary transition-colors">Contact</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-white font-bold mb-6">Support</h4>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="comingsoon.html" class="hover:text-primary transition-colors">Coming Soon</a></li>
+                    <li><a href="404.html" class="hover:text-primary transition-colors">404 Page</a></li>
+                    <li><a href="categories.html" class="hover:text-primary transition-colors">Product Categories</a></li>
+                    <li><a href="#" class="hover:text-primary transition-colors">Sustainability</a></li>
+                    <li><a href="#" class="hover:text-primary transition-colors">Privacy Policy</a></li>
+                </ul>
+            </div>
+
+            <div class="bg-zinc-800/40 p-6 rounded-2xl border border-zinc-700/50">
+                <h4 class="text-white font-bold mb-4">Join the Hive</h4>
+                <p class="text-xs text-zinc-400 mb-4 leading-relaxed">
+                    Get beekeeping tips and sweet offers straight to your inbox.
+                </p>
+                <form class="space-y-3">
+                    <input 
+                        type="email" 
+                        placeholder="Your email" 
+                        class="w-full px-4 py-2.5 rounded-lg bg-zinc-900 border border-zinc-700 focus:ring-2 focus:ring-primary outline-none text-sm text-white transition-all"
+                    >
+                    <button class="w-full py-2.5 bg-primary hover:bg-yellow-500 text-zinc-900 font-bold rounded-lg transition-all shadow-lg shadow-primary/10">
+                        Subscribe
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <div class="mt-16 pt-8 border-t border-zinc-800 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="text-[11px] text-zinc-500 uppercase tracking-widest">
+                © 2026 GoldenHive Apiary. All Rights Reserved.
+            </p>
+            <div class="flex gap-6 text-[11px] text-zinc-500 uppercase tracking-widest">
+                <a href="#" class="hover:text-white transition-colors">Sitemap</a>
+                <a href="#" class="hover:text-white transition-colors">Terms of Use</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script>
+        // Persistence Logic
+        const html = document.documentElement;
+        const themeIcon = document.getElementById('theme-icon');
+
+        // Initialization
+        window.onload = () => {
+            if (localStorage.getItem('theme') === 'dark') {
+                html.classList.add('dark');
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+            }
+            if (localStorage.getItem('dir') === 'rtl') {
+                html.setAttribute('dir', 'rtl');
+            }
+        };
+
+        function toggleTheme() {
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+                themeIcon.classList.replace('fa-sun', 'fa-moon');
+            } else {
+                html.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+            }
+        }
+
+        function toggleDirection() {
+            const currentDir = html.getAttribute('dir');
+            const newDir = currentDir === 'ltr' ? 'rtl' : 'ltr';
+            html.setAttribute('dir', newDir);
+            localStorage.setItem('dir', newDir);
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+    </script>
+</body>
+</html>

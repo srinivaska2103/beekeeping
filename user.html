@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512' fill='%23f59e0b'><path d='M448 160c0-17.7-14.3-32-32-32h-32v-16c0-44.2-35.8-80-80-80H144c-44.2 0-80 35.8-80 80v16H32c-17.7 0-32 14.3-32 32v64c0 17.7 14.3 32 32 32h384c17.7 0 32-14.3 32-32v-64zM160 416c0-17.7 14.3-32 32-32h64c17.7 0 32 14.3 32 32s-14.3 32-32 32h-64c-17.7 0-32-14.3-32-32zm256-128H32c-17.7 0-32 14.3-32 32v96c0 88.4 71.6 160 160 160h128c88.4 0 160-71.6 160-160v-96c0-17.7-14.3-32-32-32z'/></svg>">
+    <title>GoldenHive | Member Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#f59e0b',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .nav-item.active {
+            background-color: #f59e0b;
+            color: #18181b !important;
+            box-shadow: 0 10px 15px -3px rgba(245, 158, 11, 0.3);
+        }
+        [dir="rtl"] .sidebar-icon { transform: scaleX(-1); }
+        .chart-bar { transition: height 1s ease-in-out; }
+    </style>
+</head>
+<body class="bg-zinc-50 dark:bg-zinc-950 transition-colors duration-300">
+
+    <div id="dashboard-root" dir="ltr" class="min-h-screen flex">
+        
+        <aside id="sidebar" class="fixed inset-y-0 left-0 z-50 w-72 bg-white dark:bg-zinc-900 border-r border-zinc-200 dark:border-zinc-800 transition-transform duration-300 -translate-x-full lg:translate-x-0 overflow-y-auto">
+            
+            <div class="p-6 border-b border-zinc-100 dark:border-zinc-800 flex items-center justify-between">
+              <a href="index.html">
+                 <div class="flex items-center gap-2">
+                    <span class="text-2xl text-primary"><i class="fa-solid fa-jar"></i></span>
+<span class="font-bold text-2xl tracking-tight uppercase dark:text-white">
+                    Golden<span class="text-primary">Hive</span>
+                </span>  
+                          </div>
+              </a>
+               
+                <button onclick="toggleSidebar()" class="lg:hidden text-zinc-500 p-2"><i class="fas fa-times"></i></button>
+            </div>
+
+   <nav class="p-4 space-y-2" id="sidebar-nav">
+    <button onclick="switchTab('overview')" data-tab="overview" 
+        class="tab-link active group w-full flex items-center gap-3 px-5 py-3.5 rounded-2xl font-bold transition-all duration-300 transform active:scale-95">
+        <i class="fas fa-house-user w-5 text-lg group-hover:scale-110 transition-transform"></i>
+        <span class="tracking-tight">Dashboard</span>
+    </button>
+
+    <button onclick="switchTab('checklist')" data-tab="checklist" 
+        class="tab-link group w-full flex items-center gap-3 px-5 py-3.5 rounded-2xl font-bold 
+        text-zinc-500 dark:text-zinc-400 
+        hover:bg-zinc-100 dark:hover:bg-zinc-800/50 
+        hover:text-primary hover:pl-7 transition-all duration-300 transform active:scale-95">
+        <i class="fas fa-tasks w-5 text-lg group-hover:rotate-12 transition-transform"></i>
+        <span class="tracking-tight">Checklist</span>
+    </button>
+
+    <button onclick="switchTab('store')" data-tab="store" 
+        class="tab-link group w-full flex items-center gap-3 px-5 py-3.5 rounded-2xl font-bold 
+        text-zinc-500 dark:text-zinc-400 
+        hover:bg-zinc-100 dark:hover:bg-zinc-800/50 
+        hover:text-primary hover:pl-7 transition-all duration-300 transform active:scale-95">
+        <i class="fas fa-store w-5 text-lg group-hover:rotate-12 transition-transform"></i>
+        <span class="tracking-tight">Store</span>
+    </button>
+</nav>
+
+<style>
+    /* THE HOVER & ACTIVE ENGINE */
+    
+    /* 1. Reset for Buttons */
+    .tab-link {
+        outline: none;
+        position: relative;
+    }
+
+    /* 2. Proper Active State (Amber) */
+    .tab-link.active {
+        background-color: #f59e0b !important; /* Tailwind Primary */
+        color: #18181b !important; /* Zinc-900 */
+        box-shadow: 0 10px 15px -3px rgba(245, 158, 11, 0.3);
+    }
+
+    /* 3. The "Hover Plumping" Effect */
+    /* When not active, we add a subtle left border or shift */
+    .tab-link:not(.active):hover {
+        /* This creates the 'Magnetic' slide-in feel */
+        transform: translateX(4px);
+    }
+
+    /* 4. Icon Interaction */
+    .tab-link i {
+        color: inherit;
+        opacity: 0.8;
+    }
+    .tab-link.active i {
+        opacity: 1;
+    }
+</style>
+
+<script>
+    function switchTab(tabId) {
+        // 1. Manage Content Visibility
+        // Ensure your main sections have the class 'tab-section'
+        const sections = document.querySelectorAll('.tab-section');
+        sections.forEach(section => {
+            section.classList.add('hidden');
+            if (section.id === tabId) {
+                section.classList.remove('hidden');
+            }
+        });
+
+        // 2. Manage Nav Button Styling
+        const navLinks = document.querySelectorAll('.tab-link');
+        navLinks.forEach(link => {
+            // Remove active classes
+            link.classList.remove('active', 'bg-primary', 'text-zinc-900');
+            link.classList.add('text-zinc-500', 'dark:text-zinc-400');
+
+            // Apply active styles if it matches the current tab
+            if (link.getAttribute('data-tab') === tabId) {
+                link.classList.add('active');
+                // Top-level buttons get the solid Amber look
+                if (link.classList.contains('w-full')) {
+                   link.classList.add('bg-primary', 'text-zinc-900');
+                   link.classList.remove('text-zinc-500', 'dark:text-zinc-400');
+                } else {
+                   // Sub-menu links just get the primary text color
+                   link.classList.add('text-primary');
+                }
+            }
+        });
+
+        // 3. Close mobile sidebar after selection
+        if (window.innerWidth < 1024) {
+            toggleSidebar();
+        }
+    }
+</script>
+
+<style>
+    /* Ensure the active class overrides default hover behaviors */
+    .tab-link.active {
+        box-shadow: 0 10px 15px -3px rgba(245, 158, 11, 0.2);
+    }
+    
+    /* Make buttons behave like links */
+    button.tab-link {
+        outline: none;
+    }
+</style>
+
+            <div class="absolute bottom-0 w-full p-6 border-t border-zinc-100 dark:border-zinc-800 bg-white dark:bg-zinc-900">
+                <div class="flex items-center justify-between mb-6">
+                    <button onclick="toggleDarkMode()" class="p-3 rounded-xl bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 hover:bg-primary hover:text-white transition-all">
+                        <i class="fas fa-moon dark:hidden"></i><i class="fas fa-sun hidden dark:block"></i>
+                    </button>
+                    <button onclick="toggleLTR()" class="p-3 rounded-xl bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 text-[10px] font-black uppercase tracking-widest hover:bg-primary hover:text-white transition-all">
+                        LTR/RTL
+                    </button>
+                </div>
+                <a href="login.html">
+                    <button class="w-full flex items-center justify-center gap-3 py-4 bg-red-50 text-red-600 dark:bg-red-950/20 rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-red-600 hover:text-white transition-all">
+                    <i class="fas fa-power-off"></i> Logout
+                </button>
+                </a>
+                
+            </div>
+        </aside>
+
+        <main class="flex-1 lg:ml-72 transition-all duration-300">
+            
+            <header class="sticky top-0 z-40 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-md border-b border-zinc-200 dark:border-zinc-800 p-4 lg:p-8 flex justify-between items-center">
+                <div class="flex items-center gap-4">
+                    <button onclick="toggleSidebar()" class="lg:hidden p-2 text-zinc-600 dark:text-white text-xl"><i class="fas fa-bars"></i></button>
+                    <div class="hidden sm:block">
+                        <h1 class="text-2xl font-black text-zinc-900 dark:text-white uppercase tracking-tighter">Welcome back, <span class="text-primary ">User</span></h1>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="relative p-2 text-zinc-400 cursor-pointer">
+                        <i class="fas fa-bell text-xl"></i>
+                        <span class="absolute top-2 right-2 w-2 h-2 bg-primary rounded-full border-2 border-white dark:border-zinc-950"></span>
+                    </div>
+                    <img src="assets/u2" class="w-10 h-10 rounded-full border-2 border-primary object-cover shadow-lg" alt="User">
+                </div>
+            </header>
+
+            <div class="p-4 lg:p-8 max-w-7xl mx-auto space-y-8">
+                
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+                    <div class="bg-white dark:bg-zinc-900 p-6 rounded-[2.5rem] border border-zinc-100 dark:border-zinc-800">
+                        <p class="text-[10px] font-black uppercase text-zinc-400 tracking-widest mb-1">Total Hives</p>
+                        <h3 class="text-3xl font-black dark:text-white">12</h3>
+                    </div>
+                    <div class="bg-white dark:bg-zinc-900 p-6 rounded-[2.5rem] border border-zinc-100 dark:border-zinc-800">
+                        <p class="text-[10px] font-black uppercase text-zinc-400 tracking-widest mb-1">Produced</p>
+                        <h3 class="text-3xl font-black text-primary">84<span class="text-xs ml-1 text-zinc-400">kg</span></h3>
+                    </div>
+                    <div class="bg-white dark:bg-zinc-900 p-6 rounded-[2.5rem] border border-zinc-100 dark:border-zinc-800">
+                        <p class="text-[10px] font-black uppercase text-zinc-400 tracking-widest mb-1">Tasks</p>
+                        <h3 class="text-3xl font-black dark:text-white">05</h3>
+                    </div>
+                    <div class="bg-white dark:bg-zinc-900 p-6 rounded-[2.5rem] border border-zinc-100 dark:border-zinc-800">
+                        <p class="text-[10px] font-black uppercase text-zinc-400 tracking-widest mb-1">Pollination</p>
+                        <h3 class="text-3xl font-black text-green-500">420K</h3>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <div class="lg:col-span-2 bg-white dark:bg-zinc-900 p-8 rounded-[3rem] border border-zinc-100 dark:border-zinc-800">
+                        <div class="flex justify-between items-center mb-10">
+                            <h3 class="font-black uppercase tracking-tight dark:text-white">Harvest Production (6 mo)</h3>
+                            <select class="bg-transparent text-xs font-bold text-primary focus:outline-none">
+                                <option>Wildflower</option>
+                                <option>Clover</option>
+                            </select>
+                        </div>
+                        <div class="flex items-end justify-between h-48 gap-4 px-2">
+                            <div class="flex-1 bg-zinc-100 dark:bg-zinc-800 rounded-t-xl relative group" style="height: 30%;">
+                                <div class="absolute inset-0 bg-primary opacity-20 group-hover:opacity-100 rounded-t-xl transition-all"></div>
+                            </div>
+                            <div class="flex-1 bg-zinc-100 dark:bg-zinc-800 rounded-t-xl relative group" style="height: 50%;">
+                                <div class="absolute inset-0 bg-primary opacity-20 group-hover:opacity-100 rounded-t-xl transition-all"></div>
+                            </div>
+                            <div class="flex-1 bg-zinc-100 dark:bg-zinc-800 rounded-t-xl relative group" style="height: 90%;">
+                                <div class="absolute inset-0 bg-primary opacity-20 group-hover:opacity-100 rounded-t-xl transition-all"></div>
+                            </div>
+                            <div class="flex-1 bg-zinc-100 dark:bg-zinc-800 rounded-t-xl relative group" style="height: 40%;">
+                                <div class="absolute inset-0 bg-primary opacity-20 group-hover:opacity-100 rounded-t-xl transition-all"></div>
+                            </div>
+                            <div class="flex-1 bg-zinc-100 dark:bg-zinc-800 rounded-t-xl relative group" style="height: 70%;">
+                                <div class="absolute inset-0 bg-primary opacity-20 group-hover:opacity-100 rounded-t-xl transition-all"></div>
+                            </div>
+                            <div class="flex-1 bg-zinc-100 dark:bg-zinc-800 rounded-t-xl relative group" style="height: 85%;">
+                                <div class="absolute inset-0 bg-primary opacity-20 group-hover:opacity-100 rounded-t-xl transition-all"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-zinc-900 p-8 rounded-[3rem] text-white flex flex-col justify-between border border-zinc-800">
+                        <h3 class="font-black uppercase tracking-tight text-primary">Hive Status</h3>
+                        <div class="space-y-4 my-8">
+                            <div class="flex justify-between items-center p-4 bg-white/5 rounded-2xl">
+                                <span class="text-sm font-bold opacity-60">Active Hives</span>
+                                <span class="font-black text-xl">09</span>
+                            </div>
+                            <div class="flex justify-between items-center p-4 bg-amber-500/10 rounded-2xl border border-amber-500/20">
+                                <span class="text-sm font-bold text-amber-500">Weak Colonies</span>
+                                <span class="font-black text-xl text-amber-500">02</span>
+                            </div>
+                            <div class="flex justify-between items-center p-4 bg-white/5 rounded-2xl">
+                                <span class="text-sm font-bold opacity-60">New Splits</span>
+                                <span class="font-black text-xl">01</span>
+                            </div>
+                        </div>
+                        <button class="w-full py-4 bg-primary text-zinc-900 font-black rounded-2xl text-[10px] uppercase tracking-widest active:scale-95 transition-all">Manage Hives</button>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="bg-white dark:bg-zinc-900 p-8 rounded-[3rem] border border-zinc-100 dark:border-zinc-800">
+                        <div class="flex justify-between items-center mb-8">
+                            <h3 class="font-black uppercase tracking-tight dark:text-white">Spring Checklist</h3>
+                            <span class="text-[10px] font-black bg-zinc-100 dark:bg-zinc-800 px-3 py-1 rounded-full dark:text-zinc-400">MAY 2026</span>
+                        </div>
+                        <div class="space-y-4">
+                            <label class="flex items-center gap-4 cursor-pointer group">
+                                <input type="checkbox" checked class="w-6 h-6 accent-primary rounded-lg">
+                                <span class="text-sm font-bold text-zinc-400 line-through transition-all">Check queen health & brood pattern</span>
+                            </label>
+                            <label class="flex items-center gap-4 cursor-pointer group">
+                                <input type="checkbox" class="w-6 h-6 accent-primary rounded-lg">
+                                <span class="text-sm font-bold dark:text-zinc-300 group-hover:text-primary transition-colors">Apply Varroa mite treatment</span>
+                            </label>
+                            <label class="flex items-center gap-4 cursor-pointer group">
+                                <input type="checkbox" class="w-6 h-6 accent-primary rounded-lg">
+                                <span class="text-sm font-bold dark:text-zinc-300 group-hover:text-primary transition-colors">Add honey supers for nectar flow</span>
+                            </label>
+                        </div>
+                        <div class="mt-10">
+                            <div class="flex justify-between text-[10px] font-black uppercase text-zinc-400 mb-2">
+                                <span>Monthly Progress</span>
+                                <span>33%</span>
+                            </div>
+                            <div class="w-full h-2 bg-zinc-100 dark:bg-zinc-800 rounded-full overflow-hidden">
+                                <div class="h-full bg-primary w-1/3"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-amber-50 dark:bg-primary/5 p-8 rounded-[3rem] border border-primary/20 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-black uppercase tracking-tight mb-6 text-amber-900 dark:text-primary">Smart Suggestions 🧠</h3>
+                            <div class="space-y-4">
+                                <div class="p-5 bg-white dark:bg-zinc-900 rounded-[2rem] border border-primary/10 flex gap-4">
+                                    <div class="text-2xl text-amber-500 pt-1"><i class="fas fa-exclamation-triangle"></i></div>
+                                    <div>
+                                        <h4 class="font-black text-sm dark:text-white">Hive #04 - Weak Signal</h4>
+                                        <p class="text-xs text-zinc-500 mt-1">Inspection recommended. Activity levels dropped 20% since Tuesday.</p>
+                                    </div>
+                                </div>
+                                <div class="p-5 bg-white dark:bg-zinc-900 rounded-[2rem] border border-primary/10 flex gap-4">
+                                    <div class="text-2xl text-green-500 pt-1"><i class="fas fa-leaf"></i></div>
+                                    <div>
+                                        <h4 class="font-black text-sm dark:text-white">Forage Peak Incoming</h4>
+                                        <p class="text-xs text-zinc-500 mt-1">Local clover flow peaks in 5 days. Ensure supers are prepared.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="mt-8 text-xs font-black text-primary uppercase tracking-widest hover:underline text-left">View All Insights &rarr;</button>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="bg-primary p-8 rounded-[3rem] shadow-2xl shadow-primary/20 flex flex-col justify-between min-h-[220px]">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <p class="text-[10px] font-black uppercase text-zinc-900 opacity-60 tracking-widest">Active Plan</p>
+                                <h3 class="text-3xl font-black text-zinc-900">PREMIUM PRO</h3>
+                            </div>
+                            <div class="text-4xl text-zinc-900 opacity-20"><i class="fas fa-award"></i></div>
+                        </div>
+                        <div class="flex justify-between items-end">
+                            <div>
+                                <p class="text-[10px] font-black text-zinc-900 uppercase">Renewal Date</p>
+                                <p class="font-black text-zinc-900">OCT 18, 2026</p>
+                            </div>
+                            <button class="px-6 py-3 bg-zinc-900 text-white font-bold rounded-xl text-[10px] uppercase active:scale-95 transition-all">Renew Plan</button>
+                        </div>
+                    </div>
+
+                    <div class="bg-zinc-900 p-8 rounded-[3rem] border border-zinc-800 flex items-center gap-8">
+                        <div class="w-24 h-24 shrink-0 bg-green-500/10 rounded-full flex items-center justify-center text-green-500 text-4xl">
+                            <i class="fas fa-earth-americas"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-white font-black uppercase tracking-tight">Eco-Impact Status</h3>
+                            <p class="text-zinc-500 text-sm mt-1">Your hives have supported over <span class="text-green-500 font-bold">12 acres</span> of local flora pollination this month.</p>
+                            <div class="flex gap-4 mt-4">
+                                <div class="text-center">
+                                    <p class="text-lg font-black text-white">4.2M</p>
+                                    <p class="text-[8px] font-black text-zinc-500 uppercase tracking-widest">Seeds Sown</p>
+                                </div>
+                                <div class="w-px h-8 bg-zinc-800"></div>
+                                <div class="text-center">
+                                    <p class="text-lg font-black text-white">120kg</p>
+                                    <p class="text-[8px] font-black text-zinc-500 uppercase tracking-widest">CO2 Offset</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                         <section id="store" class="tab-section hidden p-4 lg:p-8 max-w-7xl mx-auto space-y-8 animate-fade-in">
+    
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-white dark:bg-zinc-900 p-8 rounded-[3rem] border border-zinc-100 dark:border-zinc-800 shadow-sm">
+        <div>
+            <h2 class="text-3xl font-black text-zinc-900 dark:text-white uppercase tracking-tighter">Apiary <span class="text-primary italic">Supplies</span></h2>
+            <p class="text-zinc-500 text-sm font-medium">Professional gear for sustainable beekeeping.</p>
+        </div>
+        <div class="flex gap-2 w-full md:w-auto">
+            <div class="relative flex-1">
+                <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-zinc-400"></i>
+                <input type="text" placeholder="Search gear..." class="w-full pl-10 pr-4 py-3 bg-zinc-50 dark:bg-zinc-800 rounded-xl text-xs font-bold focus:outline-none border border-transparent focus:border-primary transition-all dark:text-white">
+            </div>
+            <button class="p-3 bg-zinc-50 dark:bg-zinc-800 rounded-xl text-zinc-400"><i class="fas fa-filter"></i></button>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <div class="group bg-white dark:bg-zinc-900 rounded-[2.5rem] overflow-hidden border border-zinc-100 dark:border-zinc-800 hover:border-primary/50 transition-all duration-500 shadow-xl shadow-zinc-200/50 dark:shadow-none">
+            <div class="relative h-64 bg-zinc-100 dark:bg-zinc-800 overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&q=80" alt="10-Frame Hive Kit" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                <span class="absolute top-6 left-6 px-3 py-1 bg-primary text-zinc-900 text-[10px] font-black uppercase rounded-full">Top Rated</span>
+            </div>
+            <div class="p-8">
+                <h3 class="text-xl font-black text-zinc-900 dark:text-white uppercase tracking-tight mb-2">10-Frame Starter Hive</h3>
+                <p class="text-zinc-500 dark:text-zinc-400 text-xs leading-relaxed mb-6">Wax-coated cedarwood with dovetail joints for superior insulation.</p>
+                <div class="flex justify-between items-center">
+                    <span class="text-2xl font-black text-primary">$155.00</span>
+                    <button class="px-6 py-3 bg-zinc-900 dark:bg-zinc-800 text-white text-[10px] font-black uppercase tracking-widest rounded-xl hover:bg-primary hover:text-zinc-900 transition-all active:scale-95">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="group bg-white dark:bg-zinc-900 rounded-[2.5rem] overflow-hidden border border-zinc-100 dark:border-zinc-800 hover:border-primary/50 transition-all duration-500 shadow-xl shadow-zinc-200/50 dark:shadow-none">
+            <div class="relative h-64 bg-zinc-100 dark:bg-zinc-800 overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1528659556845-662580556708?auto=format&fit=crop&q=80" alt="Beekeeping Tools" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+            </div>
+            <div class="p-8">
+                <h3 class="text-xl font-black text-zinc-900 dark:text-white uppercase tracking-tight mb-2">Essential Tool Set</h3>
+                <p class="text-zinc-500 dark:text-zinc-400 text-xs leading-relaxed mb-6">15-piece stainless steel kit including smoker and frame grips.</p>
+                <div class="flex justify-between items-center">
+                    <span class="text-2xl font-black text-primary">$48.50</span>
+                    <button class="px-6 py-3 bg-zinc-900 dark:bg-zinc-800 text-white text-[10px] font-black uppercase tracking-widest rounded-xl hover:bg-primary hover:text-zinc-900 transition-all active:scale-95">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="group bg-white dark:bg-zinc-900 rounded-[2.5rem] overflow-hidden border border-zinc-100 dark:border-zinc-800 hover:border-primary/50 transition-all duration-500 shadow-xl shadow-zinc-200/50 dark:shadow-none">
+            <div class="relative h-64 bg-zinc-100 dark:bg-zinc-800 overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1595085612803-34e2c94c9f1b?auto=format&fit=crop&q=80" alt="Bee Suit" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+            </div>
+            <div class="p-8">
+                <h3 class="text-xl font-black text-zinc-900 dark:text-white uppercase tracking-tight mb-2">Pro Ventilated Suit</h3>
+                <p class="text-zinc-500 dark:text-zinc-400 text-xs leading-relaxed mb-6">Ultra-breathable 3-layer mesh protection with fencing veil.</p>
+                <div class="flex justify-between items-center">
+                    <span class="text-2xl font-black text-primary">$120.00</span>
+                    <button class="px-6 py-3 bg-zinc-900 dark:bg-zinc-800 text-white text-[10px] font-black uppercase tracking-widest rounded-xl hover:bg-primary hover:text-zinc-900 transition-all active:scale-95">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+   
+</section>
+
+            </div>
+   
+        </main>
+    </div>
+
+    <script>
+        // 🌙 THEME ENGINE
+        function toggleDarkMode() {
+            const root = document.documentElement;
+            if (root.classList.contains('dark')) {
+                root.classList.remove('dark');
+                localStorage.setItem('gh-theme', 'light');
+            } else {
+                root.classList.add('dark');
+                localStorage.setItem('gh-theme', 'dark');
+            }
+        }
+
+        // 🌍 DIRECTION ENGINE
+        function toggleLTR() {
+            const root = document.getElementById('dashboard-root');
+            const isRTL = root.getAttribute('dir') === 'rtl';
+            root.setAttribute('dir', isRTL ? 'ltr' : 'rtl');
+            localStorage.setItem('gh-dir', isRTL ? 'ltr' : 'rtl');
+        }
+
+        // 🧭 MOBILE SIDEBAR
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('-translate-x-full');
+        }
+
+        // 🔄 INITIALIZE
+        document.addEventListener('DOMContentLoaded', () => {
+            // Load Saved Preferences
+            if (localStorage.getItem('gh-theme') === 'dark') document.documentElement.classList.add('dark');
+            if (localStorage.getItem('gh-dir') === 'rtl') document.getElementById('dashboard-root').setAttribute('dir', 'rtl');
+
+            // Responsive Auto-Close Sidebar
+            window.addEventListener('resize', () => {
+                if (window.innerWidth >= 1024) {
+                    document.getElementById('sidebar').classList.remove('-translate-x-full');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

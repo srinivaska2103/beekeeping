@@ -96,58 +96,83 @@
 </nav>
 
 <div id="mobile-menu" class="fixed inset-0 z-[100] p-6 flex flex-col space-y-4 overflow-y-auto lg:hidden 
-    bg-zinc-50/98 dark:bg-zinc-950/98 backdrop-blur-2xl transition-all duration-500">
+    bg-zinc-50 dark:bg-zinc-950 transition-all duration-500">
     
     <div class="flex justify-between items-center mb-8 border-b border-zinc-200 dark:border-zinc-800 pb-4">
         <div class="flex items-center gap-2">
             <span class="text-2xl text-primary"><i class="fa-solid fa-jar"></i></span>
             <span class="font-black text-xl uppercase dark:text-white tracking-tighter">Menu</span>
         </div>
-        <button onclick="toggleMobileMenu()" class="text-2xl p-2 hover:bg-zinc-200/50 dark:hover:bg-zinc-800/50 rounded-full transition-colors dark:text-white">
+        <button onclick="toggleMobileMenu()" class="text-2xl p-2 hover:bg-zinc-200 dark:hover:bg-zinc-800 rounded-full transition-colors dark:text-white">
             <i class="fas fa-times"></i>
         </button>
     </div>
 
     <nav id="mobile-nav-list" class="flex flex-col space-y-2">
         
-        <a href="index.html" class="nav-item group flex justify-between items-center px-6 py-5 rounded-3xl text-xl font-bold uppercase tracking-tight transition-all duration-300">
+        <a href="index.html" class="nav-item group flex justify-between items-center px-6 py-5 rounded-3xl text-xl font-bold uppercase tracking-tight transition-all duration-300 hover:bg-zinc-100 dark:hover:bg-zinc-900">
             <span>Home</span>
             <i class="fa-solid fa-chevron-right text-xs opacity-0 group-[.active]:opacity-100"></i>
         </a>
 
-        <a href="home2.html" class="nav-item group flex justify-between items-center px-6 py-5 rounded-3xl text-xl font-bold uppercase tracking-tight transition-all duration-300">
+        <a href="home2.html" class="nav-item group flex justify-between items-center px-6 py-5 rounded-3xl text-xl font-bold uppercase tracking-tight transition-all duration-300 hover:bg-zinc-100 dark:hover:bg-zinc-900">
             <span>Home2</span>
             <i class="fa-solid fa-chevron-right text-xs opacity-0 group-[.active]:opacity-100"></i>
         </a>
         
-        <a href="about.html" class="nav-item group flex justify-between items-center px-6 py-5 rounded-3xl text-xl font-bold uppercase tracking-tight transition-all duration-300">
+        <a href="about.html" class="nav-item group flex justify-between items-center px-6 py-5 rounded-3xl text-xl font-bold uppercase tracking-tight transition-all duration-300 hover:bg-zinc-100 dark:hover:bg-zinc-900">
             <span>About</span>
             <i class="fa-solid fa-chevron-right text-xs opacity-0 group-[.active]:opacity-100"></i>
         </a>
         
-        <a href="shopnow.html" class="nav-item group flex justify-between items-center px-6 py-5 rounded-3xl text-xl font-bold uppercase tracking-tight transition-all duration-300">
+        <a href="shopnow.html" class="nav-item group flex justify-between items-center px-6 py-5 rounded-3xl text-xl font-bold uppercase tracking-tight transition-all duration-300 hover:bg-zinc-100 dark:hover:bg-zinc-900">
             <span>Shop</span>
             <i class="fa-solid fa-chevron-right text-xs opacity-0 group-[.active]:opacity-100"></i>
         </a>
-        
-        <a href="contact.html" class="nav-item group flex justify-between items-center px-6 py-5 rounded-3xl text-xl font-bold uppercase tracking-tight transition-all duration-300">
+           <a href="contact.html" class="nav-item group flex justify-between items-center px-6 py-5 rounded-3xl text-xl font-bold uppercase tracking-tight transition-all duration-300 hover:bg-zinc-100 dark:hover:bg-zinc-900">
             <span>Contact</span>
             <i class="fa-solid fa-chevron-right text-xs opacity-0 group-[.active]:opacity-100"></i>
         </a>
+<details class="group/details nav-item rounded-[2rem] transition-all duration-300 open:shadow-md dark:open:shadow-none">
+    <summary class="flex justify-between items-center px-6 py-5 list-none cursor-pointer text-xl font-bold uppercase tracking-tight 
+        /* Hover States */
+        hover:bg-zinc-100 dark:hover:bg-zinc-800 
+        /* Open States - Matching the dropdown body */
+        group-open/details:bg-zinc-100 dark:group-open/details:bg-zinc-900 
+        /* Text Colors */
+        text-zinc-900 dark:text-zinc-100
+        rounded-3xl outline-none [&::-webkit-details-marker]:hidden">
+        
+        <div class="flex items-center gap-3">
+            <i class="fas fa-chart-pie text-primary text-lg"></i>
+            <span>Dashboard</span>
+        </div>
+        <i class="fas fa-chevron-down text-xs transition-transform duration-300 group-open/details:rotate-180 text-zinc-400"></i>
+    </summary>
 
-        <details class="group/details nav-item rounded-3xl transition-all duration-300">
-            <summary class="flex justify-between items-center px-6 py-5 list-none cursor-pointer text-xl font-bold uppercase tracking-tight group-[.active]/details:text-zinc-900">
-                <span>Dashboard</span>
-                <i class="fas fa-chevron-down text-xs transition-transform group-open:rotate-180"></i>
-            </summary>
-            <div class="px-6 pb-6 flex flex-col gap-4 border-l-2 border-primary/30 ml-8 mt-2">
-                <a href="user.html" class="nav-item text-lg font-bold opacity-70 hover:opacity-100 hover:text-primary transition-all">User Profile</a>
-            </div>
-        </details>
+    <div class="px-6 pb-8 flex flex-col gap-2 transition-all 
+        bg-zinc-100 dark:bg-zinc-900 
+        rounded-b-[2rem]">
+        
+        <div class="border-l-2 border-primary/20 dark:border-primary/10 ml-3 flex flex-col">
+            
+            <a href="user.html" class="nav-item pl-6 py-3 text-lg font-bold transition-all
+                text-zinc-600 dark:text-zinc-400 
+                hover:text-primary dark:hover:text-primary 
+                hover:bg-zinc-200/50 dark:hover:bg-zinc-800/50 
+                rounded-xl">
+                User Profile
+            </a>
+
+          
+            
+        </div>
+    </div>
+</details>
     </nav>
 
     <div class="pt-8 flex flex-col gap-4 mt-auto">
-        <button onclick="toggleDirection()" class="w-full py-4 border-2 border-zinc-200 dark:border-zinc-800 rounded-2xl font-black text-[10px] uppercase tracking-widest flex items-center justify-center gap-2 dark:text-white bg-white/50 dark:bg-zinc-800/30 shadow-sm active:scale-95 transition-all">
+        <button onclick="toggleDirection()" class="w-full py-4 border-2 border-zinc-200 dark:border-zinc-800 rounded-2xl font-black text-[10px] uppercase tracking-widest flex items-center justify-center gap-2 dark:text-white bg-zinc-100 dark:bg-zinc-900 shadow-sm active:scale-95 transition-all">
             <i class="fas fa-language text-primary"></i> Toggle Layout
         </button>
         
@@ -1002,10 +1027,6 @@
 </style>
 
 
-
-
-
-
 <footer class="bg-zinc-900 text-zinc-300 pt-16 pb-8 border-t border-zinc-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
@@ -1049,7 +1070,7 @@
                     <li><a href="404.html" class="hover:text-primary transition-colors">404 Page</a></li>
                     <li><a href="categories.html" class="hover:text-primary transition-colors">Product Categories</a></li>
                     <li><a href="#" class="hover:text-primary transition-colors">Sustainability</a></li>
-                    <li><a href="#" class="hover:text-primary transition-colors">Privacy Policy</a></li>
+                    <li><a href="blog.html" class="hover:text-primary transition-colors">Blog</a></li>
                 </ul>
             </div>
 

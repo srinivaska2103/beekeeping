@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512' fill='%23f59e0b'><path d='M448 160c0-17.7-14.3-32-32-32h-32v-16c0-44.2-35.8-80-80-80H144c-44.2 0-80 35.8-80 80v16H32c-17.7 0-32 14.3-32 32v64c0 17.7 14.3 32 32 32h384c17.7 0 32-14.3 32-32v-64zM160 416c0-17.7 14.3-32 32-32h64c17.7 0 32 14.3 32 32s-14.3 32-32 32h-64c-17.7 0-32-14.3-32-32zm256-128H32c-17.7 0-32 14.3-32 32v96c0 88.4 71.6 160 160 160h128c88.4 0 160-71.6 160-160v-96c0-17.7-14.3-32-32-32z'/></svg>">
+   <title>Golden Hive | Beekeeping & Honey</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#F59E0B', // Honey Amber
+                        secondary: '#451A03', // Deep Propolis
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hero-bg {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('assets/indexhero');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body class="bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 transition-colors duration-300">
+
+<nav class="fixed w-full z-50 bg-white/90 dark:bg-zinc-900/90 backdrop-blur-md shadow-sm border-b dark:border-zinc-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            
+            <a href="index.html" class="flex items-center gap-2">
+                <span class="text-3xl text-amber-500 drop-shadow-[0_0_10px_rgba(245,158,11,0.4)]">
+                    <i class="fa-solid fa-jar"></i>
+                </span>
+                <span class="font-bold text-2xl tracking-tight uppercase dark:text-white">
+                    Golden<span class="text-primary">Hive</span>
+                </span>
+            </a>
+
+            <div class="hidden lg:flex items-center space-x-6">
+                <a href="index.html" class="nav-link hover:text-primary font-medium transition-colors">Home</a>
+                <a href="home2.html" class="nav-link hover:text-primary font-medium transition-colors">Home2</a>
+                <a href="about.html" class="nav-link hover:text-primary font-medium transition-colors">About</a>
+                <a href="shopnow.html" class="nav-link hover:text-primary font-medium transition-colors">Shop</a>
+                <a href="contact.html" class="nav-link hover:text-primary font-medium transition-colors">Contact</a>
+                
+               <div class="relative group">
+    <button id="dashboard-btn" class="flex items-center gap-1 hover:text-primary font-bold uppercase tracking-widest text-xs transition-colors py-2">
+        Dashboard <i class="fas fa-chevron-down text-[10px] ml-1 group-hover:rotate-180 transition-transform"></i>
+    </button>
+
+    <div class="absolute left-0 hidden group-hover:block w-48 pt-2 z-50">
+        <div class="bg-white dark:bg-zinc-900 shadow-2xl border border-zinc-100 dark:border-zinc-800 rounded-2xl overflow-hidden">
+            
+            <a href="user.html" class="nav-link flex items-center gap-3 px-5 py-4 text-zinc-600 dark:text-zinc-400 hover:bg-primary hover:text-zinc-900 font-bold transition-all uppercase tracking-tighter text-sm">
+                <i class="fa-solid fa-user-circle text-lg"></i>
+                User Profile
+            </a>
+
+          
+            
+        </div>
+    </div>
+</div>
+            </div>
+
+            <div class="hidden lg:flex items-center gap-4">
+                <button onclick="toggleDirection()" class="p-2 border rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-800 dark:text-white" title="Toggle LTR/RTL">
+                    <i class="fas fa-exchange-alt"></i>
+                </button>
+                <button onclick="toggleTheme()" class="p-2 border rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-800 dark:text-white" title="Toggle Dark/Light">
+                    <i id="theme-icon" class="fas fa-moon"></i>
+                </button>
+                <a href="login.html">
+                    <button class="px-4 py-2 text-primary border border-primary rounded-lg font-semibold hover:bg-primary hover:text-white transition">Login</button>
+                </a>
+                <a href="shopnow.html">
+                    <button class="px-5 py-2 bg-primary text-white rounded-lg font-semibold hover:bg-yellow-600 shadow-md">Shop Now</button>
+                </a>
+            </div>
+
+            <div class="lg:hidden flex items-center gap-3">
+                <button onclick="toggleTheme()" class="p-2 dark:text-white"><i class="fas fa-moon"></i></button>
+                <button onclick="toggleMobileMenu()" class="text-2xl p-2 dark:text-white"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div id="mobile-menu" class="fixed inset-0 z-[100] p-6 flex flex-col space-y-4 overflow-y-auto lg:hidden 
+    bg-zinc-50 dark:bg-zinc-950 transition-all duration-500">
+    
+    <div class="flex justify-between items-center mb-8 border-b border-zinc-200 dark:border-zinc-800 pb-4">
+        <div class="flex items-center gap-2">
+            <span class="text-2xl text-primary"><i class="fa-solid fa-jar"></i></span>
+            <span class="font-black text-xl uppercase dark:text-white tracking-tighter">Menu</span>
+        </div>
+        <button onclick="toggleMobileMenu()" class="text-2xl p-2 hover:bg-zinc-200 dark:hover:bg-zinc-800 rounded-full transition-colors dark:text-white">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
+    <nav id="mobile-nav-list" class="flex flex-col space-y-2">
+        
+        <a href="index.html" class="nav-item group flex justify-between items-center px-6 py-5 rounded-3xl text-xl font-bold uppercase tracking-tight transition-all duration-300 hover:bg-zinc-100 dark:hover:bg-zinc-900">
+            <span>Home</span>
+            <i class="fa-solid fa-chevron-right text-xs opacity-0 group-[.active]:opacity-100"></i>
+        </a>
+
+        <a href="home2.html" class="nav-item group flex justify-between items-center px-6 py-5 rounded-3xl text-xl font-bold uppercase tracking-tight transition-all duration-300 hover:bg-zinc-100 dark:hover:bg-zinc-900">
+            <span>Home2</span>
+            <i class="fa-solid fa-chevron-right text-xs opacity-0 group-[.active]:opacity-100"></i>
+        </a>
+        
+        <a href="about.html" class="nav-item group flex justify-between items-center px-6 py-5 rounded-3xl text-xl font-bold uppercase tracking-tight transition-all duration-300 hover:bg-zinc-100 dark:hover:bg-zinc-900">
+            <span>About</span>
+            <i class="fa-solid fa-chevron-right text-xs opacity-0 group-[.active]:opacity-100"></i>
+        </a>
+        
+        <a href="shopnow.html" class="nav-item group flex justify-between items-center px-6 py-5 rounded-3xl text-xl font-bold uppercase tracking-tight transition-all duration-300 hover:bg-zinc-100 dark:hover:bg-zinc-900">
+            <span>Shop</span>
+            <i class="fa-solid fa-chevron-right text-xs opacity-0 group-[.active]:opacity-100"></i>
+        </a>
+           <a href="contact.html" class="nav-item group flex justify-between items-center px-6 py-5 rounded-3xl text-xl font-bold uppercase tracking-tight transition-all duration-300 hover:bg-zinc-100 dark:hover:bg-zinc-900">
+            <span>Contact</span>
+            <i class="fa-solid fa-chevron-right text-xs opacity-0 group-[.active]:opacity-100"></i>
+        </a>
+<details class="group/details nav-item rounded-[2rem] transition-all duration-300 open:shadow-md dark:open:shadow-none">
+    <summary class="flex justify-between items-center px-6 py-5 list-none cursor-pointer text-xl font-bold uppercase tracking-tight 
+        /* Hover States */
+        hover:bg-zinc-100 dark:hover:bg-zinc-800 
+        /* Open States - Matching the dropdown body */
+        group-open/details:bg-zinc-100 dark:group-open/details:bg-zinc-900 
+        /* Text Colors */
+        text-zinc-900 dark:text-zinc-100
+        rounded-3xl outline-none [&::-webkit-details-marker]:hidden">
+        
+        <div class="flex items-center gap-3">
+            <i class="fas fa-chart-pie text-primary text-lg"></i>
+            <span>Dashboard</span>
+        </div>
+        <i class="fas fa-chevron-down text-xs transition-transform duration-300 group-open/details:rotate-180 text-zinc-400"></i>
+    </summary>
+
+    <div class="px-6 pb-8 flex flex-col gap-2 transition-all 
+        bg-zinc-100 dark:bg-zinc-900 
+        rounded-b-[2rem]">
+        
+        <div class="border-l-2 border-primary/20 dark:border-primary/10 ml-3 flex flex-col">
+            
+            <a href="user.html" class="nav-item pl-6 py-3 text-lg font-bold transition-all
+                text-zinc-600 dark:text-zinc-400 
+                hover:text-primary dark:hover:text-primary 
+                hover:bg-zinc-200/50 dark:hover:bg-zinc-800/50 
+                rounded-xl">
+                User Profile
+            </a>
+
+          
+            
+        </div>
+    </div>
+</details>
+    </nav>
+
+    <div class="pt-8 flex flex-col gap-4 mt-auto">
+        <button onclick="toggleDirection()" class="w-full py-4 border-2 border-zinc-200 dark:border-zinc-800 rounded-2xl font-black text-[10px] uppercase tracking-widest flex items-center justify-center gap-2 dark:text-white bg-zinc-100 dark:bg-zinc-900 shadow-sm active:scale-95 transition-all">
+            <i class="fas fa-language text-primary"></i> Toggle Layout
+        </button>
+        
+        <div class="grid grid-cols-2 gap-4">
+            <a href="login.html" class="w-full text-center py-4 border-2 border-primary text-primary font-black uppercase tracking-widest text-[10px] rounded-2xl active:scale-95 transition-all">Login</a>
+            <a href="shopnow.html" class="w-full text-center py-4 bg-primary text-zinc-900 font-black uppercase tracking-widest text-[10px] rounded-2xl shadow-lg shadow-primary/20 active:scale-95 transition-all">Shop Now</a>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* THE HOVER/ACTIVE ENGINE
+       Ensures text is ALWAYS visible by flipping contrast 
+    */
+    
+    /* Default: Dark text in light mode, Light text in dark mode */
+    .nav-item {
+        color: #27272a; /* zinc-800 */
+    }
+    .dark .nav-item {
+        color: #f4f4f5; /* zinc-100 */
+    }
+
+    /* Hover/Tap: Solid dark background + Amber text */
+    .nav-item:hover:not(.active) {
+        background-color: #18181b; /* zinc-900 */
+        color: #f59e0b; /* primary amber */
+    }
+    .dark .nav-item:hover:not(.active) {
+        background-color: #f4f4f5; /* zinc-100 */
+        color: #18181b; /* zinc-900 */
+    }
+
+    /* Active State: The Automatic Highlight */
+    .nav-item.active {
+        background-color: #f59e0b; /* primary amber */
+        color: #18181b !important; /* Force dark text on yellow */
+        font-weight: 900;
+        box-shadow: 0 20px 25px -5px rgba(245, 158, 11, 0.2);
+    }
+</style>
+
+<script>
+    function toggleMobileMenu() {
+        const menu = document.getElementById('mobile-menu');
+        menu.classList.toggle('hidden');
+        document.body.style.overflow = menu.classList.contains('hidden') ? 'auto' : 'hidden';
+    }
+
+    /* AUTOMATIC ACTIVE STATE ENGINE
+       Detects current page and injects classes 
+    */
+    document.addEventListener("DOMContentLoaded", function() {
+        const currentPath = window.location.pathname.split("/").pop() || "index.html";
+        const navItems = document.querySelectorAll(".nav-item");
+
+        navItems.forEach(item => {
+            const href = item.getAttribute("href");
+            
+            // Check if this item or its children are active
+            if (href === currentPath) {
+                item.classList.add("active");
+                
+                // If it's a child of the Dashboard, open the dropdown
+                const parentDetails = item.closest('details');
+                if (parentDetails) {
+                    parentDetails.classList.add("active");
+                    parentDetails.setAttribute('open', '');
+                }
+            }
+        });
+    });
+</script>
+<script>
+    // Toggle Mobile Menu Function
+    function toggleMobileMenu() {
+        const menu = document.getElementById('mobile-menu');
+        menu.classList.toggle('hidden');
+        // Prevent background scrolling when menu is open
+        document.body.style.overflow = menu.classList.contains('hidden') ? 'auto' : 'hidden';
+    }
+
+    // Handle Active Nav State
+    document.addEventListener("DOMContentLoaded", function() {
+        const currentPath = window.location.pathname.split("/").pop() || "index.html";
+        const navLinks = document.querySelectorAll(".nav-link");
+
+        navLinks.forEach(link => {
+            const linkPath = link.getAttribute("href");
+
+            if (linkPath === currentPath) {
+                // Apply Active Styles
+                link.classList.add("text-primary", "font-bold");
+                
+                // Mobile-specific indicator
+                if (window.innerWidth < 1024) {
+                    link.classList.add("pl-3", "border-l-4", "border-primary");
+                }
+
+                // Parent highlight for Dashboard
+                if (link.closest('.group') || link.closest('details')) {
+                    const dashBtn = document.getElementById('dashboard-btn');
+                    const mobileDashLabel = document.getElementById('mobile-dash-label');
+                    if (dashBtn) dashBtn.classList.add("text-primary", "font-bold");
+                    if (mobileDashLabel) mobileDashLabel.classList.add("text-primary", "font-bold");
+                    
+                    // Auto-open mobile details
+                    const parentDetails = link.closest('details');
+                    if (parentDetails) parentDetails.setAttribute('open', '');
+                }
+            }
+        });
+    });
+</script>
+<section class="relative min-h-[85vh] md:min-h-screen flex items-center pt-32 pb-24 md:pt-48 md:pb-32 bg-zinc-950 overflow-hidden transition-all duration-300">
+    
+    <div class="absolute inset-0 z-0">
+        <img 
+            src="assets/Bee-Friendly Garden" 
+            alt="Bees on Wildflower" 
+            class="w-full h-full object-cover scale-105 animate-subtle-zoom opacity-60 dark:opacity-40"
+        >
+        <div class="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r from-zinc-950 via-zinc-950/60 to-transparent z-10"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
+        <div class="max-w-5xl text-center md:text-left mx-auto md:mx-0">
+            
+            <div class="inline-flex items-center gap-2.5 px-5 py-2.5 bg-primary/10 border border-primary/20 text-primary dark:text-amber-400 rounded-xl text-[10px] md:text-xs font-medium uppercase tracking-[0.2em] mb-8 backdrop-blur-md animate-pulse">
+                <i class="fa-solid fa-graduation-cap text-lg"></i> Honey Knowledge & Beekeeping Tips
+            </div>
+            
+            <h1 class="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-semibold text-white mb-8 uppercase tracking-tighter leading-[1.1] md:leading-[0.95] drop-shadow-2xl">
+                From the <span class="text-primary text-bold">Hive</span>: Tips, Stories & Sweet Knowledge
+            </h1>
+            
+            <p class="text-base sm:text-lg md:text-xl lg:text-2xl text-zinc-300 mb-12 leading-relaxed font-normal max-w-2xl mx-auto md:mx-0 opacity-90">
+                Learn essential beekeeping techniques, discover the health benefits of raw honey, and explore nature's finest nectar through our community stories.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
+                <a href="#latest-tips" class="w-full sm:w-auto">
+                    <button class="w-full sm:w-auto px-12 py-5 bg-primary text-zinc-900 font-semibold rounded-2xl shadow-xl shadow-primary/20 hover:scale-105 hover:bg-yellow-400 active:scale-95 transition-all duration-300 uppercase tracking-widest text-[11px]">
+                        Latest Tips 
+                    </button>
+                </a>
+                <a href="shopnow.html" class="w-full sm:w-auto">
+                    <button class="w-full sm:w-auto px-12 py-5 bg-white/5 backdrop-blur-md border border-white/20 text-white font-medium rounded-2xl hover:bg-white/10 active:scale-95 transition-all duration-300 text-[11px] uppercase tracking-widest">
+                        Shop Beekeeping Gear
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="hidden xl:block absolute right-[10%] top-1/2 -translate-y-1/2 z-40 animate-float-slow">
+        <i class="fa-solid fa-honeycomb text-primary text-[10rem] drop-shadow-[0_0_50px_rgba(245,158,11,0.2)] opacity-40"></i>
+    </div>
+
+    <div class="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-t from-zinc-950 to-transparent z-40"></div>
+</section>
+
+<style>
+    /* 360px Mobile Optimization */
+    @media (max-width: 400px) {
+        h1 {
+            font-size: 2.2rem !important;
+            line-height: 1.2;
+        }
+        section {
+            padding-top: 7rem;
+        }
+    }
+
+    @keyframes subtle-zoom {
+        from { transform: scale(1.05); }
+        to { transform: scale(1.15); }
+    }
+    .animate-subtle-zoom {
+        animation: subtle-zoom 20s infinite alternate ease-in-out;
+    }
+</style>
+
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="space-y-8 bg-white dark:bg-zinc-900 p-6 md:p-10 rounded-[3rem] border border-zinc-100 dark:border-zinc-800 shadow-xl shadow-zinc-200/50 dark:shadow-none">
+        
+        <div class="relative group max-w-2xl mx-auto md:mx-0">
+            <i class="fa-solid fa-magnifying-glass absolute left-5 top-1/2 -translate-y-1/2 text-zinc-400 group-focus-within:text-primary transition-colors"></i>
+            <input 
+                type="text" 
+                placeholder="Search articles, guides, or recipes..." 
+                class="w-full pl-14 pr-6 py-5 bg-zinc-50 dark:bg-zinc-800 border-2 border-transparent focus:border-primary/30 focus:bg-white dark:focus:bg-zinc-950 rounded-2xl outline-none text-sm font-medium transition-all dark:text-white"
+            >
+        </div>
+
+        <div class="space-y-4">
+            <div class="flex items-center justify-between">
+                <h3 class="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-400">Browse Categories</h3>
+                <span class="text-[10px] font-bold text-primary italic md:hidden">Swipe for more &rarr;</span>
+            </div>
+
+            <div class="flex md:flex-wrap items-center gap-3 overflow-x-auto md:overflow-visible pb-4 md:pb-0 scrollbar-hide -mx-2 px-2">
+                
+                <button class="filter-tag active shrink-0 px-6 py-3 rounded-xl border-2 border-primary bg-primary text-zinc-900 font-bold text-xs uppercase tracking-widest transition-all">
+                    All
+                </button>
+
+                <button class="filter-tag shrink-0 px-6 py-3 rounded-xl border-2 border-zinc-100 dark:border-zinc-800 bg-white dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 font-bold text-xs uppercase tracking-widest hover:border-primary/50 hover:text-primary transition-all flex items-center gap-2">
+                    <i class="fa-solid fa-bee"></i> Tips
+                </button>
+
+                <button class="filter-tag shrink-0 px-6 py-3 rounded-xl border-2 border-zinc-100 dark:border-zinc-800 bg-white dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 font-bold text-xs uppercase tracking-widest hover:border-primary/50 hover:text-primary transition-all flex items-center gap-2">
+                    <i class="fa-solid fa-jar"></i> Benefits
+                </button>
+
+                <button class="filter-tag shrink-0 px-6 py-3 rounded-xl border-2 border-zinc-100 dark:border-zinc-800 bg-white dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 font-bold text-xs uppercase tracking-widest hover:border-primary/50 hover:text-primary transition-all flex items-center gap-2">
+                    <i class="fa-solid fa-calendar-days"></i> Seasonal
+                </button>
+
+                <button class="filter-tag shrink-0 px-6 py-3 rounded-xl border-2 border-zinc-100 dark:border-zinc-800 bg-white dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 font-bold text-xs uppercase tracking-widest hover:border-primary/50 hover:text-primary transition-all flex items-center gap-2">
+                    <i class="fa-solid fa-screwdriver-wrench"></i> Gear
+                </button>
+
+                <button class="filter-tag shrink-0 px-6 py-3 rounded-xl border-2 border-zinc-100 dark:border-zinc-800 bg-white dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 font-bold text-xs uppercase tracking-widest hover:border-primary/50 hover:text-primary transition-all flex items-center gap-2">
+                    <i class="fa-solid fa-leaf"></i> Eco
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* Hide scrollbar but keep functionality for a clean mobile UI */
+    .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+    }
+    .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    /* Logic for Active Tags */
+    .filter-tag.active {
+        box-shadow: 0 10px 15px -3px rgba(245, 158, 11, 0.2);
+        transform: translateY(-2px);
+    }
+</style>
+
+<script>
+    // Simple Interactivity Logic
+    const tags = document.querySelectorAll('.filter-tag');
+    tags.forEach(tag => {
+        tag.addEventListener('click', () => {
+            // Remove active from all
+            tags.forEach(t => {
+                t.classList.remove('active', 'bg-primary', 'text-zinc-900', 'border-primary');
+                t.classList.add('bg-white', 'dark:bg-zinc-800', 'text-zinc-600', 'dark:text-zinc-300', 'border-zinc-100', 'dark:border-zinc-800');
+            });
+            // Add active to clicked
+            tag.classList.add('active', 'bg-primary', 'text-zinc-900', 'border-primary');
+            tag.classList.remove('bg-white', 'dark:bg-zinc-800', 'text-zinc-600', 'dark:text-zinc-300', 'border-zinc-100', 'dark:border-zinc-800');
+        });
+    });
+</script>
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+        
+        <article class="group bg-white dark:bg-zinc-900 rounded-[2.5rem] overflow-hidden border border-zinc-100 dark:border-zinc-800 hover:border-primary/50 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/5 flex flex-col">
+            <div class="relative h-48 overflow-hidden">
+                <img src="assets/Spring Hive Management" 
+                     alt="Spring Hive Management" 
+                     class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                <div class="absolute top-4 left-4">
+                    <span class="px-3 py-1 bg-white/90 dark:bg-zinc-950/90 backdrop-blur-md rounded-lg text-[8px] font-black uppercase tracking-widest text-primary">Tips</span>
+                </div>
+            </div>
+            <div class="p-6 flex flex-col flex-1">
+                <h3 class="text-lg font-bold text-zinc-900 dark:text-white leading-tight mb-3 group-hover:text-primary transition-colors">
+                    Essential Spring Hive Inspections
+                </h3>
+                <p class="text-zinc-500 dark:text-zinc-400 text-xs leading-relaxed mb-4 line-clamp-2">
+                    Critical steps to ensure your queen is laying and the colony is disease-free as flowers bloom.
+                </p>
+                <div class="mt-auto pt-4 border-t border-zinc-50 dark:border-zinc-800 flex items-center justify-between">
+                    <span class="text-[9px] font-bold text-zinc-400 uppercase">#Spring</span>
+                    <a href="comingsoon.html" class="group/btn flex items-center gap-1 text-[10px] font-black uppercase tracking-widest text-primary">
+                        Read <i class="fa-solid fa-arrow-right transition-transform group-hover/btn:translate-x-1"></i>
+                    </a>
+                </div>
+            </div>
+        </article>
+
+        <article class="group bg-white dark:bg-zinc-900 rounded-[2.5rem] overflow-hidden border border-zinc-100 dark:border-zinc-800 hover:border-primary/50 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/5 flex flex-col">
+            <div class="relative h-48 overflow-hidden">
+                <img src="assets/5 Surprising Benefits of Raw Honey" 
+                     alt="Honey Benefits" 
+                     class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                <div class="absolute top-4 left-4">
+                    <span class="px-3 py-1 bg-white/90 dark:bg-zinc-950/90 backdrop-blur-md rounded-lg text-[8px] font-black uppercase tracking-widest text-primary">Health</span>
+                </div>
+            </div>
+            <div class="p-6 flex flex-col flex-1">
+                <h3 class="text-lg font-bold text-zinc-900 dark:text-white leading-tight mb-3 group-hover:text-primary transition-colors">
+                    The Science Behind Raw Honey
+                </h3>
+                <p class="text-zinc-500 dark:text-zinc-400 text-xs leading-relaxed mb-4 line-clamp-2">
+                    Discover why raw, unfiltered honey is a medicinal powerhouse and natural superfood.
+                </p>
+                <div class="mt-auto pt-4 border-t border-zinc-50 dark:border-zinc-800 flex items-center justify-between">
+                    <span class="text-[9px] font-bold text-zinc-400 uppercase">#RawHoney</span>
+                    <a href="comingsoon.html" class="group/btn flex items-center gap-1 text-[10px] font-black uppercase tracking-widest text-primary">
+                        Read <i class="fa-solid fa-arrow-right transition-transform group-hover/btn:translate-x-1"></i>
+                    </a>
+                </div>
+            </div>
+        </article>
+
+        <article class="group bg-white dark:bg-zinc-900 rounded-[2.5rem] overflow-hidden border border-zinc-100 dark:border-zinc-800 hover:border-primary/50 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/5 flex flex-col">
+            <div class="relative h-48 overflow-hidden">
+                <img src="assets/Frames & Foundations" 
+                     alt="Gear Guide" 
+                     class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                <div class="absolute top-4 left-4">
+                    <span class="px-3 py-1 bg-white/90 dark:bg-zinc-950/90 backdrop-blur-md rounded-lg text-[8px] font-black uppercase tracking-widest text-primary">Gear</span>
+                </div>
+            </div>
+            <div class="p-6 flex flex-col flex-1">
+                <h3 class="text-lg font-bold text-zinc-900 dark:text-white leading-tight mb-3 group-hover:text-primary transition-colors">
+                    Essential Beekeeping Gear for Pros
+                </h3>
+                <p class="text-zinc-500 dark:text-zinc-400 text-xs leading-relaxed mb-4 line-clamp-2">
+                    A deep dive into stainless steel smokers, protective suits, and ergonomic hive tools.
+                </p>
+                <div class="mt-auto pt-4 border-t border-zinc-50 dark:border-zinc-800 flex items-center justify-between">
+                    <span class="text-[9px] font-bold text-zinc-400 uppercase">#Tools</span>
+                    <a href="comingsoon.html" class="group/btn flex items-center gap-1 text-[10px] font-black uppercase tracking-widest text-primary">
+                        Read <i class="fa-solid fa-arrow-right transition-transform group-hover/btn:translate-x-1"></i>
+                    </a>
+                </div>
+            </div>
+        </article>
+
+        <article class="group bg-white dark:bg-zinc-900 rounded-[2.5rem] overflow-hidden border border-zinc-100 dark:border-zinc-800 hover:border-primary/50 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/5 flex flex-col">
+            <div class="relative h-48 overflow-hidden">
+                <img src="assets/Minimal processing" 
+                     alt="Sustainable Agriculture" 
+                     class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                <div class="absolute top-4 left-4">
+                    <span class="px-3 py-1 bg-white/90 dark:bg-zinc-950/90 backdrop-blur-md rounded-lg text-[8px] font-black uppercase tracking-widest text-primary">Eco</span>
+                </div>
+            </div>
+            <div class="p-6 flex flex-col flex-1">
+                <h3 class="text-lg font-bold text-zinc-900 dark:text-white leading-tight mb-3 group-hover:text-primary transition-colors">
+                    Ethical Farming & Biodiversity
+                </h3>
+                <p class="text-zinc-500 dark:text-zinc-400 text-xs leading-relaxed mb-4 line-clamp-2">
+                    How ethical beekeeping contributes to global biodiversity and supports pollinators.
+                </p>
+                <div class="mt-auto pt-4 border-t border-zinc-50 dark:border-zinc-800 flex items-center justify-between">
+                    <span class="text-[9px] font-bold text-zinc-400 uppercase">#Pollinators</span>
+                    <a href="comingsoon.html" class="group/btn flex items-center gap-1 text-[10px] font-black uppercase tracking-widest text-primary">
+                        Read <i class="fa-solid fa-arrow-right transition-transform group-hover/btn:translate-x-1"></i>
+                    </a>
+                </div>
+            </div>
+        </article>
+
+    </div>
+</div>
+</section>
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    
+    <div class="flex flex-col md:flex-row justify-between items-end gap-6 mb-12">
+        <div class="max-w-2xl text-center md:text-left mx-auto md:mx-0">
+            <h2 class="text-3xl md:text-5xl font-semibold text-zinc-900 dark:text-white uppercase tracking-tighter">
+                Visual <span class="text-primary italic">Academy</span>
+            </h2>
+            <p class="text-zinc-500 dark:text-zinc-400 mt-4 font-medium">
+                Master the art of apiary management through our expert-led video tutorials.
+            </p>
+        </div>
+        <a href="comingsoon.html" class="hidden md:block px-8 py-4 border-2 border-zinc-200 dark:border-zinc-800 rounded-2xl text-[10px] font-black uppercase tracking-widest dark:text-white hover:bg-primary hover:border-primary hover:text-zinc-900 transition-all">
+            View All Tutorials
+        </a>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+        
+        <div class="lg:col-span-3 group relative h-[350px] md:h-[500px] rounded-[3rem] overflow-hidden shadow-2xl bg-zinc-900">
+            <img src="assets/Hive Transform" 
+                 alt="Hive Inspection Tutorial" 
+                 class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700">
+            
+            <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent z-10"></div>
+            
+            <div class="absolute inset-0 flex items-center justify-center z-20">
+                <button class="w-20 h-20 md:w-24 md:h-24 bg-primary text-zinc-900 rounded-full flex items-center justify-center pl-2 shadow-2xl shadow-primary/40 transform group-hover:scale-110 transition-all duration-500">
+                    <i class="fas fa-play text-2xl md:text-3xl"></i>
+                </button>
+            </div>
+
+            <div class="absolute bottom-8 left-8 md:bottom-12 md:left-12 right-8 z-30">
+                <span class="px-3 py-1 bg-white/10 backdrop-blur-md text-white text-[9px] font-black uppercase tracking-widest rounded-lg mb-4 inline-block">15:20 • Intermediate</span>
+                <h3 class="text-2xl md:text-4xl font-semibold text-white uppercase tracking-tighter mb-4">Mastering the <br> Hive Inspection</h3>
+                <button class="text-[10px] font-black uppercase tracking-widest text-primary flex items-center gap-2 group-hover:gap-4 transition-all">
+                    Watch & Learn <i class="fa-solid fa-arrow-right-long"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="lg:col-span-2 group relative h-[350px] md:h-[500px] rounded-[3rem] overflow-hidden shadow-2xl bg-zinc-900">
+            <img src="assets/Careful extraction" 
+                 alt="Honey Extraction Tutorial" 
+                 class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700">
+            
+            <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent z-10"></div>
+
+            <div class="absolute inset-0 flex items-center justify-center z-20">
+                <button class="w-16 h-16 bg-white text-zinc-900 rounded-full flex items-center justify-center pl-1 shadow-2xl transform group-hover:scale-110 transition-all duration-500">
+                    <i class="fas fa-play text-xl"></i>
+                </button>
+            </div>
+
+            <div class="absolute bottom-8 left-8 right-8 z-30">
+                <span class="px-3 py-1 bg-white/10 backdrop-blur-md text-white text-[9px] font-black uppercase tracking-widest rounded-lg mb-4 inline-block">08:45 • Beginner</span>
+                <h3 class="text-xl md:text-3xl font-semibold text-white uppercase tracking-tighter mb-4">Honey Extraction <br> Step-by-Step</h3>
+                <button class="text-[10px] font-black uppercase tracking-widest text-primary flex items-center gap-2 group-hover:gap-4 transition-all">
+                    Watch & Learn <i class="fa-solid fa-arrow-right-long"></i>
+                </button>
+            </div>
+        </div>
+
+    </div>
+</section>
+<section class="py-24 bg-white dark:bg-zinc-900 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+            <div class="max-w-xl">
+                <h2 class="text-3xl md:text-5xl font-extrabold text-zinc-900 dark:text-white mb-4">
+                    The <span class="text-primary">Buzz</span> Blog
+                </h2>
+                <p class="text-zinc-500 dark:text-zinc-400">
+                    Expert advice from our master beekeepers to help you understand the world of bees and the liquid gold they produce.
+                </p>
+            </div>
+            <a href="comingsoon.html" class="inline-flex items-center gap-2 font-bold text-zinc-900 dark:text-white hover:text-primary transition-colors group">
+                Read All Articles 
+                <span class="w-10 h-10 rounded-full border border-zinc-200 dark:border-zinc-700 flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-all">
+                    <i class="fa-solid fa-arrow-right text-sm"></i>
+                </span>
+            </a>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            
+            <article class="group cursor-pointer">
+                <div class="relative overflow-hidden rounded-[2rem] mb-6 aspect-[4/5]">
+                    <img src="assets/How to Start Your First Backyard Hive" alt="Start Beekeeping" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute top-4 left-4">
+                        <span class="px-4 py-1.5 bg-white/90 backdrop-blur-md text-zinc-900 text-[10px] font-bold uppercase tracking-widest rounded-full">Guides</span>
+                    </div>
+                </div>
+                <div class="space-y-3">
+                    <div class="flex items-center gap-3 text-xs text-zinc-400 font-medium">
+                        <span>April 12, 2026</span>
+                        <span class="w-1 h-1 bg-zinc-300 rounded-full"></span>
+                        <span>6 min read</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-zinc-900 dark:text-white group-hover:text-primary transition-colors leading-tight">
+                        How to Start Your First Backyard Hive
+                    </h3>
+                    <p class="text-sm text-zinc-500 dark:text-zinc-400 line-clamp-2">
+                        Everything a beginner needs to know about choosing a location and buying your first colony.
+                    </p>
+                </div>
+            </article>
+
+            <article class="group cursor-pointer">
+                <div class="relative overflow-hidden rounded-[2rem] mb-6 aspect-[4/5]">
+                    <img src="assets/5 Surprising Benefits of Raw Honey" alt="Honey Benefits" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute top-4 left-4">
+                        <span class="px-4 py-1.5 bg-white/90 backdrop-blur-md text-zinc-900 text-[10px] font-bold uppercase tracking-widest rounded-full">Health</span>
+                    </div>
+                </div>
+                <div class="space-y-3">
+                    <div class="flex items-center gap-3 text-xs text-zinc-400 font-medium">
+                        <span>April 08, 2026</span>
+                        <span class="w-1 h-1 bg-zinc-300 rounded-full"></span>
+                        <span>4 min read</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-zinc-900 dark:text-white group-hover:text-primary transition-colors leading-tight">
+                        5 Surprising Benefits of Raw Honey
+                    </h3>
+                    <p class="text-sm text-zinc-500 dark:text-zinc-400 line-clamp-2">
+                        Why unfiltered honey is a superior choice for your immune system and overall wellness.
+                    </p>
+                </div>
+            </article>
+
+            <article class="group cursor-pointer">
+                <div class="relative overflow-hidden rounded-[2rem] mb-6 aspect-[4/5]">
+                    <img src="assets/Seasonal CarePreparing Your Bees for Winter" alt="Seasonal Care" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute top-4 left-4">
+                        <span class="px-4 py-1.5 bg-white/90 backdrop-blur-md text-zinc-900 text-[10px] font-bold uppercase tracking-widest rounded-full">Beekeeping</span>
+                    </div>
+                </div>
+                <div class="space-y-3">
+                    <div class="flex items-center gap-3 text-xs text-zinc-400 font-medium">
+                        <span>March 28, 2026</span>
+                        <span class="w-1 h-1 bg-zinc-300 rounded-full"></span>
+                        <span>8 min read</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-zinc-900 dark:text-white group-hover:text-primary transition-colors leading-tight">
+                        Seasonal Care: Preparing Your Bees for Winter
+                    </h3>
+                    <p class="text-sm text-zinc-500 dark:text-zinc-400 line-clamp-2">
+                        Crucial steps to insulate your hives and ensure your colony survives the cold months.
+                    </p>
+                </div>
+            </article>
+
+            <article class="group cursor-pointer">
+                <div class="relative overflow-hidden rounded-[2rem] mb-6 aspect-[4/5]">
+                    <img src="assets/Bee-Friendly Garden" alt="Bee Friendly Garden" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute top-4 left-4">
+                        <span class="px-4 py-1.5 bg-white/90 backdrop-blur-md text-zinc-900 text-[10px] font-bold uppercase tracking-widest rounded-full">Environment</span>
+                    </div>
+                </div>
+                <div class="space-y-3">
+                    <div class="flex items-center gap-3 text-xs text-zinc-400 font-medium">
+                        <span>March 20, 2026</span>
+                        <span class="w-1 h-1 bg-zinc-300 rounded-full"></span>
+                        <span>5 min read</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-zinc-900 dark:text-white group-hover:text-primary transition-colors leading-tight">
+                        Top 10 Flowers for a Bee-Friendly Garden
+                    </h3>
+                    <p class="text-sm text-zinc-500 dark:text-zinc-400 line-clamp-2">
+                        Support your local pollinators by planting these nectar-rich blooms in your backyard.
+                    </p>
+                </div>
+            </article>
+
+        </div>
+    </div>
+</section>
+<section id="community" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 border-t border-zinc-100 dark:border-zinc-800 transition-all duration-300">
+    
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        
+        <div class="lg:col-span-2 space-y-12">
+            
+            <div class="flex items-center justify-between">
+                <div>
+                    <h3 class="text-3xl font-semibold text-zinc-900 dark:text-white uppercase tracking-tighter">
+                        Community <span class="text-primary italic">Buzz</span>
+                    </h3>
+                    <p class="text-zinc-400 text-xs font-medium mt-1">Join the conversation with fellow apiarists.</p>
+                </div>
+                <span class="px-4 py-2 bg-zinc-100 dark:bg-zinc-800 rounded-xl text-[10px] font-black text-zinc-500 uppercase tracking-widest">
+                    24 Comments
+                </span>
+            </div>
+
+            <div class="bg-zinc-50 dark:bg-zinc-900/50 p-6 rounded-[2.5rem] border border-zinc-100 dark:border-zinc-800 shadow-inner">
+                <div class="flex items-start gap-4">
+                    <img src="assets/u2" class="w-12 h-12 rounded-2xl border-2 border-primary object-cover" alt="User">
+                    <div class="flex-1 space-y-4">
+                        <textarea placeholder="Share your thoughts or ask a follow-up question..." 
+                                  class="w-full bg-white dark:bg-zinc-800 p-5 rounded-[1.5rem] border-none outline-none focus:ring-2 focus:ring-primary/20 text-sm transition-all dark:text-white min-h-[120px] shadow-sm resize-none"></textarea>
+                        <div class="flex justify-end">
+                            <button class="px-10 py-4 bg-zinc-900 dark:bg-primary text-white dark:text-zinc-900 font-black rounded-2xl text-[10px] uppercase tracking-widest hover:bg-primary hover:text-zinc-900 dark:hover:bg-white transition-all active:scale-95">
+                                Post Comment
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-8">
+                
+                <div class="group p-8 bg-white dark:bg-zinc-900/30 rounded-[2.5rem] border border-zinc-100 dark:border-zinc-800 hover:border-primary/20 transition-all duration-300">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-zinc-100 dark:bg-zinc-800 rounded-2xl flex items-center justify-center font-black text-primary border border-zinc-200 dark:border-zinc-700">SK</div>
+                            <div>
+                                <h4 class="font-bold text-sm text-zinc-900 dark:text-white uppercase tracking-tight">Anitha</h4>
+                                <p class="text-[10px] text-zinc-400 font-bold uppercase tracking-widest mt-1">2 Hours Ago</p>
+                            </div>
+                        </div>
+                        <button class="w-10 h-10 flex items-center justify-center rounded-xl bg-zinc-50 dark:bg-zinc-800 text-zinc-400 hover:text-primary transition-colors">
+                            <i class="fa-solid fa-reply"></i>
+                        </button>
+                    </div>
+                    <p class="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed pl-2 md:pl-16 font-medium">
+                        The tip about checking for swarm cells in late April was a lifesaver! I found two hives getting ready to split today. Thanks for the detailed guide!
+                    </p>
+                </div>
+
+                <div class="relative p-8 bg-primary/5 rounded-[3rem] border-2 border-primary/20">
+                    <div class="absolute -top-4 left-10 px-4 py-1.5 bg-primary text-zinc-900 text-[10px] font-black uppercase tracking-[0.1em] rounded-full shadow-lg shadow-primary/20">
+                        Expert Q&A
+                    </div>
+                    
+                    <div class="flex items-center gap-4 mb-6 mt-2">
+                        <img src="assets/t3" class="w-12 h-12 rounded-2xl object-cover">
+                        <h4 class="font-bold text-sm text-zinc-900 dark:text-white uppercase tracking-tight">Sarah Jenkins</h4>
+                    </div>
+                    <p class="text-base font-medium text-zinc-800 dark:text-zinc-200 mb-8 italic leading-relaxed">
+                        "What is the best way to introduce a new queen to a colony that has been queenless for more than a week?"
+                    </p>
+                    
+                    <div class="bg-white dark:bg-zinc-900 p-6 rounded-[2rem] border border-primary/10 shadow-sm relative">
+                        <div class="flex items-center gap-3 mb-3">
+                            <i class="fa-solid fa-certificate text-primary"></i>
+                            <span class="text-[10px] font-black text-primary uppercase tracking-widest">Master Beekeeper Response</span>
+                        </div>
+                        <p class="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed font-medium">
+                            Use a push-in cage over some emerging brood. This allows the queen to pick up the colony scent safely while the young bees immediately accept her. Monitor for 48 hours before full release.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="space-y-8">
+            <div class="lg:sticky lg:top-32 bg-zinc-950 p-10 rounded-[3.5rem] text-white border border-zinc-800 shadow-2xl shadow-primary/10">
+                
+                <div class="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center text-zinc-900 text-3xl mb-8 transform rotate-3">
+                    <i class="fa-solid fa-person-rays"></i>
+                </div>
+                
+                <h3 class="text-3xl font-semibold uppercase tracking-tighter mb-4 leading-none">
+                    Ask a <br><span class="text-primary italic">Expert</span>
+                </h3>
+                
+                <p class="text-zinc-400 text-sm mb-10 leading-relaxed font-medium">
+                    Facing a specific challenge? Send your query directly to our veteran apiarists.
+                </p>
+
+                <form class="space-y-5">
+                    <div class="space-y-2">
+                        <label class="text-[10px] font-black uppercase tracking-widest text-zinc-500 ml-2">Topic</label>
+                        <input type="text" placeholder="e.g., Mite Treatment" 
+                               class="w-full p-4 bg-zinc-900 border border-zinc-800 rounded-2xl text-xs text-white focus:border-primary outline-none transition-all placeholder:text-zinc-600">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-[10px] font-black uppercase tracking-widest text-zinc-500 ml-2">Description</label>
+                        <textarea placeholder="Describe your hive's behavior..." 
+                                  class="w-full p-4 bg-zinc-900 border border-zinc-800 rounded-2xl text-xs text-white focus:border-primary outline-none transition-all min-h-[140px] resize-none placeholder:text-zinc-600"></textarea>
+                    </div>
+                    
+                    <button class="w-full py-5 bg-primary text-zinc-900 font-black rounded-2xl text-[10px] uppercase tracking-widest hover:bg-white hover:scale-[1.02] transition-all active:scale-95 shadow-xl shadow-primary/20">
+                        Submit Question
+                    </button>
+                </form>
+
+                <div class="mt-10 pt-10 border-t border-zinc-900 flex items-center gap-4">
+                    <div class="flex -space-x-3">
+                        <div class="w-8 h-8 rounded-full border-2 border-zinc-950 bg-zinc-800 flex items-center justify-center text-[10px] font-bold">12</div>
+                        <div class="w-8 h-8 rounded-full border-2 border-zinc-950 bg-primary flex items-center justify-center text-[10px] font-bold text-zinc-900 italic">EX</div>
+                    </div>
+                    <div>
+                        <p class="text-[10px] font-black uppercase tracking-widest text-zinc-300">Fast Response</p>
+                        <p class="text-[9px] text-zinc-500 font-bold uppercase tracking-[0.1em]">Avg. 4 Hours</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <div class="relative group rounded-[3rem] md:rounded-[4rem] overflow-hidden border transition-all duration-500
+        /* Light Mode */
+        bg-zinc-50 border-zinc-200 shadow-xl shadow-zinc-200/50 hover:shadow-primary/20
+        /* Dark Mode */
+        dark:bg-zinc-900 dark:border-zinc-800 dark:shadow-none dark:hover:shadow-primary/10">
+        
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full blur-[120px] transition-all duration-700
+            bg-primary/5 dark:bg-primary/10 group-hover:bg-primary/15"></div>
+        
+        <div class="flex flex-col items-center text-center">
+            
+            <div class="w-full max-w-4xl p-10 md:p-16 lg:p-24 relative z-20 flex flex-col items-center">
+                
+                <div class="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/20 text-primary rounded-xl text-[10px] font-black uppercase tracking-[0.2em] mb-8">
+                    <i class="fa-solid fa-bolt-lightning"></i> Seasonal Special
+                </div>
+                
+                <h2 class="text-4xl md:text-6xl lg:text-7xl font-semibold uppercase tracking-tighter leading-[0.95] mb-8 max-w-3xl
+                    text-zinc-900 dark:text-white">
+                    Ready to start your <br> <span class="text-primary italic">Honey Journey?</span>
+                </h2>
+                
+                <p class="text-base md:text-xl max-w-2xl mb-12 font-medium leading-relaxed opacity-90
+                    text-zinc-600 dark:text-zinc-400">
+                    Join 5,000+ sustainable beekeepers. Get our masterclass guide and 10% off your first professional equipment kit.
+                </p>
+
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
+                    <a href="shopnow.html" class="w-full sm:w-auto">
+                        <button class="w-full sm:w-auto px-12 py-5 bg-primary text-zinc-900 font-black rounded-2xl shadow-xl shadow-primary/30 transition-all active:scale-95 uppercase tracking-widest text-xs
+                            hover:scale-105 hover:bg-zinc-900 hover:text-white dark:hover:bg-white dark:hover:text-zinc-900">
+                            Get Started Now
+                        </button>
+                    </a>
+                    <a href="blog.html" class="w-full sm:w-auto">
+                        <button class="w-full sm:w-auto px-12 py-5 font-bold rounded-2xl transition-all active:scale-95 uppercase tracking-widest text-xs
+                            /* Light Mode */
+                            bg-white border-2 border-zinc-200 text-zinc-900 hover:bg-zinc-100
+                            /* Dark Mode */
+                            dark:bg-zinc-800 dark:border-zinc-700 dark:text-white dark:hover:bg-zinc-700">
+                            Join the Hive
+                        </button>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<style>
+    /* Mobile-first balance for the 360px range */
+    @media (max-width: 400px) {
+        h2 {
+            font-size: 2.25rem !important;
+            line-height: 1.1;
+        }
+        .p-10 {
+            padding: 3rem 1.25rem !important;
+        }
+    }
+</style>
+
+<style>
+    /* 360px Mobile Optimization */
+    @media (max-width: 400px) {
+        h2 {
+            font-size: 2.2rem !important;
+            line-height: 1.1;
+        }
+        .p-10 {
+            padding: 3rem 1.25rem !important;
+        }
+    }
+</style>
+
+<footer class="bg-zinc-900 text-zinc-300 pt-16 pb-8 border-t border-zinc-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+            
+            <div class="space-y-4">
+                <a href="index.html">
+                    <div class="flex items-center gap-2 text-white">
+                      <span class="text-3xl text-amber-500 drop-shadow-[0_0_10px_rgba(245,158,11,0.4)]">
+    <i class="fa-solid fa-jar"></i>
+</span>
+                    <span class="font-bold text-2xl tracking-tight uppercase">Golden<span class="text-primary">Hive</span></span>
+                </div>
+                </a>
+                
+                <p class="text-sm leading-relaxed text-zinc-400">
+                    Dedicated to preserving the bee population and providing the world with pure, organic honey and quality beekeeping equipment.
+                </p>
+                <div class="flex gap-4 text-xl">
+                    <a href="#" class="text-zinc-500 hover:text-primary transition-colors"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="text-zinc-500 hover:text-primary transition-colors"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-zinc-500 hover:text-primary transition-colors"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-zinc-500 hover:text-primary transition-colors"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="text-white font-bold mb-6">Quick Links</h4>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="index.html" class="hover:text-primary transition-colors">Home</a></li>
+                    <li><a href="home2.html" class="hover:text-primary transition-colors">Home 2</a></li>
+                    <li><a href="about.html" class="hover:text-primary transition-colors">About Us</a></li>
+                    <li><a href="shopnow.html" class="hover:text-primary transition-colors">Shop</a></li>
+                    <li><a href="contact.html" class="hover:text-primary transition-colors">Contact</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-white font-bold mb-6">Support</h4>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="comingsoon.html" class="hover:text-primary transition-colors">Coming Soon</a></li>
+                    <li><a href="404.html" class="hover:text-primary transition-colors">404 Page</a></li>
+                    <li><a href="categories.html" class="hover:text-primary transition-colors">Product Categories</a></li>
+                    <li><a href="#" class="hover:text-primary transition-colors">Sustainability</a></li>
+                    <li><a href="blog.html" class="hover:text-primary transition-colors">Blog</a></li>
+                </ul>
+            </div>
+
+            <div class="bg-zinc-800/40 p-6 rounded-2xl border border-zinc-700/50">
+                <h4 class="text-white font-bold mb-4">Join the Hive</h4>
+                <p class="text-xs text-zinc-400 mb-4 leading-relaxed">
+                    Get beekeeping tips and sweet offers straight to your inbox.
+                </p>
+                <form class="space-y-3">
+                    <input 
+                        type="email" 
+                        placeholder="Your email" 
+                        class="w-full px-4 py-2.5 rounded-lg bg-zinc-900 border border-zinc-700 focus:ring-2 focus:ring-primary outline-none text-sm text-white transition-all"
+                    >
+                    <button class="w-full py-2.5 bg-primary hover:bg-yellow-500 text-zinc-900 font-bold rounded-lg transition-all shadow-lg shadow-primary/10">
+                        Subscribe
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <div class="mt-16 pt-8 border-t border-zinc-800 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="text-[11px] text-zinc-500 uppercase tracking-widest">
+                © 2026 GoldenHive Apiary. All Rights Reserved.
+            </p>
+            <div class="flex gap-6 text-[11px] text-zinc-500 uppercase tracking-widest">
+                <a href="#" class="hover:text-white transition-colors">Sitemap</a>
+                <a href="#" class="hover:text-white transition-colors">Terms of Use</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script>
+        // Persistence Logic
+        const html = document.documentElement;
+        const themeIcon = document.getElementById('theme-icon');
+
+        // Initialization
+        window.onload = () => {
+            if (localStorage.getItem('theme') === 'dark') {
+                html.classList.add('dark');
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+            }
+            if (localStorage.getItem('dir') === 'rtl') {
+                html.setAttribute('dir', 'rtl');
+            }
+        };
+
+        function toggleTheme() {
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+                themeIcon.classList.replace('fa-sun', 'fa-moon');
+            } else {
+                html.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+            }
+        }
+
+        function toggleDirection() {
+            const currentDir = html.getAttribute('dir');
+            const newDir = currentDir === 'ltr' ? 'rtl' : 'ltr';
+            html.setAttribute('dir', newDir);
+            localStorage.setItem('dir', newDir);
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+    </script>
+</body>
+</html>

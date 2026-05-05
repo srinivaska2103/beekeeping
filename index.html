@@ -95,9 +95,14 @@
     </div>
 </nav>
 
+<!-- 
+  MOBILE MENU OVERLAY
+  - Added 'hidden' and 'opacity-0' as the starting state.
+-->
 <div id="mobile-menu" class="fixed inset-0 z-[100] p-6 flex flex-col space-y-4 overflow-y-auto lg:hidden 
-    bg-zinc-50 dark:bg-zinc-950 transition-all duration-500">
+    bg-zinc-50 dark:bg-zinc-950 transition-all duration-500 hidden opacity-0 pointer-events-none">
     
+    <!-- HEADER -->
     <div class="flex justify-between items-center mb-8 border-b border-zinc-200 dark:border-zinc-800 pb-4">
         <div class="flex items-center gap-2">
             <span class="text-2xl text-primary"><i class="fa-solid fa-jar"></i></span>
@@ -108,123 +113,62 @@
         </button>
     </div>
 
+    <!-- NAVIGATION: Added onclick to all links -->
     <nav id="mobile-nav-list" class="flex flex-col space-y-2">
-        
-        <a href="index.html" class="nav-item group flex justify-between items-center px-6 py-5 rounded-3xl text-xl font-bold uppercase tracking-tight transition-all duration-300 hover:bg-zinc-100 dark:hover:bg-zinc-900">
+        <a href="index.html" onclick="toggleMobileMenu()" class="nav-item group flex justify-between items-center px-6 py-5 rounded-3xl text-xl font-bold uppercase tracking-tight transition-all duration-300 hover:bg-zinc-100 dark:hover:bg-zinc-900">
             <span>Home</span>
             <i class="fa-solid fa-chevron-right text-xs opacity-0 group-[.active]:opacity-100"></i>
         </a>
 
-        <a href="home2.html" class="nav-item group flex justify-between items-center px-6 py-5 rounded-3xl text-xl font-bold uppercase tracking-tight transition-all duration-300 hover:bg-zinc-100 dark:hover:bg-zinc-900">
+        <a href="home2.html" onclick="toggleMobileMenu()" class="nav-item group flex justify-between items-center px-6 py-5 rounded-3xl text-xl font-bold uppercase tracking-tight transition-all duration-300 hover:bg-zinc-100 dark:hover:bg-zinc-900">
             <span>Home2</span>
             <i class="fa-solid fa-chevron-right text-xs opacity-0 group-[.active]:opacity-100"></i>
         </a>
         
-        <a href="about.html" class="nav-item group flex justify-between items-center px-6 py-5 rounded-3xl text-xl font-bold uppercase tracking-tight transition-all duration-300 hover:bg-zinc-100 dark:hover:bg-zinc-900">
+        <a href="about.html" onclick="toggleMobileMenu()" class="nav-item group flex justify-between items-center px-6 py-5 rounded-3xl text-xl font-bold uppercase tracking-tight transition-all duration-300 hover:bg-zinc-100 dark:hover:bg-zinc-900">
             <span>About</span>
             <i class="fa-solid fa-chevron-right text-xs opacity-0 group-[.active]:opacity-100"></i>
         </a>
         
-        <a href="shopnow.html" class="nav-item group flex justify-between items-center px-6 py-5 rounded-3xl text-xl font-bold uppercase tracking-tight transition-all duration-300 hover:bg-zinc-100 dark:hover:bg-zinc-900">
+        <a href="shopnow.html" onclick="toggleMobileMenu()" class="nav-item group flex justify-between items-center px-6 py-5 rounded-3xl text-xl font-bold uppercase tracking-tight transition-all duration-300 hover:bg-zinc-100 dark:hover:bg-zinc-900">
             <span>Shop</span>
             <i class="fa-solid fa-chevron-right text-xs opacity-0 group-[.active]:opacity-100"></i>
         </a>
-           <a href="contact.html" class="nav-item group flex justify-between items-center px-6 py-5 rounded-3xl text-xl font-bold uppercase tracking-tight transition-all duration-300 hover:bg-zinc-100 dark:hover:bg-zinc-900">
+
+        <a href="contact.html" onclick="toggleMobileMenu()" class="nav-item group flex justify-between items-center px-6 py-5 rounded-3xl text-xl font-bold uppercase tracking-tight transition-all duration-300 hover:bg-zinc-100 dark:hover:bg-zinc-900">
             <span>Contact</span>
             <i class="fa-solid fa-chevron-right text-xs opacity-0 group-[.active]:opacity-100"></i>
         </a>
-<details class="group/details nav-item rounded-[2rem] transition-all duration-300 open:shadow-md dark:open:shadow-none">
-    <summary class="flex justify-between items-center px-6 py-5 list-none cursor-pointer text-xl font-bold uppercase tracking-tight 
-        /* Hover States */
-        hover:bg-zinc-100 dark:hover:bg-zinc-800 
-        /* Open States - Matching the dropdown body */
-        group-open/details:bg-zinc-100 dark:group-open/details:bg-zinc-900 
-        /* Text Colors */
-        text-zinc-900 dark:text-zinc-100
-        rounded-3xl outline-none [&::-webkit-details-marker]:hidden">
-        
-        <div class="flex items-center gap-3">
-            <i class="fas fa-chart-pie text-primary text-lg"></i>
-            <span>Dashboard</span>
-        </div>
-        <i class="fas fa-chevron-down text-xs transition-transform duration-300 group-open/details:rotate-180 text-zinc-400"></i>
-    </summary>
 
-    <div class="px-6 pb-8 flex flex-col gap-2 transition-all 
-        bg-zinc-100 dark:bg-zinc-900 
-        rounded-b-[2rem]">
-        
-        <div class="border-l-2 border-primary/20 dark:border-primary/10 ml-3 flex flex-col">
-            
-            <a href="user.html" class="nav-item pl-6 py-3 text-lg font-bold transition-all
-                text-zinc-600 dark:text-zinc-400 
-                hover:text-primary dark:hover:text-primary 
-                hover:bg-zinc-200/50 dark:hover:bg-zinc-800/50 
-                rounded-xl">
-                User Profile
-            </a>
-
-          
-            
-        </div>
-    </div>
-</details>
+        <!-- Dashboard Dropdown -->
+        <details class="group/details nav-item rounded-[2rem] transition-all duration-300 open:shadow-md dark:open:shadow-none">
+            <summary class="flex justify-between items-center px-6 py-5 list-none cursor-pointer text-xl font-bold uppercase tracking-tight hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-900 dark:text-zinc-100 rounded-3xl outline-none [&::-webkit-details-marker]:hidden">
+                <div class="flex items-center gap-3">
+                    <i class="fas fa-chart-pie text-primary text-lg"></i>
+                    <span>Dashboard</span>
+                </div>
+                <i class="fas fa-chevron-down text-xs transition-transform duration-300 group-open/details:rotate-180 text-zinc-400"></i>
+            </summary>
+            <div class="px-6 pb-8 flex flex-col gap-2 transition-all bg-zinc-100 dark:bg-zinc-900 rounded-b-[2rem]">
+                <div class="border-l-2 border-primary/20 dark:border-primary/10 ml-3 flex flex-col">
+                    <a href="user.html" onclick="toggleMobileMenu()" class="nav-item pl-6 py-3 text-lg font-bold transition-all text-zinc-600 dark:text-zinc-400 hover:text-primary rounded-xl">
+                        User Profile
+                    </a>
+                </div>
+            </div>
+        </details>
     </nav>
 
+    <!-- FOOTER ACTIONS -->
     <div class="pt-8 flex flex-col gap-4 mt-auto">
-        <button onclick="toggleDirection()" class="w-full py-4 border-2 border-zinc-200 dark:border-zinc-800 rounded-2xl font-black text-[10px] uppercase tracking-widest flex items-center justify-center gap-2 dark:text-white bg-zinc-100 dark:bg-zinc-900 shadow-sm active:scale-95 transition-all">
-            <i class="fas fa-language text-primary"></i> Toggle Layout
-        </button>
-        
         <div class="grid grid-cols-2 gap-4">
-            <a href="login.html" class="w-full text-center py-4 border-2 border-primary text-primary font-black uppercase tracking-widest text-[10px] rounded-2xl active:scale-95 transition-all">Login</a>
-            <a href="shopnow.html" class="w-full text-center py-4 bg-primary text-zinc-900 font-black uppercase tracking-widest text-[10px] rounded-2xl shadow-lg shadow-primary/20 active:scale-95 transition-all">Shop Now</a>
+            <a href="login.html" onclick="toggleMobileMenu()" class="w-full text-center py-4 border-2 border-primary text-primary font-black uppercase tracking-widest text-[10px] rounded-2xl active:scale-95 transition-all">Login</a>
+            <a href="shopnow.html" onclick="toggleMobileMenu()" class="w-full text-center py-4 bg-primary text-zinc-900 font-black uppercase tracking-widest text-[10px] rounded-2xl shadow-lg shadow-primary/20 active:scale-95 transition-all">Shop Now</a>
         </div>
     </div>
 </div>
-
-<style>
-    /* THE HOVER/ACTIVE ENGINE
-       Ensures text is ALWAYS visible by flipping contrast 
-    */
-    
-    /* Default: Dark text in light mode, Light text in dark mode */
-    .nav-item {
-        color: #27272a; /* zinc-800 */
-    }
-    .dark .nav-item {
-        color: #f4f4f5; /* zinc-100 */
-    }
-
-    /* Hover/Tap: Solid dark background + Amber text */
-    .nav-item:hover:not(.active) {
-        background-color: #18181b; /* zinc-900 */
-        color: #f59e0b; /* primary amber */
-    }
-    .dark .nav-item:hover:not(.active) {
-        background-color: #f4f4f5; /* zinc-100 */
-        color: #18181b; /* zinc-900 */
-    }
-
-    /* Active State: The Automatic Highlight */
-    .nav-item.active {
-        background-color: #f59e0b; /* primary amber */
-        color: #18181b !important; /* Force dark text on yellow */
-        font-weight: 900;
-        box-shadow: 0 20px 25px -5px rgba(245, 158, 11, 0.2);
-    }
-</style>
-
 <script>
-    function toggleMobileMenu() {
-        const menu = document.getElementById('mobile-menu');
-        menu.classList.toggle('hidden');
-        document.body.style.overflow = menu.classList.contains('hidden') ? 'auto' : 'hidden';
-    }
-
-    /* AUTOMATIC ACTIVE STATE ENGINE
-       Detects current page and injects classes 
-    */
+   
     document.addEventListener("DOMContentLoaded", function() {
         const currentPath = window.location.pathname.split("/").pop() || "index.html";
         const navItems = document.querySelectorAll(".nav-item");
@@ -247,13 +191,7 @@
     });
 </script>
 <script>
-    // Toggle Mobile Menu Function
-    function toggleMobileMenu() {
-        const menu = document.getElementById('mobile-menu');
-        menu.classList.toggle('hidden');
-        // Prevent background scrolling when menu is open
-        document.body.style.overflow = menu.classList.contains('hidden') ? 'auto' : 'hidden';
-    }
+   
 
     // Handle Active Nav State
     document.addEventListener("DOMContentLoaded", function() {
@@ -287,6 +225,103 @@
         });
     });
 </script>
+<script>
+    /**
+     * Logic for smooth toggle
+     * Works across all breakpoints to ensure scroll-locking and visibility
+     */
+    function toggleMobileMenu() {
+        const menu = document.getElementById('mobile-menu');
+        const isHidden = menu.classList.contains('hidden');
+
+        if (isHidden) {
+            // OPEN
+            menu.classList.remove('hidden');
+            // Force reflow for transition
+            menu.offsetHeight; 
+            menu.classList.remove('opacity-0', 'pointer-events-none');
+            document.body.style.overflow = 'hidden'; 
+        } else {
+            // CLOSE
+            menu.classList.add('opacity-0', 'pointer-events-none');
+            setTimeout(() => {
+                menu.classList.add('hidden');
+            }, 500); 
+            document.body.style.overflow = 'auto';
+        }
+    }
+</script>
+  <script>
+        // Persistence Logic
+        const html = document.documentElement;
+        const themeIcon = document.getElementById('theme-icon');
+
+        // Initialization
+        window.onload = () => {
+            if (localStorage.getItem('theme') === 'dark') {
+                html.classList.add('dark');
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+            }
+            if (localStorage.getItem('dir') === 'rtl') {
+                html.setAttribute('dir', 'rtl');
+            }
+        };
+
+        function toggleTheme() {
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+                themeIcon.classList.replace('fa-sun', 'fa-moon');
+            } else {
+                html.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+            }
+        }
+
+        function toggleDirection() {
+            const currentDir = html.getAttribute('dir');
+            const newDir = currentDir === 'ltr' ? 'rtl' : 'ltr';
+            html.setAttribute('dir', newDir);
+            localStorage.setItem('dir', newDir);
+        }
+
+       
+    </script>
+
+<style>
+    /* THE HOVER/ACTIVE ENGINE
+       Ensures text is ALWAYS visible by flipping contrast 
+    */
+    
+    /* Default: Dark text in light mode, Light text in dark mode */
+    .nav-item {
+        color: #27272a; /* zinc-800 */
+    }
+    .dark .nav-item {
+        color: #f4f4f5; /* zinc-100 */
+    }
+
+    /* Hover/Tap: Solid dark background + Amber text */
+    .nav-item:hover:not(.active) {
+        background-color: #18181b; /* zinc-900 */
+        color: #f59e0b; /* primary amber */
+    }
+    .dark .nav-item:hover:not(.active) {
+        background-color: #f4f4f5; /* zinc-100 */
+        color: #18181b; /* zinc-900 */
+    }
+
+    /* Active State: The Automatic Highlight */
+    .nav-item.active {
+        background-color: #f59e0b; /* primary amber */
+        color: #18181b !important; /* Force dark text on yellow */
+        font-weight: 900;
+        box-shadow: 0 20px 25px -5px rgba(245, 158, 11, 0.2);
+    }
+</style>
+
+
 
   <section class="hero-bg min-h-[90vh] md:min-h-screen flex items-start md:items-center pt-32 pb-12 px-4 sm:px-6 lg:px-8 lg:pt-48 overflow-hidden">
     <div class="max-w-7xl mx-auto w-full flex flex-col items-center text-center">
@@ -304,7 +339,7 @@
     <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <a href="shopnow.html" class="w-full sm:w-auto">
             <button class="w-full sm:w-auto px-10 py-5 bg-primary hover:bg-yellow-500 text-zinc-900 rounded-2xl font-black text-xs uppercase tracking-widest shadow-xl shadow-primary/20 transition-all transform hover:scale-105 active:scale-95">
-                🛍️ Shop Honey
+                Shop Honey
             </button>
         </a>
         
@@ -337,7 +372,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-extrabold text-zinc-900 dark:text-white mb-4">
+            <h2 class="text-3xl md:text-4xl font-semibold text-zinc-900 dark:text-white mb-4">
                 Why Choose <span class="text-primary">GoldenHive</span>?
             </h2>
             <p class="text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
@@ -415,7 +450,7 @@
         
         <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
             <div>
-                <h2 class="text-3xl md:text-4xl font-extrabold text-zinc-900 dark:text-white uppercase tracking-tight">
+                <h2 class="text-3xl md:text-4xl font-semibold text-zinc-900 dark:text-white uppercase tracking-tight">
                     Shop by <span class="text-primary">Category</span>
                 </h2>
                 <p class="text-zinc-500 dark:text-zinc-400 mt-2">Premium supplies for every level of beekeeping.</p>
@@ -529,7 +564,7 @@
                     Our Humble Roots
                 </div>
                 
-                <h2 class="text-4xl md:text-5xl font-extrabold text-zinc-900 dark:text-white leading-tight">
+                <h2 class="text-4xl md:text-5xl font-semibold text-zinc-900 dark:text-white leading-tight">
                     From our family-run apiary to <span class="relative inline-block">
                         your home
                         <svg class="absolute -bottom-2 left-0 w-full h-2 text-primary/40" viewBox="0 0 100 10" preserveAspectRatio="none">
@@ -581,7 +616,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-5xl font-extrabold text-zinc-900 dark:text-white mb-4">
+            <h2 class="text-3xl md:text-5xl font-semibold text-zinc-900 dark:text-white mb-4">
                 Our <span class="text-primary">Best Sellers</span>
             </h2>
             <p class="text-zinc-500 dark:text-zinc-400 max-w-xl mx-auto">
@@ -721,7 +756,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-5xl font-extrabold text-zinc-900 dark:text-white mb-4">
+            <h2 class="text-3xl md:text-5xl font-semibold text-zinc-900 dark:text-white mb-4">
                 Nature's <span class="text-primary">Liquid Gold</span>
             </h2>
             <p class="text-zinc-500 dark:text-zinc-400 max-w-2xl mx-auto">
@@ -787,7 +822,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-5xl font-extrabold text-zinc-900 dark:text-white mb-4">
+            <h2 class="text-3xl md:text-5xl font-semibold text-zinc-900 dark:text-white mb-4">
                 What Our <span class="text-primary">Hive</span> Says
             </h2>
             <p class="text-zinc-500 dark:text-zinc-400 max-w-xl mx-auto">
@@ -880,7 +915,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-5xl font-extrabold text-zinc-900 dark:text-white mb-4">
+            <h2 class="text-3xl md:text-5xl font-semibold text-zinc-900 dark:text-white mb-4">
                 Join the <span class="text-primary">Hive Club</span>
             </h2>
             <p class="text-zinc-500 dark:text-zinc-400 max-w-xl mx-auto">
@@ -890,89 +925,168 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             
-            <div class="group relative bg-white dark:bg-zinc-800 rounded-[2.5rem] p-8 md:p-12 border-2 border-transparent hover:border-primary/40 transition-all duration-500 shadow-xl shadow-zinc-200/50 dark:shadow-none overflow-hidden">
-                <i class="fa-solid fa-jar absolute -right-8 -bottom-8 text-9xl text-primary/5 group-hover:text-primary/10 transition-colors rotate-12"></i>
-                
-                <div class="relative z-10">
-                    <div class="flex justify-between items-start mb-8">
-                        <div>
-                            <span class="px-4 py-1.5 bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 rounded-full text-xs font-black uppercase tracking-widest">Gourmet</span>
-                            <h3 class="text-3xl font-black mt-4 dark:text-white">Monthly Honey Box</h3>
-                        </div>
-                        <div class="text-right">
-                            <p class="text-4xl font-black text-primary">$29</p>
-                            <p class="text-xs text-zinc-400 font-bold uppercase">Per Month</p>
-                        </div>
-                    </div>
-
-                    <ul class="space-y-5 mb-10">
-                        <li class="flex items-center gap-3 text-zinc-600 dark:text-zinc-300 group-hover:translate-x-2 transition-transform">
-                            <i class="fa-solid fa-circle-check text-green-500"></i>
-                            2x Seasonal Premium Jars
-                        </li>
-                        <li class="flex items-center gap-3 text-zinc-600 dark:text-zinc-300 group-hover:translate-x-2 transition-transform">
-                            <i class="fa-solid fa-circle-check text-green-500"></i>
-                            1x Wildflower Seed Packet
-                        </li>
-                        <li class="flex items-center gap-3 text-zinc-600 dark:text-zinc-300 group-hover:translate-x-2 transition-transform">
-                            <i class="fa-solid fa-circle-check text-green-500"></i>
-                            Early Access to Rare Batches
-                        </li>
-                        <li class="flex items-center gap-3 text-zinc-600 dark:text-zinc-300 group-hover:translate-x-2 transition-transform">
-                            <i class="fa-solid fa-circle-check text-green-500"></i>
-                            Free Shipping Included
-                        </li>
-                    </ul>
-
-                    <button class="w-full py-5 bg-primary hover:bg-yellow-500 text-zinc-900 font-black rounded-2xl transition-all shadow-lg shadow-primary/20 transform hover:scale-[1.02]">
-                        Subscribe to Honey Box
-                    </button>
-                    <p class="text-center text-[10px] text-zinc-400 mt-4 uppercase tracking-tighter">Cancel anytime • No hidden fees</p>
+          <!-- 
+  SAAS HONEY SUBSCRIPTION CARD
+  - Strategy: Shift from "Product Box" to "Taster Membership"
+  - Interactivity: Added depth with hover-lift and scale-up CTA.
+-->
+<div class="group relative bg-white dark:bg-zinc-900 rounded-[3rem] p-10 md:p-12 border border-zinc-100 dark:border-zinc-800 hover:border-primary/40 transition-all duration-500 shadow-2xl shadow-zinc-200/50 dark:shadow-none overflow-hidden">
+    
+    <!-- Floating Background Brand Element -->
+    <i class="fa-solid fa-cloud-sun-rain absolute -right-10 -top-10 text-[12rem] text-primary/5 group-hover:text-primary/10 transition-all duration-700 -rotate-12"></i>
+    
+    <div class="relative z-10">
+        <!-- Header Section -->
+        <div class="flex flex-col items-center text-center mb-10">
+            <span class="px-5 py-2 bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 rounded-xl text-[10px] font-black uppercase tracking-[0.2em] mb-6">
+                Discovery Tier
+            </span>
+            <h3 class="text-4xl font-black text-zinc-900 dark:text-white uppercase tracking-tighter">
+                Gourmet <span class="text-primary italic">Club</span>
+            </h3>
+            
+            <!-- SaaS Price Architecture -->
+            <div class="mt-8 flex items-center gap-2">
+                <span class="text-5xl font-black text-zinc-900 dark:text-white">$29</span>
+                <div class="flex flex-col items-start leading-none">
+                    <span class="text-zinc-400 text-[10px] font-bold uppercase tracking-widest">USD</span>
+                    <span class="text-zinc-500 text-sm font-medium">/monthly</span>
                 </div>
             </div>
+            <p class="mt-4 text-xs font-semibold text-primary uppercase tracking-[0.1em]">Save 15% with annual billing</p>
+        </div>
 
-            <div class="group relative bg-zinc-900 dark:bg-zinc-700 rounded-[2.5rem] p-8 md:p-12 border-2 border-primary transition-all duration-500 shadow-2xl shadow-primary/10 overflow-hidden">
-                <div class="absolute top-0 right-12 bg-primary px-6 py-2 rounded-b-2xl text-zinc-900 text-xs font-black uppercase tracking-widest">
-                    Best Value
+        <div class="h-px w-full bg-gradient-to-r from-transparent via-zinc-200 dark:via-zinc-800 to-transparent mb-10"></div>
+
+        <!-- SaaS-Style Benefit Stack -->
+        <ul class="space-y-6 mb-12">
+            <li class="flex items-start gap-4 text-zinc-600 dark:text-zinc-300">
+                <div class="w-6 h-6 rounded-lg bg-green-500/10 flex items-center justify-center shrink-0">
+                    <i class="fa-solid fa-check text-green-500 text-[10px]"></i>
                 </div>
-                
-                <div class="relative z-10">
-                    <div class="flex justify-between items-start mb-8">
-                        <div>
-                            <span class="px-4 py-1.5 bg-primary/20 text-primary rounded-full text-xs font-black uppercase tracking-widest">Professional</span>
-                            <h3 class="text-3xl font-black mt-4 text-white">Supply Pro Box</h3>
-                        </div>
-                        <div class="text-right">
-                            <p class="text-4xl font-black text-primary">$45</p>
-                            <p class="text-xs text-zinc-400 font-bold uppercase">Per Month</p>
-                        </div>
-                    </div>
-
-                    <ul class="space-y-5 mb-10">
-                        <li class="flex items-center gap-3 text-zinc-300 group-hover:translate-x-2 transition-transform">
-                            <i class="fa-solid fa-circle-check text-primary"></i>
-                            Seasonal Mite Treatments
-                        </li>
-                        <li class="flex items-center gap-3 text-zinc-300 group-hover:translate-x-2 transition-transform">
-                            <i class="fa-solid fa-circle-check text-primary"></i>
-                            Fresh Smoker Fuel & Pellets
-                        </li>
-                        <li class="flex items-center gap-3 text-zinc-300 group-hover:translate-x-2 transition-transform">
-                            <i class="fa-solid fa-circle-check text-primary"></i>
-                            Tool Replacement Coverage
-                        </li>
-                        <li class="flex items-center gap-3 text-zinc-300 group-hover:translate-x-2 transition-transform">
-                            <i class="fa-solid fa-circle-check text-primary"></i>
-                            15% Off All Hardware
-                        </li>
-                    </ul>
-
-                    <button class="w-full py-5 bg-white hover:bg-zinc-100 text-zinc-900 font-black rounded-2xl transition-all shadow-lg transform hover:scale-[1.02]">
-                        Start Supply Subscription
-                    </button>
-                    <p class="text-center text-[10px] text-zinc-500 mt-4 uppercase tracking-tighter">Perfect for hobbyists & farmers</p>
+                <div>
+                    <p class="text-sm font-bold text-zinc-900 dark:text-white uppercase tracking-tight">Curated Selection</p>
+                    <p class="text-[11px] opacity-70">2x Seasonal Premium Jars delivered to your door.</p>
                 </div>
+            </li>
+
+            <li class="flex items-start gap-4 text-zinc-600 dark:text-zinc-300">
+                <div class="w-6 h-6 rounded-lg bg-green-500/10 flex items-center justify-center shrink-0">
+                    <i class="fa-solid fa-check text-green-500 text-[10px]"></i>
+                </div>
+                <div>
+                    <p class="text-sm font-bold text-zinc-900 dark:text-white uppercase tracking-tight">VIP Rare Access</p>
+                    <p class="text-[11px] opacity-70">24h Early Access to reserve limited monocultural batches.</p>
+                </div>
+            </li>
+
+            <li class="flex items-start gap-4 text-zinc-600 dark:text-zinc-300">
+                <div class="w-6 h-6 rounded-lg bg-green-500/10 flex items-center justify-center shrink-0">
+                    <i class="fa-solid fa-check text-green-500 text-[10px]"></i>
+                </div>
+                <div>
+                    <p class="text-sm font-bold text-zinc-900 dark:text-white uppercase tracking-tight">Member Logistics</p>
+                    <p class="text-[11px] opacity-70">Zero-cost global shipping & flexible pause anytime.</p>
+                </div>
+            </li>
+        </ul>
+
+        <!-- Primary Call to Action -->
+        <button class="w-full py-5 bg-zinc-900 dark:bg-primary text-white dark:text-zinc-900 font-black rounded-2xl transition-all shadow-xl hover:shadow-primary/20 transform hover:-translate-y-1 uppercase tracking-widest text-xs">
+            Start Your Membership
+        </button>
+        
+        <div class="mt-6 flex items-center justify-center gap-4 text-zinc-400">
+            <span class="flex items-center gap-1.5 text-[9px] font-bold uppercase tracking-tighter">
+                <i class="fa-solid fa-lock"></i> Secure SSL
+            </span>
+            <span class="flex items-center gap-1.5 text-[9px] font-bold uppercase tracking-tighter">
+                <i class="fa-solid fa-rotate-left"></i> 14-Day Refund
+            </span>
+        </div>
+    </div>
+</div>
+
+            <!-- 
+  SAAS PRICING CARD REDESIGN
+  - Theme: Modern SaaS (Software/Service as a Service)
+  - Focus: Subscription management, Data, and Maintenance.
+-->
+<div class="group relative bg-zinc-50 dark:bg-zinc-900 rounded-[3rem] p-10 md:p-12 border-2 border-primary transition-all duration-500 hover:shadow-[0_0_50px_-12px_rgba(245,158,11,0.3)] overflow-hidden">
+    
+    <!-- SaaS "Most Popular" Ribbon -->
+    <div class="absolute top-0 right-10 bg-primary px-6 py-2 rounded-b-2xl text-zinc-900 text-[10px] font-black uppercase tracking-widest shadow-lg">
+        Most Popular
+    </div>
+    
+    <!-- Subtle Background "Data" Element -->
+    <div class="absolute -bottom-10 -right-10 text-primary/5 dark:text-primary/10 text-9xl transform -rotate-12 transition-transform group-hover:rotate-0 duration-1000">
+        <i class="fa-solid fa-chart-line"></i>
+    </div>
+
+    <div class="relative z-10">
+        <!-- Header: Centered Alignment -->
+        <div class="flex flex-col items-center text-center mb-10">
+            <span class="px-5 py-2 bg-primary/10 text-primary rounded-full text-[10px] font-bold uppercase tracking-[0.2em] border border-primary/20">
+                Master Apiarist Plan
+            </span>
+            <h3 class="text-4xl font-black mt-6 text-zinc-900 dark:text-white tracking-tighter uppercase">
+                Supply <span class="text-primary italic">Pro</span>
+            </h3>
+            
+            <!-- SaaS Pricing Logic -->
+            <div class="mt-6 flex items-baseline gap-1">
+                <span class="text-5xl font-black text-zinc-900 dark:text-white">$45</span>
+                <span class="text-zinc-500 text-sm font-medium">/per month</span>
             </div>
+            <p class="text-zinc-400 text-xs font-semibold mt-2 uppercase tracking-widest">Billed annually</p>
+        </div>
+
+        <hr class="border-zinc-200 dark:border-zinc-800 mb-10">
+
+        <!-- SaaS Feature List -->
+        <ul class="space-y-6 mb-12">
+            <li class="flex items-start gap-4 text-zinc-600 dark:text-zinc-300">
+                <div class="mt-1 w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                    <i class="fa-solid fa-check text-primary text-[10px]"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-bold text-sm text-zinc-900 dark:text-white uppercase tracking-tight">Smart Colony Tracking</span>
+                    <span class="text-xs opacity-70">Real-time health & mite analytics dashboard.</span>
+                </div>
+            </li>
+            
+            <li class="flex items-start gap-4 text-zinc-600 dark:text-zinc-300">
+                <div class="mt-1 w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                    <i class="fa-solid fa-check text-primary text-[10px]"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-bold text-sm text-zinc-900 dark:text-white uppercase tracking-tight">Priority Consumables</span>
+                    <span class="text-xs opacity-70">Automated shipping of treatments & fuel.</span>
+                </div>
+            </li>
+
+            <li class="flex items-start gap-4 text-zinc-600 dark:text-zinc-300">
+                <div class="mt-1 w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                    <i class="fa-solid fa-check text-primary text-[10px]"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-bold text-sm text-zinc-900 dark:text-white uppercase tracking-tight">Hardware Protection</span>
+                    <span class="text-xs opacity-70">Coverage for hive damage & tool failure.</span>
+                </div>
+            </li>
+        </ul>
+
+        <!-- SaaS CTA -->
+        <button class="w-full py-5 bg-zinc-900 dark:bg-primary text-white dark:text-zinc-900 font-black rounded-[2rem] transition-all shadow-xl hover:shadow-primary/20 transform hover:-translate-y-1 uppercase tracking-widest text-[11px]">
+            Upgrade to Pro Now
+        </button>
+        
+        <p class="text-center text-[10px] text-zinc-400 mt-6 font-bold uppercase tracking-widest">
+            30-Day Money Back Guarantee
+        </p>
+    </div>
+</div>
 
         </div>
     </div>
@@ -983,7 +1097,7 @@
         
         <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
             <div class="max-w-xl">
-                <h2 class="text-3xl md:text-5xl font-extrabold text-zinc-900 dark:text-white mb-4">
+                <h2 class="text-3xl md:text-5xl font-semibold text-zinc-900 dark:text-white mb-4">
                     The <span class="text-primary">Buzz</span> Blog
                 </h2>
                 <p class="text-zinc-500 dark:text-zinc-400">
@@ -1102,7 +1216,7 @@
             
 
             <div class="relative z-10 max-w-3xl mx-auto">
-                <h2 class="text-4xl md:text-6xl font-black text-zinc-900 dark:text-white mb-6 leading-tight">
+                <h2 class="text-4xl md:text-6xl font-semibold text-zinc-900 dark:text-white mb-6 leading-tight">
                     Ready to Start Your <br class="hidden md:block"> <span class="text-primary">Sweet Journey?</span>
                 </h2>
                 <p class="text-zinc-600 dark:text-zinc-400 text-lg md:text-xl mb-10 font-medium">
@@ -1110,10 +1224,10 @@
                 </p>
 
                 <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <a href="shopnow.html" class="w-full sm:w-auto px-10 py-5 bg-zinc-900 dark:bg-primary text-white dark:text-zinc-900 font-black rounded-2xl shadow-xl shadow-zinc-900/20 dark:shadow-primary/20 hover:scale-105 active:scale-95 transition-all duration-300">
+                    <a href="shopnow.html" class="w-full sm:w-auto px-10 py-5 bg-zinc-900 dark:bg-primary text-white dark:text-zinc-900 font-semibold rounded-2xl shadow-xl shadow-zinc-900/20 dark:shadow-primary/20 hover:scale-105 active:scale-95 transition-all duration-300">
                          Shop the Collection
                     </a>
-                    <a href="contact.html" class="w-full sm:w-auto px-10 py-5 bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-900 dark:text-white font-black rounded-2xl hover:bg-zinc-50 dark:hover:bg-zinc-700 transition-all duration-300">
+                    <a href="contact.html" class="w-full sm:w-auto px-10 py-5 bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-900 dark:text-white font-semibold rounded-2xl hover:bg-zinc-50 dark:hover:bg-zinc-700 transition-all duration-300">
                          Get Expert Advice
                     </a>
                 </div>
@@ -1217,45 +1331,6 @@
     </div>
 </footer>
 
-    <script>
-        // Persistence Logic
-        const html = document.documentElement;
-        const themeIcon = document.getElementById('theme-icon');
-
-        // Initialization
-        window.onload = () => {
-            if (localStorage.getItem('theme') === 'dark') {
-                html.classList.add('dark');
-                themeIcon.classList.replace('fa-moon', 'fa-sun');
-            }
-            if (localStorage.getItem('dir') === 'rtl') {
-                html.setAttribute('dir', 'rtl');
-            }
-        };
-
-        function toggleTheme() {
-            if (html.classList.contains('dark')) {
-                html.classList.remove('dark');
-                localStorage.setItem('theme', 'light');
-                themeIcon.classList.replace('fa-sun', 'fa-moon');
-            } else {
-                html.classList.add('dark');
-                localStorage.setItem('theme', 'dark');
-                themeIcon.classList.replace('fa-moon', 'fa-sun');
-            }
-        }
-
-        function toggleDirection() {
-            const currentDir = html.getAttribute('dir');
-            const newDir = currentDir === 'ltr' ? 'rtl' : 'ltr';
-            html.setAttribute('dir', newDir);
-            localStorage.setItem('dir', newDir);
-        }
-
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        }
-    </script>
+  
 </body>
 </html>

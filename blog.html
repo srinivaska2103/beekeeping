@@ -96,8 +96,9 @@
 </nav>
 
 <div id="mobile-menu" class="fixed inset-0 z-[100] p-6 flex flex-col space-y-4 overflow-y-auto lg:hidden 
-    bg-zinc-50 dark:bg-zinc-950 transition-all duration-500">
+    bg-zinc-50 dark:bg-zinc-950 transition-all duration-500 hidden opacity-0 pointer-events-none">
     
+    <!-- HEADER -->
     <div class="flex justify-between items-center mb-8 border-b border-zinc-200 dark:border-zinc-800 pb-4">
         <div class="flex items-center gap-2">
             <span class="text-2xl text-primary"><i class="fa-solid fa-jar"></i></span>
@@ -108,123 +109,62 @@
         </button>
     </div>
 
+    <!-- NAVIGATION: Added onclick to all links -->
     <nav id="mobile-nav-list" class="flex flex-col space-y-2">
-        
-        <a href="index.html" class="nav-item group flex justify-between items-center px-6 py-5 rounded-3xl text-xl font-bold uppercase tracking-tight transition-all duration-300 hover:bg-zinc-100 dark:hover:bg-zinc-900">
+        <a href="index.html" onclick="toggleMobileMenu()" class="nav-item group flex justify-between items-center px-6 py-5 rounded-3xl text-xl font-bold uppercase tracking-tight transition-all duration-300 hover:bg-zinc-100 dark:hover:bg-zinc-900">
             <span>Home</span>
             <i class="fa-solid fa-chevron-right text-xs opacity-0 group-[.active]:opacity-100"></i>
         </a>
 
-        <a href="home2.html" class="nav-item group flex justify-between items-center px-6 py-5 rounded-3xl text-xl font-bold uppercase tracking-tight transition-all duration-300 hover:bg-zinc-100 dark:hover:bg-zinc-900">
+        <a href="home2.html" onclick="toggleMobileMenu()" class="nav-item group flex justify-between items-center px-6 py-5 rounded-3xl text-xl font-bold uppercase tracking-tight transition-all duration-300 hover:bg-zinc-100 dark:hover:bg-zinc-900">
             <span>Home2</span>
             <i class="fa-solid fa-chevron-right text-xs opacity-0 group-[.active]:opacity-100"></i>
         </a>
         
-        <a href="about.html" class="nav-item group flex justify-between items-center px-6 py-5 rounded-3xl text-xl font-bold uppercase tracking-tight transition-all duration-300 hover:bg-zinc-100 dark:hover:bg-zinc-900">
+        <a href="about.html" onclick="toggleMobileMenu()" class="nav-item group flex justify-between items-center px-6 py-5 rounded-3xl text-xl font-bold uppercase tracking-tight transition-all duration-300 hover:bg-zinc-100 dark:hover:bg-zinc-900">
             <span>About</span>
             <i class="fa-solid fa-chevron-right text-xs opacity-0 group-[.active]:opacity-100"></i>
         </a>
         
-        <a href="shopnow.html" class="nav-item group flex justify-between items-center px-6 py-5 rounded-3xl text-xl font-bold uppercase tracking-tight transition-all duration-300 hover:bg-zinc-100 dark:hover:bg-zinc-900">
+        <a href="shopnow.html" onclick="toggleMobileMenu()" class="nav-item group flex justify-between items-center px-6 py-5 rounded-3xl text-xl font-bold uppercase tracking-tight transition-all duration-300 hover:bg-zinc-100 dark:hover:bg-zinc-900">
             <span>Shop</span>
             <i class="fa-solid fa-chevron-right text-xs opacity-0 group-[.active]:opacity-100"></i>
         </a>
-           <a href="contact.html" class="nav-item group flex justify-between items-center px-6 py-5 rounded-3xl text-xl font-bold uppercase tracking-tight transition-all duration-300 hover:bg-zinc-100 dark:hover:bg-zinc-900">
+
+        <a href="contact.html" onclick="toggleMobileMenu()" class="nav-item group flex justify-between items-center px-6 py-5 rounded-3xl text-xl font-bold uppercase tracking-tight transition-all duration-300 hover:bg-zinc-100 dark:hover:bg-zinc-900">
             <span>Contact</span>
             <i class="fa-solid fa-chevron-right text-xs opacity-0 group-[.active]:opacity-100"></i>
         </a>
-<details class="group/details nav-item rounded-[2rem] transition-all duration-300 open:shadow-md dark:open:shadow-none">
-    <summary class="flex justify-between items-center px-6 py-5 list-none cursor-pointer text-xl font-bold uppercase tracking-tight 
-        /* Hover States */
-        hover:bg-zinc-100 dark:hover:bg-zinc-800 
-        /* Open States - Matching the dropdown body */
-        group-open/details:bg-zinc-100 dark:group-open/details:bg-zinc-900 
-        /* Text Colors */
-        text-zinc-900 dark:text-zinc-100
-        rounded-3xl outline-none [&::-webkit-details-marker]:hidden">
-        
-        <div class="flex items-center gap-3">
-            <i class="fas fa-chart-pie text-primary text-lg"></i>
-            <span>Dashboard</span>
-        </div>
-        <i class="fas fa-chevron-down text-xs transition-transform duration-300 group-open/details:rotate-180 text-zinc-400"></i>
-    </summary>
 
-    <div class="px-6 pb-8 flex flex-col gap-2 transition-all 
-        bg-zinc-100 dark:bg-zinc-900 
-        rounded-b-[2rem]">
-        
-        <div class="border-l-2 border-primary/20 dark:border-primary/10 ml-3 flex flex-col">
-            
-            <a href="user.html" class="nav-item pl-6 py-3 text-lg font-bold transition-all
-                text-zinc-600 dark:text-zinc-400 
-                hover:text-primary dark:hover:text-primary 
-                hover:bg-zinc-200/50 dark:hover:bg-zinc-800/50 
-                rounded-xl">
-                User Profile
-            </a>
-
-          
-            
-        </div>
-    </div>
-</details>
+        <!-- Dashboard Dropdown -->
+        <details class="group/details nav-item rounded-[2rem] transition-all duration-300 open:shadow-md dark:open:shadow-none">
+            <summary class="flex justify-between items-center px-6 py-5 list-none cursor-pointer text-xl font-bold uppercase tracking-tight hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-900 dark:text-zinc-100 rounded-3xl outline-none [&::-webkit-details-marker]:hidden">
+                <div class="flex items-center gap-3">
+                    <i class="fas fa-chart-pie text-primary text-lg"></i>
+                    <span>Dashboard</span>
+                </div>
+                <i class="fas fa-chevron-down text-xs transition-transform duration-300 group-open/details:rotate-180 text-zinc-400"></i>
+            </summary>
+            <div class="px-6 pb-8 flex flex-col gap-2 transition-all bg-zinc-100 dark:bg-zinc-900 rounded-b-[2rem]">
+                <div class="border-l-2 border-primary/20 dark:border-primary/10 ml-3 flex flex-col">
+                    <a href="user.html" onclick="toggleMobileMenu()" class="nav-item pl-6 py-3 text-lg font-bold transition-all text-zinc-600 dark:text-zinc-400 hover:text-primary rounded-xl">
+                        User Profile
+                    </a>
+                </div>
+            </div>
+        </details>
     </nav>
 
+    <!-- FOOTER ACTIONS -->
     <div class="pt-8 flex flex-col gap-4 mt-auto">
-        <button onclick="toggleDirection()" class="w-full py-4 border-2 border-zinc-200 dark:border-zinc-800 rounded-2xl font-black text-[10px] uppercase tracking-widest flex items-center justify-center gap-2 dark:text-white bg-zinc-100 dark:bg-zinc-900 shadow-sm active:scale-95 transition-all">
-            <i class="fas fa-language text-primary"></i> Toggle Layout
-        </button>
-        
         <div class="grid grid-cols-2 gap-4">
-            <a href="login.html" class="w-full text-center py-4 border-2 border-primary text-primary font-black uppercase tracking-widest text-[10px] rounded-2xl active:scale-95 transition-all">Login</a>
-            <a href="shopnow.html" class="w-full text-center py-4 bg-primary text-zinc-900 font-black uppercase tracking-widest text-[10px] rounded-2xl shadow-lg shadow-primary/20 active:scale-95 transition-all">Shop Now</a>
+            <a href="login.html" onclick="toggleMobileMenu()" class="w-full text-center py-4 border-2 border-primary text-primary font-black uppercase tracking-widest text-[10px] rounded-2xl active:scale-95 transition-all">Login</a>
+            <a href="shopnow.html" onclick="toggleMobileMenu()" class="w-full text-center py-4 bg-primary text-zinc-900 font-black uppercase tracking-widest text-[10px] rounded-2xl shadow-lg shadow-primary/20 active:scale-95 transition-all">Shop Now</a>
         </div>
     </div>
 </div>
-
-<style>
-    /* THE HOVER/ACTIVE ENGINE
-       Ensures text is ALWAYS visible by flipping contrast 
-    */
-    
-    /* Default: Dark text in light mode, Light text in dark mode */
-    .nav-item {
-        color: #27272a; /* zinc-800 */
-    }
-    .dark .nav-item {
-        color: #f4f4f5; /* zinc-100 */
-    }
-
-    /* Hover/Tap: Solid dark background + Amber text */
-    .nav-item:hover:not(.active) {
-        background-color: #18181b; /* zinc-900 */
-        color: #f59e0b; /* primary amber */
-    }
-    .dark .nav-item:hover:not(.active) {
-        background-color: #f4f4f5; /* zinc-100 */
-        color: #18181b; /* zinc-900 */
-    }
-
-    /* Active State: The Automatic Highlight */
-    .nav-item.active {
-        background-color: #f59e0b; /* primary amber */
-        color: #18181b !important; /* Force dark text on yellow */
-        font-weight: 900;
-        box-shadow: 0 20px 25px -5px rgba(245, 158, 11, 0.2);
-    }
-</style>
-
 <script>
-    function toggleMobileMenu() {
-        const menu = document.getElementById('mobile-menu');
-        menu.classList.toggle('hidden');
-        document.body.style.overflow = menu.classList.contains('hidden') ? 'auto' : 'hidden';
-    }
-
-    /* AUTOMATIC ACTIVE STATE ENGINE
-       Detects current page and injects classes 
-    */
+   
     document.addEventListener("DOMContentLoaded", function() {
         const currentPath = window.location.pathname.split("/").pop() || "index.html";
         const navItems = document.querySelectorAll(".nav-item");
@@ -247,13 +187,7 @@
     });
 </script>
 <script>
-    // Toggle Mobile Menu Function
-    function toggleMobileMenu() {
-        const menu = document.getElementById('mobile-menu');
-        menu.classList.toggle('hidden');
-        // Prevent background scrolling when menu is open
-        document.body.style.overflow = menu.classList.contains('hidden') ? 'auto' : 'hidden';
-    }
+   
 
     // Handle Active Nav State
     document.addEventListener("DOMContentLoaded", function() {
@@ -287,6 +221,103 @@
         });
     });
 </script>
+<script>
+    /**
+     * Logic for smooth toggle
+     * Works across all breakpoints to ensure scroll-locking and visibility
+     */
+    function toggleMobileMenu() {
+        const menu = document.getElementById('mobile-menu');
+        const isHidden = menu.classList.contains('hidden');
+
+        if (isHidden) {
+            // OPEN
+            menu.classList.remove('hidden');
+            // Force reflow for transition
+            menu.offsetHeight; 
+            menu.classList.remove('opacity-0', 'pointer-events-none');
+            document.body.style.overflow = 'hidden'; 
+        } else {
+            // CLOSE
+            menu.classList.add('opacity-0', 'pointer-events-none');
+            setTimeout(() => {
+                menu.classList.add('hidden');
+            }, 500); 
+            document.body.style.overflow = 'auto';
+        }
+    }
+</script>
+  <script>
+        // Persistence Logic
+        const html = document.documentElement;
+        const themeIcon = document.getElementById('theme-icon');
+
+        // Initialization
+        window.onload = () => {
+            if (localStorage.getItem('theme') === 'dark') {
+                html.classList.add('dark');
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+            }
+            if (localStorage.getItem('dir') === 'rtl') {
+                html.setAttribute('dir', 'rtl');
+            }
+        };
+
+        function toggleTheme() {
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+                themeIcon.classList.replace('fa-sun', 'fa-moon');
+            } else {
+                html.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+            }
+        }
+
+        function toggleDirection() {
+            const currentDir = html.getAttribute('dir');
+            const newDir = currentDir === 'ltr' ? 'rtl' : 'ltr';
+            html.setAttribute('dir', newDir);
+            localStorage.setItem('dir', newDir);
+        }
+
+       
+    </script>
+
+<style>
+    /* THE HOVER/ACTIVE ENGINE
+       Ensures text is ALWAYS visible by flipping contrast 
+    */
+    
+    /* Default: Dark text in light mode, Light text in dark mode */
+    .nav-item {
+        color: #27272a; /* zinc-800 */
+    }
+    .dark .nav-item {
+        color: #f4f4f5; /* zinc-100 */
+    }
+
+    /* Hover/Tap: Solid dark background + Amber text */
+    .nav-item:hover:not(.active) {
+        background-color: #18181b; /* zinc-900 */
+        color: #f59e0b; /* primary amber */
+    }
+    .dark .nav-item:hover:not(.active) {
+        background-color: #f4f4f5; /* zinc-100 */
+        color: #18181b; /* zinc-900 */
+    }
+
+    /* Active State: The Automatic Highlight */
+    .nav-item.active {
+        background-color: #f59e0b; /* primary amber */
+        color: #18181b !important; /* Force dark text on yellow */
+        font-weight: 900;
+        box-shadow: 0 20px 25px -5px rgba(245, 158, 11, 0.2);
+    }
+</style>
+
+
 <section class="relative min-h-[85vh] md:min-h-screen flex items-center pt-32 pb-24 md:pt-48 md:pb-32 bg-zinc-950 overflow-hidden transition-all duration-300">
     
     <div class="absolute inset-0 z-0">
@@ -549,7 +580,7 @@
     <div class="flex flex-col md:flex-row justify-between items-end gap-6 mb-12">
         <div class="max-w-2xl text-center md:text-left mx-auto md:mx-0">
             <h2 class="text-3xl md:text-5xl font-semibold text-zinc-900 dark:text-white uppercase tracking-tighter">
-                Visual <span class="text-primary italic">Academy</span>
+                Visual <span class="text-primary ">Academy</span>
             </h2>
             <p class="text-zinc-500 dark:text-zinc-400 mt-4 font-medium">
                 Master the art of apiary management through our expert-led video tutorials.
@@ -613,7 +644,7 @@
         
         <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
             <div class="max-w-xl">
-                <h2 class="text-3xl md:text-5xl font-extrabold text-zinc-900 dark:text-white mb-4">
+                <h2 class="text-3xl md:text-5xl font-semibold text-zinc-900 dark:text-white mb-4">
                     The <span class="text-primary">Buzz</span> Blog
                 </h2>
                 <p class="text-zinc-500 dark:text-zinc-400">
@@ -730,7 +761,7 @@
             <div class="flex items-center justify-between">
                 <div>
                     <h3 class="text-3xl font-semibold text-zinc-900 dark:text-white uppercase tracking-tighter">
-                        Community <span class="text-primary italic">Buzz</span>
+                        Community <span class="text-primary ">Buzz</span>
                     </h3>
                     <p class="text-zinc-400 text-xs font-medium mt-1">Join the conversation with fellow apiarists.</p>
                 </div>
@@ -870,7 +901,7 @@
                 
                 <h2 class="text-4xl md:text-6xl lg:text-7xl font-semibold uppercase tracking-tighter leading-[0.95] mb-8 max-w-3xl
                     text-zinc-900 dark:text-white">
-                    Ready to start your <br> <span class="text-primary italic">Honey Journey?</span>
+                    Ready to start your <br> <span class="text-primary ">Honey Journey?</span>
                 </h2>
                 
                 <p class="text-base md:text-xl max-w-2xl mb-12 font-medium leading-relaxed opacity-90
@@ -880,13 +911,13 @@
 
                 <div class="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
                     <a href="shopnow.html" class="w-full sm:w-auto">
-                        <button class="w-full sm:w-auto px-12 py-5 bg-primary text-zinc-900 font-black rounded-2xl shadow-xl shadow-primary/30 transition-all active:scale-95 uppercase tracking-widest text-xs
+                        <button class="w-full sm:w-auto px-12 py-5 bg-primary text-zinc-900 font-semibold rounded-2xl shadow-xl shadow-primary/30 transition-all active:scale-95 uppercase tracking-widest text-xs
                             hover:scale-105 hover:bg-zinc-900 hover:text-white dark:hover:bg-white dark:hover:text-zinc-900">
                             Get Started Now
                         </button>
                     </a>
                     <a href="blog.html" class="w-full sm:w-auto">
-                        <button class="w-full sm:w-auto px-12 py-5 font-bold rounded-2xl transition-all active:scale-95 uppercase tracking-widest text-xs
+                        <button class="w-full sm:w-auto px-12 py-5 font-semibold rounded-2xl transition-all active:scale-95 uppercase tracking-widest text-xs
                             /* Light Mode */
                             bg-white border-2 border-zinc-200 text-zinc-900 hover:bg-zinc-100
                             /* Dark Mode */
@@ -1004,45 +1035,6 @@
     </div>
 </footer>
 
-    <script>
-        // Persistence Logic
-        const html = document.documentElement;
-        const themeIcon = document.getElementById('theme-icon');
-
-        // Initialization
-        window.onload = () => {
-            if (localStorage.getItem('theme') === 'dark') {
-                html.classList.add('dark');
-                themeIcon.classList.replace('fa-moon', 'fa-sun');
-            }
-            if (localStorage.getItem('dir') === 'rtl') {
-                html.setAttribute('dir', 'rtl');
-            }
-        };
-
-        function toggleTheme() {
-            if (html.classList.contains('dark')) {
-                html.classList.remove('dark');
-                localStorage.setItem('theme', 'light');
-                themeIcon.classList.replace('fa-sun', 'fa-moon');
-            } else {
-                html.classList.add('dark');
-                localStorage.setItem('theme', 'dark');
-                themeIcon.classList.replace('fa-moon', 'fa-sun');
-            }
-        }
-
-        function toggleDirection() {
-            const currentDir = html.getAttribute('dir');
-            const newDir = currentDir === 'ltr' ? 'rtl' : 'ltr';
-            html.setAttribute('dir', newDir);
-            localStorage.setItem('dir', newDir);
-        }
-
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        }
-    </script>
+  
 </body>
 </html>

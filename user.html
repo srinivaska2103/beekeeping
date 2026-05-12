@@ -218,8 +218,388 @@
         </div>
     </div>
 </header>
+<!-- 
+  DASHBOARD OVERLAY SECTION
+  - Grid: 1 Col (Mobile) | 2 Col (Tablet) | 4 Col (Desktop)
+  - Interactive: Hover-lift cards and dynamic progress bars.
+-->
+<!-- 
+  GOLDENHIVE MASTER DASHBOARD 
+  - Responsive Grid Logic: 1 Col (Mobile) | 2 Col (Tablet) | 4 Col (Desktop)
+  - Interactive: Single-Icon Dark Mode, Smooth Tab Switching, and Dynamic Stats
+-->
+<div class="min-h-screen bg-zinc-50 dark:bg-zinc-950 transition-colors duration-500">
 
-            <div class="p-4 lg:p-8 max-w-7xl mx-auto space-y-8">
+   
+
+    <div class="max-w-7xl mx-auto flex flex-col lg:flex-row min-h-[calc(100vh-80px)]">
+        
+        
+      
+
+        <!-- MAIN CONTENT AREA -->
+        <main class="flex-1 p-4 md:p-6 lg:p-10 overflow-hidden">
+    
+    <!-- OVERVIEW TAB CONTENT -->
+    <section id="overview-content" class="tab-content space-y-8 animate-fade-in">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div class="max-w-full">
+                <h2 class="text-3xl md:text-4xl font-black text-zinc-900 dark:text-white uppercase tracking-tighter leading-none break-words">
+                    Profile <span class="text-primary">Overview</span>
+                </h2>
+                <p class="text-zinc-500 dark:text-zinc-400 text-sm font-medium mt-2">Live monitoring: 12 active hives in Madurai Sector.</p>
+            </div>
+            <div class="flex items-center gap-2 bg-zinc-100 dark:bg-zinc-800 p-1.5 rounded-2xl w-fit shrink-0">
+                <button class="px-4 py-2 bg-white dark:bg-zinc-700 shadow-sm rounded-xl text-[10px] font-black uppercase tracking-widest">Live</button>
+                <button class="px-4 py-2 text-zinc-500 text-[10px] font-black uppercase tracking-widest">History</button>
+            </div>
+        </div>
+
+        <!-- Stats Grid: Fixed for 360px (2 columns) -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="bg-white dark:bg-zinc-900 p-5 md:p-6 rounded-[2rem] md:rounded-[2.5rem] border border-zinc-100 dark:border-zinc-800 shadow-sm group">
+                <div class="w-10 h-10 rounded-xl bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center text-primary mb-4 group-hover:scale-110 transition-all"><i class="fas fa-archive"></i></div>
+                <p class="text-[10px] font-black uppercase text-zinc-400 tracking-widest mb-1">Total Hives</p>
+                <h3 class="text-2xl md:text-3xl font-black dark:text-white">12</h3>
+            </div>
+            <div class="bg-white dark:bg-zinc-900 p-5 md:p-6 rounded-[2rem] md:rounded-[2.5rem] border border-zinc-100 dark:border-zinc-800 shadow-sm group">
+                <div class="w-10 h-10 rounded-xl bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-500 mb-4 group-hover:scale-110 transition-all"><i class="fas fa-weight-hanging"></i></div>
+                <p class="text-[10px] font-black uppercase text-zinc-400 tracking-widest mb-1">Produced</p>
+                <h3 class="text-2xl md:text-3xl font-black text-primary">84<span class="text-xs ml-1 font-bold">kg</span></h3>
+            </div>
+            <div class="hidden sm:block bg-white dark:bg-zinc-900 p-6 rounded-[2.5rem] border border-zinc-100 dark:border-zinc-800 shadow-sm group">
+                <div class="w-10 h-10 rounded-xl bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-500 mb-4 group-hover:scale-110 transition-all"><i class="fas fa-tasks"></i></div>
+                <p class="text-[10px] font-black uppercase text-zinc-400 tracking-widest mb-1">Active Tasks</p>
+                <h3 class="text-3xl font-black dark:text-white">05</h3>
+            </div>
+            <div class="bg-zinc-900 dark:bg-primary p-5 md:p-6 rounded-[2rem] md:rounded-[2.5rem] border border-zinc-800 shadow-xl shadow-primary/10 group">
+                <div class="w-10 h-10 rounded-xl bg-white/10 dark:bg-black/10 flex items-center justify-center text-primary dark:text-zinc-900 mb-4"><i class="fas fa-bolt"></i></div>
+                <p class="text-[10px] font-black uppercase text-white/50 dark:text-zinc-900/50 tracking-widest mb-1">Efficiency</p>
+                <h3 class="text-2xl md:text-3xl font-black text-white dark:text-zinc-900">92%</h3>
+            </div>
+        </div>
+
+        <!-- Visualization Row -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
+            <div class="lg:col-span-2 bg-white dark:bg-zinc-900 p-6 md:p-8 rounded-[2.5rem] md:rounded-[3rem] border border-zinc-100 dark:border-zinc-800">
+                <h3 class="font-black uppercase tracking-tight dark:text-white mb-8">Monthly Yield</h3>
+                <div class="flex items-end justify-between h-40 gap-3 md:gap-4">
+                    <div class="flex-1 bg-zinc-100 dark:bg-zinc-800 rounded-xl relative" style="height: 40%"><div class="absolute inset-0 bg-primary opacity-20 rounded-xl"></div></div>
+                    <div class="flex-1 bg-zinc-100 dark:bg-zinc-800 rounded-xl relative" style="height: 65%"><div class="absolute inset-0 bg-primary opacity-20 rounded-xl"></div></div>
+                    <div class="flex-1 bg-primary rounded-xl" style="height: 95%"></div>
+                    <div class="flex-1 bg-zinc-100 dark:bg-zinc-800 rounded-xl relative" style="height: 55%"><div class="absolute inset-0 bg-primary opacity-20 rounded-xl"></div></div>
+                </div>
+            </div>
+            <div class="bg-white dark:bg-zinc-900 p-8 rounded-[2.5rem] md:rounded-[3rem] border border-zinc-100 dark:border-zinc-800 flex flex-col items-center justify-center text-center">
+                <h3 class="font-black uppercase tracking-tight dark:text-white mb-6">Hive Health</h3>
+                <div class="relative w-32 h-32 flex items-center justify-center">
+                    <svg class="w-full h-full transform -rotate-90">
+                        <circle cx="64" cy="64" r="58" stroke="currentColor" stroke-width="10" fill="transparent" class="text-zinc-100 dark:text-zinc-800"/>
+                        <circle cx="64" cy="64" r="58" stroke="currentColor" stroke-width="10" fill="transparent" stroke-dasharray="364" stroke-dashoffset="65" class="text-primary transition-all duration-1000"/>
+                    </svg>
+                    <span class="absolute text-2xl font-black dark:text-white">82%</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHECKLIST TAB CONTENT -->
+  <section id="checklist-content" class="tab-content hidden space-y-8 animate-fade-in">
+    
+    <!-- SEASONAL PROGRESS BANNER -->
+    <div class="bg-zinc-900 p-8 rounded-[2.5rem] md:rounded-[3rem] border border-zinc-800 relative overflow-hidden shadow-2xl">
+        <div class="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+            <div class="space-y-2">
+                <h2 class="text-3xl md:text-4xl font-black text-white uppercase tracking-tighter leading-none">
+                    Spring <span class="text-primary italic">Maintenance</span>
+                </h2>
+                <p class="text-zinc-400 text-sm font-medium">Critical window for hive expansion ends in 14 days.</p>
+            </div>
+            
+            <!-- Dynamic Progress Ring -->
+            <div class="flex items-center gap-4 bg-white/5 p-4 rounded-[2rem] border border-white/10 shrink-0">
+                <div class="relative w-14 h-14 flex items-center justify-center">
+                    <svg class="w-full h-full transform -rotate-90">
+                        <circle cx="28" cy="28" r="24" stroke="currentColor" stroke-width="5" fill="transparent" class="text-white/10"/>
+                        <circle cx="28" cy="28" r="24" stroke="currentColor" stroke-width="5" fill="transparent" stroke-dasharray="150" stroke-dashoffset="45" class="text-primary transition-all duration-1000"/>
+                    </svg>
+                    <span class="absolute text-[10px] font-black text-white">70%</span>
+                </div>
+                <div>
+                    <p class="text-white text-[10px] font-black uppercase tracking-[0.2em]">Weekly Goal</p>
+                    <p class="text-zinc-500 text-[10px] font-bold">14/20 Tasks Complete</p>
+                </div>
+            </div>
+        </div>
+        <i class="fas fa-clipboard-check absolute -bottom-10 -right-10 text-white/5 text-9xl transform -rotate-12"></i>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        
+        <!-- MAIN TASK LIST (Left 2/3) -->
+        <div class="lg:col-span-2 space-y-6">
+            <div class="flex items-center justify-between px-2">
+                <h3 class="font-black uppercase tracking-tight dark:text-white">Active Priorities</h3>
+                <span class="text-[10px] font-black text-zinc-400 uppercase tracking-widest">May 12, 2026</span>
+            </div>
+
+            <div class="space-y-3">
+                <!-- Task 1: High Priority -->
+                <label class="group flex items-center justify-between p-5 md:p-6 bg-white dark:bg-zinc-900 rounded-[2rem] border border-zinc-100 dark:border-zinc-800 cursor-pointer transition-all hover:border-primary/50 active:scale-[0.98]">
+                    <div class="flex items-center gap-4">
+                        <div class="relative flex items-center justify-center">
+                            <input type="checkbox" checked class="peer w-7 h-7 appearance-none border-2 border-zinc-200 dark:border-zinc-700 rounded-xl checked:bg-primary checked:border-primary transition-all">
+                            <i class="fas fa-check absolute text-zinc-900 text-xs opacity-0 peer-checked:opacity-100 transition-opacity"></i>
+                        </div>
+                        <div>
+                            <span class="block text-sm font-black dark:text-white uppercase tracking-tight leading-tight peer-checked:text-zinc-400 peer-checked:line-through transition-all">Queen Health Inspection</span>
+                            <span class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest">Hive #04 • Priority High</span>
+                        </div>
+                    </div>
+                    <span class="px-3 py-1 bg-red-500/10 text-red-500 rounded-full text-[8px] font-black uppercase shrink-0">Critical</span>
+                </label>
+
+                <!-- Task 2: Routine -->
+                <label class="group flex items-center justify-between p-5 md:p-6 bg-white dark:bg-zinc-900 rounded-[2rem] border border-zinc-100 dark:border-zinc-800 cursor-pointer transition-all hover:border-primary/50 active:scale-[0.98]">
+                    <div class="flex items-center gap-4">
+                        <div class="relative flex items-center justify-center">
+                            <input type="checkbox" class="peer w-7 h-7 appearance-none border-2 border-zinc-200 dark:border-zinc-700 rounded-xl checked:bg-primary checked:border-primary transition-all">
+                            <i class="fas fa-check absolute text-zinc-900 text-xs opacity-0 peer-checked:opacity-100 transition-opacity"></i>
+                        </div>
+                        <div>
+                            <span class="block text-sm font-black dark:text-white uppercase tracking-tight leading-tight peer-checked:text-zinc-400 peer-checked:line-through transition-all">Mite Treatment Application</span>
+                            <span class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest">Global • All Active Hives</span>
+                        </div>
+                    </div>
+                    <span class="px-3 py-1 bg-amber-500/10 text-amber-500 rounded-full text-[8px] font-black uppercase shrink-0">Standard</span>
+                </label>
+
+                <!-- Task 3: Maintenance -->
+                <label class="group flex items-center justify-between p-5 md:p-6 bg-white dark:bg-zinc-900 rounded-[2rem] border border-zinc-100 dark:border-zinc-800 cursor-pointer transition-all hover:border-primary/50 active:scale-[0.98]">
+                    <div class="flex items-center gap-4">
+                        <div class="relative flex items-center justify-center">
+                            <input type="checkbox" class="peer w-7 h-7 appearance-none border-2 border-zinc-200 dark:border-zinc-700 rounded-xl checked:bg-primary checked:border-primary transition-all">
+                            <i class="fas fa-check absolute text-zinc-900 text-xs opacity-0 peer-checked:opacity-100 transition-opacity"></i>
+                        </div>
+                        <div>
+                            <span class="block text-sm font-black dark:text-white uppercase tracking-tight leading-tight peer-checked:text-zinc-400 peer-checked:line-through transition-all">Harvest Gear Sterilization</span>
+                            <span class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest">Main Workshop • Post-Shift</span>
+                        </div>
+                    </div>
+                    <span class="px-3 py-1 bg-zinc-100 dark:bg-zinc-800 text-zinc-500 rounded-full text-[8px] font-black uppercase shrink-0">Routine</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- SIDEBAR INFO (Right 1/3) -->
+        <div class="space-y-6">
+            <h3 class="font-black uppercase tracking-tight dark:text-white px-2">Resources</h3>
+            
+            <!-- Quick Tips Card -->
+            <div class="bg-white dark:bg-zinc-900 p-8 rounded-[3rem] border border-zinc-100 dark:border-zinc-800 shadow-sm relative overflow-hidden">
+                <div class="relative z-10">
+                    <p class="text-[10px] font-black text-primary uppercase tracking-widest mb-4">Pro Tip</p>
+                    <p class="text-sm font-bold dark:text-white leading-relaxed mb-6">
+                        Always check for queen cells during Spring. If you find more than three, prepare for a potential swarm.
+                    </p>
+                    <button class="w-full py-4 bg-zinc-100 dark:bg-zinc-800 dark:text-white rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-zinc-900 dark:hover:bg-zinc-700 transition-all">Read Protocol</button>
+                </div>
+            </div>
+
+            <!-- Ad/Link Card -->
+            <div class="bg-primary p-8 rounded-[3rem] flex flex-col justify-between min-h-[200px] relative overflow-hidden group shadow-xl shadow-primary/20">
+                <p class="text-zinc-900 font-black text-xl uppercase leading-tight relative z-10">Gear up for<br>The Harvest</p>
+                <button class="w-full py-4 bg-zinc-900 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest relative z-10 active:scale-95 transition-all">Open Store</button>
+                <i class="fas fa-vial absolute -bottom-6 -left-6 text-zinc-900/10 text-8xl transform rotate-12 group-hover:scale-110 transition-transform"></i>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- STORE TAB CONTENT -->
+  <section id="store-content" class="tab-content hidden space-y-8 animate-fade-in">
+    
+    <!-- PROMO BANNER -->
+    <div class="bg-primary p-8 rounded-[2.5rem] md:rounded-[3rem] border border-primary/20 shadow-xl relative overflow-hidden group">
+        <div class="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+            <div class="max-w-md space-y-2">
+                <span class="px-3 py-1 bg-zinc-900 text-white text-[10px] font-black uppercase rounded-full tracking-widest">Limited Offer</span>
+                <h2 class="text-3xl md:text-4xl font-black text-zinc-900 uppercase tracking-tighter leading-none">Gear <span class="italic">Store</span></h2>
+                <p class="text-zinc-800 text-sm font-medium">Professional grade beekeeping equipment and organic supplies for your apiary.</p>
+            </div>
+            <button class="px-8 py-4 bg-zinc-900 text-white rounded-2xl font-black uppercase text-[10px] tracking-[0.2em] hover:bg-zinc-800 transition-all active:scale-95 shadow-2xl">
+                View All Deals
+            </button>
+        </div>
+        <i class="fas fa-shopping-basket absolute -bottom-10 -right-10 text-zinc-900/10 text-9xl transform -rotate-12 group-hover:rotate-0 transition-transform duration-700"></i>
+    </div>
+
+    <!-- STORE LAYOUT GRID -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        
+        <!-- MAIN PRODUCT FEED (Left/Center) -->
+        <div class="lg:col-span-2 space-y-6">
+            <div class="flex items-center justify-between px-2">
+                <h3 class="font-black uppercase tracking-tight dark:text-white">New Arrivals</h3>
+                <div class="flex gap-2">
+                    <button class="p-2 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-500 hover:text-primary transition-colors"><i class="fas fa-th-large"></i></button>
+                    <button class="p-2 rounded-lg text-zinc-400 hover:text-primary transition-colors"><i class="fas fa-list"></i></button>
+                </div>
+            </div>
+
+            <!-- RESPONSIVE PRODUCT GRID -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
+                
+                <!-- Product 1: Inspection Kit -->
+                <div class="bg-white dark:bg-zinc-900 p-5 rounded-[2.5rem] border border-zinc-100 dark:border-zinc-800 group hover:border-primary/50 transition-all flex flex-col h-full">
+                    <div class="aspect-square bg-zinc-50 dark:bg-zinc-800 rounded-[2rem] mb-4 overflow-hidden relative">
+                        <img src="assets/Beekeeping Starter Kit" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Beekeeping Tools">
+                        <div class="absolute inset-0 bg-zinc-900/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <button class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-zinc-900 shadow-xl"><i class="fas fa-eye"></i></button>
+                        </div>
+                    </div>
+                    <div class="flex-1 px-1">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h4 class="font-black dark:text-white text-sm uppercase">Inspection Kit</h4>
+                                <p class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest">15 Piece Stainless</p>
+                            </div>
+                            <span class="font-black text-primary">$49.00</span>
+                        </div>
+                        <button class="w-full py-4 bg-zinc-900 dark:bg-zinc-800 text-white rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-primary hover:text-zinc-900 transition-all mt-auto">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Product 2: Deluxe Bee Suit -->
+                <div class="bg-white dark:bg-zinc-900 p-5 rounded-[2.5rem] border border-zinc-100 dark:border-zinc-800 group hover:border-primary/50 transition-all flex flex-col h-full">
+                    <div class="aspect-square bg-zinc-50 dark:bg-zinc-800 rounded-[2rem] mb-4 overflow-hidden relative">
+                        <img src="assets/Full Protection Bee Suit" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Bee Suit">
+                        <span class="absolute top-4 left-4 px-3 py-1 bg-zinc-900 text-white text-[8px] font-black uppercase rounded-full">Pro Only</span>
+                    </div>
+                    <div class="flex-1 px-1">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h4 class="font-black dark:text-white text-sm uppercase">Full Protection Suit</h4>
+                                <p class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest">Ventilated Fabric</p>
+                            </div>
+                            <span class="font-black text-primary">$89.00</span>
+                        </div>
+                        <button class="w-full py-4 bg-zinc-900 dark:bg-zinc-800 text-white rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-primary hover:text-zinc-900 transition-all mt-auto">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Product 3: 10-Frame Beehive -->
+                <!-- <div class="bg-white dark:bg-zinc-900 p-5 rounded-[2.5rem] border border-zinc-100 dark:border-zinc-800 group hover:border-primary/50 transition-all flex flex-col h-full">
+                    <div class="aspect-square bg-zinc-50 dark:bg-zinc-800 rounded-[2rem] mb-4 overflow-hidden">
+                        <img src="assets/hive.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Beehive">
+                    </div>
+                    <div class="flex-1 px-1">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h4 class="font-black dark:text-white text-sm uppercase">10-Frame Starter Kit</h4>
+                                <p class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest">Wax Coated Cedar</p>
+                            </div>
+                            <span class="font-black text-primary">$155.00</span>
+                        </div>
+                        <button class="w-full py-4 bg-zinc-900 dark:bg-zinc-800 text-white rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-primary hover:text-zinc-900 transition-all mt-auto">Add to Cart</button>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+
+        <!-- STORE SIDEBAR (Right) -->
+        <div class="space-y-6">
+            <h3 class="font-black uppercase tracking-tight dark:text-white px-2">Your Supplies</h3>
+            
+            <!-- Quick Restock Checklist -->
+            <div class="bg-white dark:bg-zinc-900 p-8 rounded-[3rem] border border-zinc-100 dark:border-zinc-800 shadow-sm">
+                <div class="space-y-6">
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center text-[10px] font-black uppercase tracking-widest">
+                            <span class="dark:text-white">Mite Treatment</span>
+                            <span class="text-red-500">Low Stock</span>
+                        </div>
+                        <div class="w-full h-2 bg-zinc-100 dark:bg-zinc-800 rounded-full overflow-hidden">
+                            <div class="h-full bg-red-500 w-[15%] rounded-full"></div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center text-[10px] font-black uppercase tracking-widest">
+                            <span class="dark:text-white">Sugar Feed (kg)</span>
+                            <span class="text-green-500">Normal</span>
+                        </div>
+                        <div class="w-full h-2 bg-zinc-100 dark:bg-zinc-800 rounded-full overflow-hidden">
+                            <div class="h-full bg-green-500 w-[65%] rounded-full"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="w-full mt-8 py-3 border-2 border-zinc-100 dark:border-zinc-800 dark:text-white rounded-2xl text-[9px] font-black uppercase tracking-[0.2em] hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-all">Order Supplies</button>
+            </div>
+
+            <!-- Ad Card -->
+            <div class="bg-zinc-900 p-8 rounded-[3rem] border border-zinc-800 flex flex-col justify-between min-h-[220px] relative overflow-hidden group">
+                <div class="relative z-10">
+                    <p class="text-white font-black text-xl uppercase leading-tight">Need expert<br>Advice?</p>
+                    <p class="text-zinc-500 text-[10px] mt-2 font-bold uppercase tracking-widest">Consultation Available</p>
+                </div>
+                <button class="w-full py-4 bg-primary text-zinc-900 rounded-2xl text-[10px] font-black uppercase tracking-widest relative z-10 hover:bg-white transition-colors duration-300">Talk to Apiarist</button>
+                <i class="fas fa-headset absolute -bottom-6 -left-6 text-white/5 text-8xl transform rotate-12 group-hover:scale-110 transition-transform"></i>
+            </div>
+        </div>
+    </div>
+</section>
+
+</main>
+    </div>
+</div>
+
+
+<script>
+    /**
+     * DASHBOARD CONTROLLER
+     * Manages tab switching, visibility logic, and active states.
+     */
+    function switchTab(tabId) {
+        // 1. Hide all tab-content blocks
+        document.querySelectorAll('.tab-content').forEach(content => {
+            content.classList.add('hidden');
+        });
+
+        // 2. Show the targeted tab block
+        const target = document.getElementById(tabId + '-content');
+        if (target) target.classList.remove('hidden');
+
+        // 3. Update Visual Tab Buttons
+        document.querySelectorAll('.tab-link').forEach(btn => {
+            btn.classList.remove('active', 'bg-primary/10', 'text-primary');
+            btn.classList.add('text-zinc-500', 'dark:text-zinc-400');
+        });
+
+        // 4. Set Active Style
+        const activeBtn = document.querySelector(`[data-tab="${tabId}"]`);
+        if (activeBtn) {
+            activeBtn.classList.add('active', 'bg-primary/10', 'text-primary');
+            activeBtn.classList.remove('text-zinc-500', 'dark:text-zinc-400');
+        }
+    }
+
+    // Initialize View
+    document.addEventListener('DOMContentLoaded', () => switchTab('overview'));
+</script>
+
+<style>
+    /* Smooth Transitions for Tab Sections */
+    .animate-fade-in {
+        animation: fadeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
+            <!-- <div class="p-4 lg:p-8 max-w-7xl mx-auto space-y-8">
                 
                 <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
                     <div class="bg-white dark:bg-zinc-900 p-6 rounded-[2.5rem] border border-zinc-100 dark:border-zinc-800">
@@ -451,8 +831,118 @@
    
 </section>
 
+            </div> -->
+   <!-- 
+  STORE CONTENT SECTION
+  - Grid: 1 Col (Mobile) | 2 Col (Tablet) | 3 Col (Desktop/1024px)
+  - Layout: Matches Overview/Checklist formatting for visual consistency.
+-->
+<div id="store-content" class="tab-content hidden space-y-8 animate-fade-in">
+
+    <!-- TOP SECTION: Featured Promotion -->
+    <div class="bg-primary p-8 rounded-[3rem] border border-primary/20 shadow-2xl relative overflow-hidden group">
+        <div class="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+            <div class="space-y-2">
+                <span class="px-3 py-1 bg-zinc-900 text-white text-[10px] font-black uppercase rounded-full tracking-widest">Season Special</span>
+                <h2 class="text-3xl font-black text-zinc-900 uppercase tracking-tighter">Upgrade Your <span class="italic">Apiary</span></h2>
+                <p class="text-zinc-800 text-sm font-medium max-w-md">Get 15% off on all heavy-duty protective suits and hive expansion kits this month.</p>
             </div>
-   
+            
+            <button class="px-8 py-4 bg-zinc-900 text-white rounded-2xl font-black uppercase text-xs tracking-widest hover:bg-zinc-800 transition-all active:scale-95 shadow-xl">
+                Claim Offer
+            </button>
+        </div>
+        
+        <!-- Background Decoration -->
+        <i class="fas fa-shopping-basket absolute -bottom-10 -right-10 text-zinc-900/10 text-9xl transform -rotate-12 group-hover:scale-110 transition-transform duration-700"></i>
+    </div>
+
+    <!-- MAIN GRID: Categories & Products -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        
+        <!-- LEFT: Product Grid (Scrollable on Tablet/Mobile) -->
+        <div class="lg:col-span-2 space-y-6">
+            <div class="flex items-center justify-between px-2">
+                <h3 class="font-black uppercase tracking-tight dark:text-white">Essential Supplies</h3>
+                <div class="flex gap-2">
+                    <button class="w-8 h-8 rounded-lg bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center text-zinc-400 hover:text-primary transition-colors"><i class="fas fa-filter text-[10px]"></i></button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <!-- Product 1 -->
+                <div class="bg-white dark:bg-zinc-900 p-5 rounded-[2.5rem] border border-zinc-100 dark:border-zinc-800 hover:border-primary/50 transition-all group">
+                    <div class="aspect-square bg-zinc-50 dark:bg-zinc-800 rounded-[2rem] mb-4 overflow-hidden relative">
+                        <img src="assets/honey-extractor" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Tool">
+                        <span class="absolute top-4 left-4 px-2 py-1 bg-green-500 text-white text-[8px] font-black uppercase rounded-lg">In Stock</span>
+                    </div>
+                    <div class="flex justify-between items-start mb-4 px-1">
+                        <div>
+                            <h4 class="font-black dark:text-white text-sm uppercase">Pro Extractor</h4>
+                            <p class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest">Manual • 3-Frame</p>
+                        </div>
+                        <span class="font-black text-primary">$189</span>
+                    </div>
+                    <button class="w-full py-3 bg-zinc-100 dark:bg-zinc-800 dark:text-white rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-primary hover:text-zinc-900 transition-all">Add to Cart</button>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="bg-white dark:bg-zinc-900 p-5 rounded-[2.5rem] border border-zinc-100 dark:border-zinc-800 hover:border-primary/50 transition-all group">
+                    <div class="aspect-square bg-zinc-50 dark:bg-zinc-800 rounded-[2rem] mb-4 overflow-hidden relative">
+                        <img src="assets/smoker" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Tool">
+                    </div>
+                    <div class="flex justify-between items-start mb-4 px-1">
+                        <div>
+                            <h4 class="font-black dark:text-white text-sm uppercase">Premium Smoker</h4>
+                            <p class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest">Stainless Steel</p>
+                        </div>
+                        <span class="font-black text-primary">$45</span>
+                    </div>
+                    <button class="w-full py-3 bg-zinc-100 dark:bg-zinc-800 dark:text-white rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-primary hover:text-zinc-900 transition-all">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT: Inventory Status & Featured -->
+        <div class="space-y-6">
+            <h3 class="font-black uppercase tracking-tight dark:text-white px-2">Quick Inventory</h3>
+            
+            <div class="bg-white dark:bg-zinc-900 p-8 rounded-[3rem] border border-zinc-100 dark:border-zinc-800 shadow-sm">
+                <div class="space-y-6">
+                    <div class="space-y-2">
+                        <div class="flex justify-between text-[10px] font-black uppercase tracking-widest">
+                            <span class="dark:text-white">Mite Treatment</span>
+                            <span class="text-zinc-400">2 Units</span>
+                        </div>
+                        <div class="w-full h-1.5 bg-zinc-100 dark:bg-zinc-800 rounded-full">
+                            <div class="h-full bg-red-500 w-1/4 rounded-full"></div>
+                        </div>
+                        <p class="text-[9px] font-bold text-red-500 uppercase">Restock Required</p>
+                    </div>
+
+                    <div class="space-y-2">
+                        <div class="flex justify-between text-[10px] font-black uppercase tracking-widest">
+                            <span class="dark:text-white">Sugar Feed</span>
+                            <span class="text-zinc-400">15 Units</span>
+                        </div>
+                        <div class="w-full h-1.5 bg-zinc-100 dark:bg-zinc-800 rounded-full">
+                            <div class="h-full bg-green-500 w-3/4 rounded-full"></div>
+                        </div>
+                        <p class="text-[9px] font-bold text-green-500 uppercase">Healthy Stock</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ad/Callout -->
+            <div class="bg-zinc-900 p-8 rounded-[3rem] border border-zinc-800 flex flex-col justify-center text-center relative overflow-hidden group">
+                <p class="text-white font-black text-lg uppercase leading-tight relative z-10">New Arrival<br><span class="text-primary">Cedar Hives</span></p>
+                <p class="text-zinc-500 text-[10px] mt-2 mb-6 uppercase tracking-widest font-bold relative z-10">Pre-order now</p>
+                <button class="py-3 bg-primary text-zinc-900 rounded-xl text-[10px] font-black uppercase tracking-widest relative z-10 hover:bg-white transition-colors">View Details</button>
+                <i class="fas fa-box-open absolute -bottom-4 -left-4 text-white/5 text-6xl transform rotate-12"></i>
+            </div>
+        </div>
+    </div>
+</div>
         </main>
     </div>
 
